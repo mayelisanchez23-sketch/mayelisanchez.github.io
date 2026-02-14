@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Actividad 04 | Defensa en red</title>
+
+  <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/johndoe.css">
+</head>
+
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Actividades</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navAct04"
+        aria-controls="navAct04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navAct04">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html#pf01" class="nav-link">PF01</a></li>
+          <li class="nav-item"><a href="../index.html#parciales" class="nav-link">Parciales</a></li>
+          <li class="nav-item"><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+
+      <h2 class="mb-4"><span class="text-danger">Actividad 04</span> · Mecanismos de defensa en red (Firewall con iptables)</h2>
+      <p class="subtitle">
+        Implementación de reglas en <b>iptables</b> para aplicar una política restrictiva y permitir únicamente el tráfico necesario
+        de acuerdo con una topología típica LAN–Firewall–Internet.
+      </p>
+
+      <!-- 1) Introducción -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">1) Introducción</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Un firewall perimetral debe aplicar el principio de <b>mínimo privilegio</b>: bloquear por defecto y permitir solo lo requerido.
+            Con iptables es posible definir reglas por <b>protocolo</b>, <b>IP origen/destino</b>, <b>puertos</b> y <b>estado</b> de la conexión,
+            logrando un control fino del tráfico entre redes.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2) Desarrollo -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">2) Desarrollo</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <h5 class="mb-2">Política base recomendada</h5>
+          <p class="subtitle mb-2">
+            Primero se establece una política restrictiva y se permite el tráfico de sesiones ya establecidas.
+          </p>
+
+          <pre><code># Política por defecto (restrictiva)
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT
+
+# Permitir loopback
+iptables -A INPUT -i lo -j ACCEPT
+
+# Permitir conexiones ya establecidas o relacionadas
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+</code></pre>
+
+          <h5 class="mb-2 mt-4">Reglas específicas solicitadas</h5>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                  <th>Acción solicitada</th>
+                  <th>Regla iptables (ejemplo)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Establecer una política restrictiva</td>
+                  <td><code>iptables -P INPUT DROP; iptables -P FORWARD DROP</code></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Permitir tráfico de conexiones ya establecidas</td>
+                  <td><code>iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</code></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Aceptar tráfico DNS saliente de la red local</td>
+                  <td><code>iptables -A FORWARD -p udp -s 192.1.2.0/24 --dport 53 -m state --state NEW -j ACCEPT</code></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Aceptar correo entrante desde Internet al servidor de correo</td>
+                  <td><code>iptables -A FORWARD -p tcp -d 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT</code></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Permitir correo saliente del servidor de correo hacia Internet</td>
+                  <td><code>iptables -A FORWARD -p tcp -s 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT</code></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Aceptar conexiones HTTP desde Internet al servidor web</td>
+                  <td><code>iptables -A FORWARD -p tcp -d 192.1.2.11 --dport 80 -m state --state NEW -j ACCEPT</code></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Permitir tráfico HTTP/HTTPS de la red local hacia Internet</td>
+                  <td><code>iptables -A FORWARD -p tcp -s 192.1.2.0/24 -m state --state NEW -m multiport --dports 80,443 -j ACCEPT</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="subtitle mb-0">
+            Nota: las IP de servidores (<code>192.1.2.10</code> correo, <code>192.1.2.11</code> web) deben ajustarse a la topología real.
+            (En tu ejercicio ya se muestra el web como 192.1.2.11). :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+      </div>
+
+      <!-- 3) Material multimedia -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">3) Material multimedia</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-2">
+            A continuación se resume el objetivo del filtrado por zonas:
+          </p>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>Zona</th>
+                  <th>Tráfico permitido</th>
+                  <th>Motivo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>LAN → Internet</td>
+                  <td>DNS, HTTP/HTTPS</td>
+                  <td>Navegación y resolución de nombres.</td>
+                </tr>
+                <tr>
+                  <td>Internet → Servidores (DMZ/LAN)</td>
+                  <td>HTTP al web, SMTP al mail</td>
+                  <td>Publicación controlada de servicios.</td>
+                </tr>
+                <tr>
+                  <td>Internet → LAN (clientes)</td>
+                  <td>Bloqueado</td>
+                  <td>Evitar accesos no autorizados a equipos internos.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 4) Reflexión -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">4) Reflexión</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Un error común en firewalls es permitir “demasiado” por comodidad. Con una política restrictiva y reglas específicas
+            por estado, IP y puertos, se reduce la superficie de ataque y se limita el impacto ante intrusiones. Además, separar
+            servicios públicos (web/correo) y restringir accesos desde Internet hacia clientes internos mejora la postura de seguridad.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5) Referencias -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">5) Referencias</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <ul class="subtitle mb-0">
+            <li>Netfilter/iptables – conceptos de cadenas, políticas y filtrado stateful.</li>
+            <li>Material de clase y práctica de firewall perimetral.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="subtitle text-center mt-4 mb-2">Versión formal del documento:</p>
+      <div class="text-center">
+        <a class="btn btn-primary btn-rounded" href="pdf/actividad-04-defensa-red.pdf" target="_blank">
+          Exportar a PDF <i class="ti-download ml-1"></i>
+        </a>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="index.html" class="btn btn-outline-danger btn-rounded">
+          Volver al índice <i class="ti-arrow-left ml-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+  <script src="../assets/js/johndoe.js"></script>
+</body>
+</html>
