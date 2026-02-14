@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Actividad 01 | Ciberataque a PEMEX</title>
+
+  <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/johndoe.css">
+</head>
+
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Actividades</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navAct01"
+        aria-controls="navAct01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navAct01">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html#pf01" class="nav-link">PF01</a></li>
+          <li class="nav-item"><a href="../index.html#parciales" class="nav-link">Parciales</a></li>
+          <li class="nav-item"><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+
+      <h2 class="mb-4"><span class="text-danger">Actividad 01</span> · Análisis del ciberataque a PEMEX</h2>
+      <p class="subtitle">Artículo técnico digital (no PDF incrustado). Incluye botón de exportación al documento formal.</p>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">1) Introducción contextual</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            El 10 de noviembre de 2019, Petróleos Mexicanos (PEMEX) fue víctima de un ataque de ransomware de alto impacto,
+            atribuido al grupo Indrik Spider mediante la variante DoppelPaymer. El incidente paralizó procesos administrativos
+            y logísticos, afectando la continuidad operativa y generando impacto económico y reputacional.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">2) Desarrollo técnico</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle"><b>Actor y malware:</b> operación tipo “Big Game Hunting” con DoppelPaymer.</p>
+
+          <p class="subtitle mb-2"><b>Técnicas y etapas (ejemplos):</b></p>
+          <ul class="subtitle">
+            <li>Phishing como vector inicial (carga de malware).</li>
+            <li>Movimiento lateral con servicios remotos (RDP/SMB) y robo de credenciales.</li>
+            <li>Exfiltración de información previa al cifrado (doble extorsión).</li>
+            <li>Impacto por cifrado y respuesta de emergencia (apagado de red).</li>
+          </ul>
+
+          <p class="subtitle mb-2"><b>Factores que facilitaron el ataque:</b></p>
+          <ul class="subtitle">
+            <li>Gestión deficiente de vulnerabilidades (servicios desactualizados / superficie de ataque expuesta).</li>
+            <li>Uso de sistemas legados y falta de segmentación.</li>
+            <li>Respaldos no aislados (riesgo de cifrado de backups).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">3) Material multimedia</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Aquí vas a colocar (recomendado): una línea del tiempo, una tabla CIA y/o un diagrama simple del flujo del ataque.
+            (Si quieres, yo te hago el diagrama y lo subimos como imagen).
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">4) Reflexión técnica</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Este caso demuestra que un incidente de gran escala no siempre depende de técnicas “imparables”, sino de fallas
+            acumuladas en gestión: parches pendientes, infraestructura obsoleta, falta de segmentación y controles de respaldo.
+            En México y LATAM, priorizar medidas prácticas (inventario, parcheo, MFA, respaldos inmutables y monitoreo) puede
+            reducir drásticamente el impacto operativo y económico.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">5) Referencias técnicas</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <ul class="subtitle mb-0">
+            <li>Auditoría Superior de la Federación (ASF) – Cuenta pública / auditorías relacionadas.</li>
+            <li>MITRE ATT&CK Framework.</li>
+            <li>Reportes técnicos de ciberseguridad (inteligencia de amenazas).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a class="btn btn-primary btn-rounded" href="pdf/actividad-01-pemex.pdf" target="_blank">
+          Exportar a PDF <i class="ti-download ml-1"></i>
+        </a>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="index.html" class="btn btn-outline-danger btn-rounded">
+          Volver al índice <i class="ti-arrow-left ml-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+  <script src="../assets/js/johndoe.js"></script>
+</body>
+</html>
