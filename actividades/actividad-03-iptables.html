@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Actividad 03 | iptables</title>
+
+  <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/johndoe.css">
+</head>
+
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Actividades</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navAct03"
+        aria-controls="navAct03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navAct03">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html#pf01" class="nav-link">PF01</a></li>
+          <li class="nav-item"><a href="../index.html#parciales" class="nav-link">Parciales</a></li>
+          <li class="nav-item"><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+
+      <h2 class="mb-4"><span class="text-danger">Actividad 03</span> · Interpretación y traducción de políticas en iptables</h2>
+      <p class="subtitle">
+        Artículo técnico sobre el filtrado de tráfico en Linux mediante <b>iptables</b>, interpretando reglas y su impacto en seguridad perimetral.
+      </p>
+
+      <!-- 1) Introducción -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">1) Introducción</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            <b>iptables</b> es la herramienta clásica en Linux para administrar reglas de filtrado de paquetes a nivel kernel (Netfilter).
+            Su uso es clave para aplicar políticas de seguridad como “denegar por defecto”, permitir servicios específicos y controlar conexiones
+            según protocolo, puertos y estado de la sesión.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2) Desarrollo -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">2) Desarrollo</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+
+          <h5 class="mb-2">Conceptos base</h5>
+          <ul class="subtitle">
+            <li><b>Cadenas:</b> INPUT (hacia el host), OUTPUT (desde el host), FORWARD (tránsito entre redes).</li>
+            <li><b>Acciones:</b> ACCEPT (permitir), DROP (bloquear silencioso), REJECT (bloquear con respuesta).</li>
+            <li><b>Stateful firewall:</b> filtrado por estado (NEW, ESTABLISHED, RELATED).</li>
+          </ul>
+
+          <h5 class="mb-2 mt-4">Anatomía de una regla</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>Parte</th>
+                  <th>Ejemplo</th>
+                  <th>Significado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cadena</td>
+                  <td>-A INPUT</td>
+                  <td>Aplica a tráfico que entra al host.</td>
+                </tr>
+                <tr>
+                  <td>Protocolo</td>
+                  <td>-p tcp</td>
+                  <td>Filtra solo TCP.</td>
+                </tr>
+                <tr>
+                  <td>Puerto destino</td>
+                  <td>--dport 22</td>
+                  <td>Servicio destino (ej. SSH).</td>
+                </tr>
+                <tr>
+                  <td>Estado</td>
+                  <td>-m state --state NEW</td>
+                  <td>Conexiones nuevas.</td>
+                </tr>
+                <tr>
+                  <td>Acción</td>
+                  <td>-j ACCEPT</td>
+                  <td>Permite el tráfico.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mb-2 mt-4">Ejemplos (interpretación / traducción)</h5>
+          <ul class="subtitle">
+            <li>
+              <b>Permitir conexiones establecidas:</b><br>
+              <code>iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</code><br>
+              Traducción: “Deja pasar respuestas y tráfico relacionado a sesiones ya abiertas.”
+            </li>
+            <li class="mt-3">
+              <b>Bloquear un puerto específico (ej. Telnet 23):</b><br>
+              <code>iptables -A INPUT -p tcp --dport 23 -j DROP</code><br>
+              Traducción: “Bloquea conexiones entrantes al servicio Telnet.”
+            </li>
+            <li class="mt-3">
+              <b>Permitir SSH solo desde una IP:</b><br>
+              <code>iptables -A INPUT -p tcp -s 192.168.1.10 --dport 22 -m state --state NEW -j ACCEPT</code><br>
+              Traducción: “Solo el host 192.168.1.10 puede iniciar SSH al servidor.”
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+      <!-- 3) Material multimedia -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">3) Material</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <h5 class="mb-3">Flujo de decisión (vista rápida)</h5>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>Tipo de tráfico</th>
+                  <th>Cadena típica</th>
+                  <th>Ejemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Internet → Servidor</td>
+                  <td>INPUT</td>
+                  <td>Acceso HTTP/HTTPS al host</td>
+                </tr>
+                <tr>
+                  <td>Servidor → Internet</td>
+                  <td>OUTPUT</td>
+                  <td>Actualizaciones / DNS / descargas</td>
+                </tr>
+                <tr>
+                  <td>LAN → WAN (router/firewall)</td>
+                  <td>FORWARD</td>
+                  <td>Clientes navegando</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="subtitle mb-0">
+            Nota: En firewall perimetral, la cadena <b>FORWARD</b> suele ser la más utilizada para controlar tráfico entre redes.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4) Reflexión -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">4) Reflexión</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Una política bien diseñada en iptables reduce superficie de ataque aplicando “<b>denegar por defecto</b>” y habilitando
+            únicamente servicios necesarios. El filtrado por estado ayuda a permitir respuestas legítimas sin abrir el firewall de más.
+            Errores comunes: abrir puertos innecesarios, no limitar por IP origen y no registrar (logging) eventos relevantes.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5) Referencias -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">5) Referencias</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <ul class="subtitle mb-0">
+            <li>Documentación de Netfilter/iptables (Linux).</li>
+            <li>Material de clase y prácticas de filtrado en firewall.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="subtitle text-center mt-4 mb-2">Versión formal del documento (respaldo académico):</p>
+      <div class="text-center">
+        <a class="btn btn-primary btn-rounded" href="pdf/actividad-03-iptables.pdf" target="_blank">
+          Exportar a PDF <i class="ti-download ml-1"></i>
+        </a>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="index.html" class="btn btn-outline-danger btn-rounded">
+          Volver al índice <i class="ti-arrow-left ml-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+  <script src="../assets/js/johndoe.js"></script>
+</body>
+</html>
