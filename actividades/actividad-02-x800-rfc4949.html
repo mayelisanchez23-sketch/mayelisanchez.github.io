@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Actividad 02 | X.800 y RFC 4949</title>
+
+  <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/johndoe.css">
+</head>
+
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Actividades</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navAct02"
+        aria-controls="navAct02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navAct02">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html#pf01" class="nav-link">PF01</a></li>
+          <li class="nav-item"><a href="../index.html#parciales" class="nav-link">Parciales</a></li>
+          <li class="nav-item"><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+
+      <h2 class="mb-4"><span class="text-danger">Actividad 02</span> · Análisis de servicios de seguridad (X.800 y RFC 4949)</h2>
+      <p class="subtitle">
+        Artículo técnico digital basado en el análisis de escenarios de incidentes, identificando servicios comprometidos (X.800)
+        y terminología formal (RFC 4949).
+      </p>
+
+      <!-- 1) Introducción -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">1) Introducción contextual</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            La seguridad en redes no depende únicamente de los datos, sino también de la infraestructura que los transporta:
+            routers, servidores, enlaces y dispositivos de red. La recomendación ITU-T X.800 define servicios y mecanismos de
+            seguridad para proteger sistemas (autenticación, control de acceso, confidencialidad, integridad, no repudio y disponibilidad).
+            Por su parte, el RFC 4949 normaliza el vocabulario técnico para describir amenazas, ataques, vulnerabilidades e impactos,
+            permitiendo clasificar incidentes de forma consistente.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2) Desarrollo -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">2) Desarrollo técnico</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <h5 class="mb-2">Marco X.800</h5>
+          <ul class="subtitle">
+            <li>Autenticación</li>
+            <li>Control de acceso</li>
+            <li>Confidencialidad</li>
+            <li>Integridad</li>
+            <li>No repudio</li>
+            <li>Disponibilidad</li>
+          </ul>
+
+          <h5 class="mb-2 mt-4">Marco RFC 4949</h5>
+          <p class="subtitle mb-0">
+            El RFC 4949 funciona como glosario oficial: define términos como phishing, masquerade, insider threat,
+            data breach, supply chain attack, entre otros, para describir incidentes de forma precisa.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3) Escenarios (resumen) -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">3) Escenarios analizados (resumen)</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th>Escenario</th>
+                  <th>Tipo</th>
+                  <th>Servicios X.800 comprometidos</th>
+                  <th>Conceptos RFC 4949</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. Ransomware + exfiltración</td>
+                  <td>Externa</td>
+                  <td>Confidencialidad, Integridad, Disponibilidad</td>
+                  <td>Multi-stage attack, Data breach, Availability attack</td>
+                </tr>
+                <tr>
+                  <td>2. Base de datos expuesta por error</td>
+                  <td>Interna</td>
+                  <td>Confidencialidad</td>
+                  <td>Misconfiguration, Exposure</td>
+                </tr>
+                <tr>
+                  <td>3. Ataque a la cadena de suministro</td>
+                  <td>Externa</td>
+                  <td>Integridad, Confidencialidad</td>
+                  <td>Supply chain attack</td>
+                </tr>
+                <tr>
+                  <td>4. Phishing y robo de credenciales</td>
+                  <td>Externa</td>
+                  <td>Autenticación, Control de acceso</td>
+                  <td>Credential compromise, Authentication failure</td>
+                </tr>
+                <tr>
+                  <td>5. Ransomware destruye respaldos</td>
+                  <td>Externa</td>
+                  <td>Integridad, Disponibilidad</td>
+                  <td>Data destruction, Availability attack</td>
+                </tr>
+                <tr>
+                  <td>6. Empleado filtra información</td>
+                  <td>Interna</td>
+                  <td>Confidencialidad, Control de acceso</td>
+                  <td>Insider threat</td>
+                </tr>
+                <tr>
+                  <td>7. Logs alterados/cifrados</td>
+                  <td>Interna</td>
+                  <td>Integridad, No repudio</td>
+                  <td>Evidentiary integrity, Audit trail</td>
+                </tr>
+                <tr>
+                  <td>8. Caída por error operativo</td>
+                  <td>Interna</td>
+                  <td>Disponibilidad</td>
+                  <td>Operational failure</td>
+                </tr>
+                <tr>
+                  <td>9. Suplantación (sitios/correos)</td>
+                  <td>Externa</td>
+                  <td>Autenticación, Confidencialidad</td>
+                  <td>Masquerade, Phishing</td>
+                </tr>
+                <tr>
+                  <td>10. Exfiltración + ataque destructivo</td>
+                  <td>Externa</td>
+                  <td>Confidencialidad, Integridad, Disponibilidad</td>
+                  <td>Destructive attack</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 4) Reflexión -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">4) Reflexión técnica</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            El análisis evidencia que los incidentes no son exclusivamente “ataques externos sofisticados”; también pueden
+            originarse por configuraciones incorrectas, fallas operativas o abuso de privilegios. En el contexto latinoamericano,
+            es clave priorizar controles viables: gestión de accesos, MFA, respaldos inmutables, monitoreo continuo y capacitación.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5) Referencias -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">5) Referencias técnicas</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <ul class="subtitle mb-0">
+            <li>Material de clase: “Tipos de pruebas de penetración: Pruebas de infraestructura de red”.</li>
+            <li>IETF (2007). RFC 4949: Internet Security Glossary, Version 2.</li>
+            <li>ITU-T X.800: Security architecture for OSI.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="subtitle text-center mt-4 mb-2">Versión formal del documento (respaldo académico):</p>
+      <div class="text-center">
+        <a class="btn btn-primary btn-rounded" href="pdf/actividad-02-x800-rfc4949.pdf" target="_blank">
+          Exportar a PDF <i class="ti-download ml-1"></i>
+        </a>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="index.html" class="btn btn-outline-danger btn-rounded">
+          Volver al índice <i class="ti-arrow-left ml-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+  <script src="../assets/js/johndoe.js"></script>
+</body>
+</html>
