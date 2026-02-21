@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Actividad 06 | Implementación IPSec VPN</title>
+
+  <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/johndoe.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Mayeli Sánchez</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+        data-target="#navAct06" aria-controls="navAct06" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navAct06">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="parciales.html" class="nav-link">Actividades por Parcial</a></li>
+          <li class="nav-item last-item">
+            <a href="../index.html#contacto" class="nav-link" onclick="window.location.href=this.href;">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <section class="section">
+    <div class="container">
+
+      <h2 class="mb-4">
+        <span class="text-danger">Actividad 06</span> · Implementación IPSec VPN
+      </h2>
+
+      <!-- 1) Introducción -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">1) Introducción</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            En esta actividad se realizó el montaje y configuración base de una VPN sitio-a-sitio con IPSec en Cisco Packet Tracer.
+            El objetivo fue comprender el flujo general de implementación: validar conectividad entre sedes, definir el “tráfico interesante”
+            mediante ACL y preparar la negociación inicial (ISAKMP/IKE) para el túnel VPN.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2) Desarrollo -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">2) Desarrollo</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+
+          <h5 class="mt-1 mb-2">2.1 Preparación del entorno</h5>
+          <ul class="subtitle mb-3">
+            <li>Se descargó e instaló Cisco Packet Tracer desde NetAcad.</li>
+            <li>Se verificó el acceso a recursos de Cisco Networking Academy para utilizar la herramienta.</li>
+          </ul>
+
+          <h5 class="mt-3 mb-2">2.2 Topología y direccionamiento</h5>
+          <p class="subtitle mb-2">
+            Se construyó una topología con dos sedes (LAN 192.168.1.0/24 y LAN 192.168.3.0/24) conectadas por un router “ISP”
+            con enlaces públicos 209.165.100.0/24 y 209.165.200.0/24. El túnel IPSec se plantea entre los routers de borde.
+          </p>
+
+          <h5 class="mt-3 mb-2">2.3 Configuración inicial de interfaces y rutas</h5>
+          <p class="subtitle mb-2">
+            Se configuraron las interfaces LAN/WAN de cada router, y se agregaron rutas (incluyendo ruta por defecto hacia el ISP)
+            para asegurar conectividad entre redes antes de aplicar cifrado.
+          </p>
+
+          <h5 class="mt-3 mb-2">2.4 Pruebas de conectividad (pre-VPN)</h5>
+          <p class="subtitle mb-2">
+            Se ejecutaron pruebas de conectividad mediante <b>ping</b> desde un host de una sede hacia la otra (ej. 192.168.3.10),
+            confirmando que el enrutamiento funciona correctamente antes de iniciar la fase IPSec.
+          </p>
+
+          <h5 class="mt-3 mb-2">2.5 ACL para tráfico interesante</h5>
+          <p class="subtitle mb-2">
+            Se definió una ACL (access-list 100) para identificar el tráfico entre 192.168.1.0/24 y 192.168.3.0/24 como tráfico que debe
+            viajar cifrado por el túnel. Esto es clave porque IPSec se activa al detectar tráfico que coincida con esa política.
+          </p>
+
+          <h5 class="mt-3 mb-2">2.6 Problema detectado (ISAKMP)</h5>
+          <p class="subtitle mb-0">
+            Al continuar con la fase de negociación, el entorno mostró que <b>no se detecta ISAKMP</b>, por lo que la configuración quedó incompleta.
+            Esto puede ocurrir en Packet Tracer por limitaciones del modelo/IOS simulado o por diferencias entre comandos (ISAKMP vs IKEv2).
+          </p>
+
+        </div>
+      </div>
+
+      <!-- 3) Material -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">3) Material (evidencia)</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Se adjunta evidencia en PDF con capturas de la instalación, topología, configuración inicial, pruebas de conectividad,
+            ACL aplicada y el error relacionado con ISAKMP.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4) Reflexión -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">4) Reflexión</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <p class="subtitle mb-0">
+            Esta práctica mostró que una VPN IPSec depende primero de una red estable: si el enrutamiento y la conectividad no son correctos,
+            el túnel no puede levantarse. También dejó como aprendizaje que las herramientas de simulación pueden limitar la implementación,
+            por lo que es necesario validar compatibilidad de comandos/modelos (por ejemplo, usar IKEv2 si aplica) o migrar a un entorno
+            más completo para laboratorio cuando Packet Tracer no soporte ciertos componentes.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5) Referencias -->
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mt-2">5) Referencias</h4>
+          <span class="line"></span>
+        </div>
+        <div class="card-body">
+          <ul class="subtitle mb-0">
+            <li>Guía / presentación de clase: Implementación IPSec VPN (Packet Tracer).</li>
+            <li>Documentación general de IPSec/IKE (conceptos de Phase 1 y Phase 2).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PDF -->
+      <div class="text-center mt-4">
+        <a class="btn btn-primary btn-rounded" href="pdf/actividad-06-ipsec-vpn.pdf" target="_blank">
+          Exportar a PDF <i class="ti-download ml-1"></i>
+        </a>
+      </div>
+
+      <!-- Volver -->
+      <div class="text-center mt-3">
+        <a href="index.html" class="btn btn-outline-danger btn-rounded">
+          Volver al índice <i class="ti-arrow-left ml-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+  <script src="../assets/js/johndoe.js"></script>
+</body>
+</html>

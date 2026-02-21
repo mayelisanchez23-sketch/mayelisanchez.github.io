@@ -11,53 +11,59 @@
 
 <body>
 
- <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
-  <div class="container">
-    <!-- Nombre: vuelve siempre al inicio -->
-    <a class="navbar-brand" href="../index.html">Mayeli Sánchez</a>
+  <!-- NAV -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Mayeli Sánchez</a>
 
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navActs"
-      aria-controls="navActs" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+        data-target="#navActs">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navActs">
-      <ul class="navbar-nav ml-auto">
-        <!-- Inicio SIN ancla para evitar conflicto con el JS -->
-        <li class="nav-item">
-          <a href="../index.html" class="nav-link">Inicio</a>
-        </li>
+      <div class="collapse navbar-collapse" id="navActs">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="../index.html" class="nav-link">Inicio</a>
+          </li>
 
-        <!-- Hub de parciales -->
-        <li class="nav-item">
-          <a href="parciales.html" class="nav-link">Actividades por Parcial</a>
-        </li>
+          <li class="nav-item">
+            <a href="parciales.html" class="nav-link">Actividades por Parcial</a>
+          </li>
 
-        <!-- Contacto forzado -->
-        <li class="nav-item last-item">
-          <a href="../index.html#contacto"
-             class="nav-link"
-             onclick="window.location.href=this.href;">
-             Contacto
-          </a>
-        </li>
-      </ul>
+          <li class="nav-item last-item">
+            <a href="../index.html#contacto"
+               class="nav-link"
+               onclick="window.location.href=this.href;">
+               Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
+  <!-- CONTENIDO -->
   <section class="section">
     <div class="container">
-      <h2 class="mb-5"><span class="text-danger">Parcial 1</span> · Actividades</h2>
-      <p class="subtitle">Selecciona una actividad para ver el artículo.</p>
-	<div class="mb-4">
-  <a href="parciales.html" class="btn btn-outline-danger btn-rounded">
-    <i class="ti-arrow-left mr-1"></i> Volver a Actividades por Parcial
-  </a>
-</div>
+
+      <h2 class="mb-5">
+        <span class="text-danger">Parcial 1</span> · Actividades
+      </h2>
+
+      <p class="subtitle">
+        Selecciona una actividad para visualizar el análisis correspondiente.
+      </p>
+
+      <div class="mb-4">
+        <a href="parciales.html" class="btn btn-outline-danger btn-rounded">
+          <i class="ti-arrow-left mr-1"></i> Volver a Actividades por Parcial
+        </a>
+      </div>
 
       <div class="row">
 
+        <!-- ACTIVIDAD 01 -->
         <div class="col-md-6 col-lg-4">
           <div class="card">
             <div class="card-header">
@@ -65,7 +71,9 @@
               <span class="line"></span>
             </div>
             <div class="card-body">
-              <p class="subtitle mb-2"><b>PEMEX:</b> análisis del ciberataque y su impacto empresarial.</p>
+              <p class="subtitle mb-2">
+                <b>PEMEX:</b> análisis del ciberataque y su impacto empresarial.
+              </p>
               <a class="btn btn-primary btn-rounded" href="actividad-01-pemex.html">
                 Leer artículo <i class="ti-arrow-right ml-1"></i>
               </a>
@@ -73,69 +81,117 @@
           </div>
         </div>
 
+        <!-- ACTIVIDAD 02 -->
         <div class="col-md-6 col-lg-4">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="mt-2">Actividad 02</h4>
-      <span class="line"></span>
-    </div>
-    <div class="card-body">
-      <p class="subtitle mb-2"><b>X.800 y RFC 4949:</b> análisis de servicios de seguridad.</p>
-      <a class="btn btn-primary btn-rounded" href="actividad-02-x800-rfc4949.html">
-  Leer artículo <i class="ti-arrow-right ml-1"></i>
-</a>
-    </div>
-  </div>
-</div>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mt-2">Actividad 02</h4>
+              <span class="line"></span>
+            </div>
+            <div class="card-body">
+              <p class="subtitle mb-2">
+                <b>X.800 y RFC 4949:</b> análisis de servicios de seguridad.
+              </p>
+              <a class="btn btn-primary btn-rounded" href="actividad-02-x800-rfc4949.html">
+                Leer artículo <i class="ti-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-<div class="col-md-6 col-lg-4">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="mt-2">Actividad 03</h4>
-      <span class="line"></span>
-    </div>
-    <div class="card-body">
-      <p class="subtitle mb-2"><b>iptables:</b> interpretación y traducción de políticas.</p>
-      <a class="btn btn-primary btn-rounded" href="actividad-03-iptables.html">
-  Leer artículo <i class="ti-arrow-right ml-1"></i>
-</a>
-    </div>
-  </div>
-</div>
+        <!-- ACTIVIDAD 03 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mt-2">Actividad 03</h4>
+              <span class="line"></span>
+            </div>
+            <div class="card-body">
+              <p class="subtitle mb-2">
+                <b>iptables:</b> interpretación y traducción de políticas.
+              </p>
+              <a class="btn btn-primary btn-rounded" href="actividad-03-iptables.html">
+                Leer artículo <i class="ti-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-<div class="col-md-6 col-lg-4">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="mt-2">Actividad 04</h4>
-      <span class="line"></span>
-    </div>
-    <div class="card-body">
-      <p class="subtitle mb-2"><b>Defensa en red:</b> reglas y filtrado en firewall.</p>
-      <a class="btn btn-primary btn-rounded" href="actividad-04-defensa-red.html">
-  Leer artículo <i class="ti-arrow-right ml-1"></i>
-</a>
-    </div>
-  </div>
-</div>
+        <!-- ACTIVIDAD 04 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mt-2">Actividad 04</h4>
+              <span class="line"></span>
+            </div>
+            <div class="card-body">
+              <p class="subtitle mb-2">
+                <b>Defensa en red:</b> reglas y filtrado en firewall.
+              </p>
+              <a class="btn btn-primary btn-rounded" href="actividad-04-defensa-red.html">
+                Leer artículo <i class="ti-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-<div class="col-md-6 col-lg-4">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="mt-2">Actividad 05</h4>
-      <span class="line"></span>
-    </div>
-    <div class="card-body">
-      <p class="subtitle mb-2">
-        <b>Cartografiando el pentesting:</b> análisis comparativo de metodologías (MITRE, OWASP, NIST, OSSTMM, PTES, ISSAF).
-      </p>
-      <a class="btn btn-primary btn-rounded" href="actividad-05-pentesting.html">
-        Leer artículo <i class="ti-arrow-right ml-1"></i>
-      </a>
-    </div>
-  </div>
-</div>
+        <!-- ACTIVIDAD 05 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mt-2">Actividad 05</h4>
+              <span class="line"></span>
+            </div>
+            <div class="card-body">
+              <p class="subtitle mb-2">
+                <b>Metodologías de Pentesting:</b> MITRE, OWASP, NIST, OSSTMM, PTES.
+              </p>
+              <a class="btn btn-primary btn-rounded" href="actividad-05-pentesting.html">
+                Leer artículo <i class="ti-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVIDAD 06 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mt-2">Actividad 06</h4>
+              <span class="line"></span>
+            </div>
+            <div class="card-body">
+              <p class="subtitle mb-2">
+                <b>Implementación IPSec VPN:</b> topología, ACL, conectividad e intento de negociación ISAKMP.
+              </p>
+              <a class="btn btn-primary btn-rounded" href="actividad-06-ipsec-vpn.html">
+                Leer artículo <i class="ti-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVIDAD 07 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mt-2">Actividad 07</h4>
+              <span class="line"></span>
+            </div>
+            <div class="card-body">
+              <p class="subtitle mb-2">
+                <b>La caída del mayor traficante de la dark web (Oxymonster):</b>
+                análisis técnico del caso, errores operativos y lecciones en ciberseguridad.
+              </p>
+              <a class="btn btn-primary btn-rounded" href="actividad-07-oxymonster.html">
+                Leer artículo <i class="ti-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
       </div>
+
     </div>
   </section>
 
@@ -143,5 +199,6 @@
   <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
   <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
   <script src="../assets/js/johndoe.js"></script>
+
 </body>
 </html>
