@@ -3,26 +3,553 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="ROAD TO HALL OF FAME - SQL Injection">
+  <meta name="description" content="ROAD TO HALL OF FAME - SQL Injection | Portafolio digital de Mayeli Sánchez">
   <meta name="author" content="Mayeli Sánchez">
   <title>ROAD TO HALL OF FAME | SQL Injection</title>
 
   <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../assets/css/johndoe.css">
+
+  <style>
+    :root{
+      --primary:#ff6b81;
+      --primary-dark:#ff4f69;
+      --accent:#0f172a;
+      --accent-2:#111827;
+      --muted:#6b7280;
+      --soft:#f8fafc;
+      --line:#e5e7eb;
+      --card:#ffffff;
+      --road:#dbeafe;
+      --ok:#10b981;
+      --shadow:0 18px 40px rgba(15,23,42,.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:#f4f6f9;
+      color:#1f2937;
+    }
+
+    .sqli-hero {
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,107,129,.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,.14), transparent 26%),
+        linear-gradient(135deg, #0f172a 0%, #111827 45%, #1f2937 100%);
+      color: #fff;
+    }
+
+    .sqli-hero::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity:.18;
+      pointer-events:none;
+    }
+
+    .sqli-hero::after {
+      content:"";
+      position:absolute;
+      width: 420px;
+      height: 420px;
+      border-radius:50%;
+      right:-120px;
+      top:-80px;
+      background: radial-gradient(circle, rgba(255,107,129,.22), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .sqli-hero .container {
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow {
+      display:inline-block;
+      font-size:.95rem;
+      letter-spacing:.18rem;
+      text-transform:uppercase;
+      padding:.5rem .9rem;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      margin-bottom:1rem;
+    }
+
+    .sqli-title {
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      line-height: .95;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color:#fff;
+    }
+
+    .sqli-title span {
+      display:block;
+      color:#ffd2d9;
+      font-weight:700;
+      margin-bottom:.35rem;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      letter-spacing:.06rem;
+    }
+
+    .sqli-subtitle {
+      font-size: 1.08rem;
+      max-width: 760px;
+      color: rgba(255,255,255,.88);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-bottom:1.8rem;
+    }
+
+    .meta-pill {
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.14);
+      color:#fff;
+      border-radius:999px;
+      padding:.55rem .95rem;
+      font-size:.92rem;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+    }
+
+    .hero-btn {
+      border:none;
+      border-radius:999px;
+      padding:.9rem 1.35rem;
+      font-weight:600;
+      text-decoration:none !important;
+      transition:.25s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+    }
+
+    .hero-btn-primary {
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 10px 25px rgba(255,107,129,.28);
+    }
+
+    .hero-btn-primary:hover {
+      background:var(--primary-dark);
+      color:#fff;
+      transform:translateY(-2px);
+    }
+
+    .hero-btn-secondary {
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-btn-secondary:hover {
+      background:rgba(255,255,255,.14);
+      color:#fff;
+      transform:translateY(-2px);
+    }
+
+    .section-title {
+      font-size:2rem;
+      font-weight:700;
+      color:#111827;
+      margin-bottom:.8rem;
+    }
+
+    .section-lead {
+      color:var(--muted);
+      font-size:1rem;
+      max-width:820px;
+      margin-bottom:2rem;
+    }
+
+    .intro-card,
+    .stats-card,
+    .lab-card,
+    .detail-card,
+    .download-card {
+      background:var(--card);
+      border:1px solid #edf0f4;
+      border-radius:1.25rem;
+      box-shadow:var(--shadow);
+    }
+
+    .intro-wrap {
+      margin-top:-70px;
+      position:relative;
+      z-index:5;
+    }
+
+    .intro-card {
+      padding:2rem;
+      height:100%;
+    }
+
+    .intro-card h4 {
+      font-size:1.2rem;
+      margin-bottom:.9rem;
+      color:#111827;
+    }
+
+    .intro-card p,
+    .intro-card li {
+      color:var(--muted);
+      margin-bottom:.7rem;
+    }
+
+    .intro-card ul {
+      padding-left:1.2rem;
+      margin-bottom:0;
+    }
+
+    .stats-grid {
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:1rem;
+      margin-top:2rem;
+    }
+
+    .stats-card {
+      padding:1.4rem 1.2rem;
+      text-align:center;
+    }
+
+    .stats-card h3 {
+      font-size:2rem;
+      font-weight:800;
+      color:var(--accent);
+      margin-bottom:.3rem;
+    }
+
+    .stats-card p {
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .download-card {
+      padding:1.6rem;
+      margin-top:2rem;
+      background:linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+    }
+
+    .download-card .btn {
+      border-radius:999px;
+      padding:.8rem 1.2rem;
+      font-weight:600;
+    }
+
+    .roadmap-section {
+      position:relative;
+      padding-top:1rem;
+    }
+
+    .roadmap-grid {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:1.2rem;
+    }
+
+    .lab-card {
+      padding:1.15rem;
+      height:100%;
+      position:relative;
+      overflow:hidden;
+      transition:.25s ease;
+    }
+
+    .lab-card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 24px 42px rgba(15,23,42,.1);
+    }
+
+    .lab-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:.75rem;
+      margin-bottom:.95rem;
+    }
+
+    .lab-num {
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, var(--primary), #ff8b9e);
+      color:#fff;
+      font-weight:800;
+      font-size:1rem;
+      box-shadow:0 10px 20px rgba(255,107,129,.25);
+      flex-shrink:0;
+    }
+
+    .lab-badges {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.45rem;
+      justify-content:flex-end;
+    }
+
+    .badge-pill {
+      display:inline-block;
+      padding:.35rem .7rem;
+      border-radius:999px;
+      font-size:.73rem;
+      font-weight:700;
+      letter-spacing:.02rem;
+    }
+
+    .badge-level {
+      background:#fce7f3;
+      color:#be185d;
+    }
+
+    .badge-type {
+      background:#e0ecff;
+      color:#1d4ed8;
+    }
+
+    .badge-ok {
+      background:#dcfce7;
+      color:#15803d;
+    }
+
+    .lab-thumb {
+      border-radius:1rem;
+      height:140px;
+      margin-bottom:1rem;
+      background:
+        linear-gradient(135deg, rgba(15,23,42,.95), rgba(30,41,59,.82)),
+        radial-gradient(circle at top right, rgba(255,107,129,.35), transparent 45%);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      padding:1rem;
+    }
+
+    .lab-thumb::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:20px 20px;
+      opacity:.4;
+    }
+
+    .lab-thumb::after {
+      content:"";
+      position:absolute;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      top:-25px;
+      right:-15px;
+      background:radial-gradient(circle, rgba(255,107,129,.22), transparent 70%);
+    }
+
+    .lab-thumb span {
+      position:relative;
+      z-index:2;
+      color:#fff;
+      font-size:.9rem;
+      font-weight:700;
+      letter-spacing:.08rem;
+      text-transform:uppercase;
+      opacity:.92;
+    }
+
+    .lab-card h4 {
+      font-size:1.07rem;
+      line-height:1.35;
+      min-height:58px;
+      margin-bottom:.7rem;
+      color:#111827;
+    }
+
+    .lab-card p {
+      color:var(--muted);
+      font-size:.94rem;
+      margin-bottom:1rem;
+      min-height:85px;
+    }
+
+    .lab-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      margin-top:auto;
+    }
+
+    .lab-link {
+      text-decoration:none !important;
+      font-weight:600;
+      color:var(--primary-dark);
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+    }
+
+    .lab-link:hover {
+      color:var(--primary);
+    }
+
+    .detail-grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:1.2rem;
+      margin-top:2rem;
+    }
+
+    .detail-card {
+      padding:1.5rem;
+    }
+
+    .detail-card h5 {
+      font-size:1.08rem;
+      font-weight:700;
+      color:#111827;
+      margin-bottom:.95rem;
+    }
+
+    .detail-meta {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.55rem;
+      margin-bottom:1rem;
+    }
+
+    .detail-card p {
+      color:var(--muted);
+      margin-bottom:.9rem;
+    }
+
+    .detail-list {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .detail-list li {
+      padding:.52rem 0;
+      border-bottom:1px solid #eef2f7;
+      color:#4b5563;
+      display:flex;
+      align-items:flex-start;
+      gap:.65rem;
+    }
+
+    .detail-list li:last-child {
+      border-bottom:none;
+    }
+
+    .detail-list i {
+      color:var(--primary);
+      margin-top:.22rem;
+    }
+
+    .cta-section {
+      padding-top:1rem;
+    }
+
+    .cta-box {
+      border-radius:1.5rem;
+      padding:2rem;
+      background:linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .cta-box p {
+      color:rgba(255,255,255,.82);
+      margin-bottom:1rem;
+    }
+
+    .footer-note {
+      color:#94a3b8;
+      font-size:.92rem;
+      margin-top:1rem;
+    }
+
+    .custom-navbar .nav-link.active,
+    .custom-navbar .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    @media (max-width: 1199px) {
+      .roadmap-grid,
+      .detail-grid,
+      .stats-grid {
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .sqli-hero {
+        min-height: 78vh;
+      }
+
+      .sqli-title {
+        font-size: clamp(2.5rem, 14vw, 4rem);
+      }
+
+      .roadmap-grid,
+      .detail-grid,
+      .stats-grid {
+        grid-template-columns:1fr;
+      }
+
+      .intro-wrap {
+        margin-top:-30px;
+      }
+
+      .lab-card h4,
+      .lab-card p {
+        min-height:auto;
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body id="sqli-inicio">
 
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+  <nav class="navbar custom-navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="20">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">Mayeli Sánchez</a>
-      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand font-weight-bold" href="../index.html">Mayeli Sánchez</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#sqliNav"
+        aria-controls="sqliNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+      <div class="collapse navbar-collapse" id="sqliNav">
+        <ul class="navbar-nav ml-auto align-items-lg-center">
           <li class="nav-item">
             <a href="../index.html" class="nav-link">Inicio</a>
           </li>
@@ -30,37 +557,236 @@
             <a href="../actividades/parciales.html" class="nav-link">Actividades por Parcial</a>
           </li>
           <li class="nav-item">
-            <a href="sql-injection.html" class="nav-link">SQL Injection</a>
+            <a href="#roadmap" class="nav-link">Roadmap</a>
+          </li>
+          <li class="nav-item">
+            <a href="#detalle" class="nav-link">Detalle técnico</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="header">
+  <header class="sqli-hero">
     <div class="container">
-      <div class="header-content">
-        <h4 class="header-subtitle">ROAD TO HALL OF FAME</h4>
-        <h1 class="header-title">SQL Injection</h1>
-        <h6 class="header-mono">Actividad 08 · CNO V Seguridad Informática · UPSLP</h6>
+      <span class="eyebrow">Road to Hall of Fame</span>
+      <h1 class="sqli-title">
+        <span>Actividad 08</span>
+        SQL Injection
+      </h1>
+      <p class="sqli-subtitle">
+        Módulo web del portafolio digital que integra de forma visual, organizada y profesional
+        los 18 laboratorios desarrollados en Web Security Academy, documentando hallazgos,
+        técnica de explotación, evidencia y enfoque de mitigación.
+      </p>
+
+      <div class="hero-meta">
+        <span class="meta-pill"><i class="ti-shield mr-2"></i>CNO V Seguridad Informática</span>
+        <span class="meta-pill"><i class="ti-user mr-2"></i>Mayeli Sánchez · MayAth</span>
+        <span class="meta-pill"><i class="ti-book mr-2"></i>UPSLP · 9.º semestre</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#roadmap" class="hero-btn hero-btn-primary">
+          <i class="ti-layout-grid2-alt"></i> Ver roadmap
+        </a>
+        <a href="../docs/act08_Equipo4.pdf" class="hero-btn hero-btn-secondary" download>
+          <i class="ti-download"></i> Descargar PDF completo
+        </a>
       </div>
     </div>
   </header>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="mb-5"><span class="text-danger">Nueva sección en construcción</span></h2>
+  <main>
+    <section class="section intro-wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mb-4">
+            <div class="intro-card">
+              <h4>Descripción del módulo</h4>
+              <p>
+                Esta sección presenta la adaptación a formato web de la Actividad 08
+                <b>ROAD TO HALL OF FAME – SQL Injection</b>, integrando los laboratorios resueltos
+                con una organización tipo roadmap, navegación clara y enfoque visual profesional.
+              </p>
+              <p>
+                El contenido documenta el proceso técnico seguido para identificar, explotar y comprender
+                diferentes variantes de SQL Injection, así como el análisis de su impacto y las medidas
+                recomendadas para su mitigación.
+              </p>
+            </div>
+          </div>
 
-      <div class="card">
-        <div class="card-body">
-          <p class="subtitle mb-0">
-            Aquí se integrarán los 18 laboratorios de la Actividad 08 en formato web estructurado,
-            con enfoque tipo roadmap, evidencia técnica y botón de descarga del documento completo en PDF.
+          <div class="col-lg-5 mb-4">
+            <div class="intro-card">
+              <h4>Alcance académico</h4>
+              <ul>
+                <li>Integración completa de los 18 laboratorios correspondientes a la Actividad 08.</li>
+                <li>Presentación resumida y estructurada para consulta web rápida.</li>
+                <li>Botón de descarga directa al documento técnico completo en PDF.</li>
+                <li>Navegación consistente, sin enlaces rotos y con diseño orientado a portafolio profesional.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stats-card">
+            <h3>18</h3>
+            <p>Laboratorios integrados</p>
+          </div>
+          <div class="stats-card">
+            <h3>2</h3>
+            <p>Niveles principales</p>
+          </div>
+          <div class="stats-card">
+            <h3>6</h3>
+            <p>Tipos de técnica revisados</p>
+          </div>
+          <div class="stats-card">
+            <h3>1</h3>
+            <p>Documento PDF descargable</p>
+          </div>
+        </div>
+
+        <div class="download-card">
+          <div class="row align-items-center">
+            <div class="col-lg-8 mb-3 mb-lg-0">
+              <h4 class="mb-2">Documento técnico completo</h4>
+              <p class="mb-0 text-muted">
+                Descarga el reporte integral de la Actividad 08 con introducción, marco teórico,
+                desarrollo de laboratorios, conclusiones y referencias.
+              </p>
+            </div>
+            <div class="col-lg-4 text-lg-right">
+              <a href="../docs/act08_Equipo4.pdf" class="btn btn-primary" download>
+                <i class="ti-download mr-2"></i>Descargar PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section roadmap-section" id="roadmap">
+      <div class="container">
+        <h2 class="section-title">Roadmap de laboratorios</h2>
+        <p class="section-lead">
+          Ruta visual de progreso que organiza la práctica desde laboratorios introductorios hasta
+          escenarios avanzados de enumeración, extracción y explotación ciega de SQL Injection.
+        </p>
+
+        <div class="roadmap-grid" id="roadmapGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="detalle">
+      <div class="container">
+        <h2 class="section-title">Detalle técnico del módulo</h2>
+        <p class="section-lead">
+          Esta sección resume el enfoque metodológico, los tipos de SQLi abordados y la evidencia
+          académica integrada en la adaptación web del proyecto.
+        </p>
+
+        <div class="detail-grid">
+          <article class="detail-card">
+            <h5>Metodología aplicada</h5>
+            <div class="detail-meta">
+              <span class="badge-pill badge-type">Burp Suite</span>
+              <span class="badge-pill badge-level">Web Security Academy</span>
+            </div>
+            <p>
+              Los laboratorios fueron estructurados a partir de la identificación del punto vulnerable,
+              la manipulación de peticiones HTTP, la construcción de payloads y la verificación de evidencia
+              técnica mediante respuestas, mensajes, cambios de comportamiento o extracción de información.
+            </p>
+            <ul class="detail-list">
+              <li><i class="ti-check-box"></i><span>Interceptación y modificación de requests.</span></li>
+              <li><i class="ti-check-box"></i><span>Pruebas con payloads UNION, error-based, blind y out-of-band.</span></li>
+              <li><i class="ti-check-box"></i><span>Validación del resultado con evidencia y estado “Lab Solved”.</span></li>
+              <li><i class="ti-check-box"></i><span>Documentación resumida orientada a portafolio profesional.</span></li>
+            </ul>
+          </article>
+
+          <article class="detail-card">
+            <h5>Tipos de SQL Injection incluidos</h5>
+            <div class="detail-meta">
+              <span class="badge-pill badge-ok">Cobertura completa</span>
+            </div>
+            <p>
+              El módulo integra distintos escenarios de explotación para mostrar la evolución técnica
+              del tema, desde bypass de autenticación hasta exfiltración condicionada y evasión de filtros.
+            </p>
+            <ul class="detail-list">
+              <li><i class="ti-angle-right"></i><span>WHERE clause manipulation.</span></li>
+              <li><i class="ti-angle-right"></i><span>Login bypass.</span></li>
+              <li><i class="ti-angle-right"></i><span>UNION-based SQL Injection.</span></li>
+              <li><i class="ti-angle-right"></i><span>Error-based SQL Injection.</span></li>
+              <li><i class="ti-angle-right"></i><span>Blind SQL Injection: conditional responses / errors / time delays.</span></li>
+              <li><i class="ti-angle-right"></i><span>Out-of-band y bypass de filtros vía XML encoding.</span></li>
+            </ul>
+          </article>
+
+          <article class="detail-card">
+            <h5>Criterios de calidad del módulo</h5>
+            <p>
+              Esta página fue diseñada para cumplir con organización visual, claridad, coherencia de navegación
+              y presentación profesional, adaptando el contenido técnico del documento original a una experiencia web.
+            </p>
+            <ul class="detail-list">
+              <li><i class="ti-medall"></i><span>Estructura tipo roadmap en lugar de lista plana.</span></li>
+              <li><i class="ti-medall"></i><span>Tarjetas resumidas por laboratorio con foco técnico.</span></li>
+              <li><i class="ti-medall"></i><span>Jerarquía visual clara y sección de descarga visible.</span></li>
+              <li><i class="ti-medall"></i><span>Arquitectura compatible con GitHub Pages.</span></li>
+            </ul>
+          </article>
+
+          <article class="detail-card">
+            <h5>Evidencia y adaptación web</h5>
+            <p>
+              Cada laboratorio se presenta como una unidad visual independiente con título, nivel, técnica
+              empleada y descripción breve. Esto facilita la consulta rápida del proyecto y conserva la fidelidad
+              respecto a la Actividad 08 sin saturar la lectura.
+            </p>
+            <ul class="detail-list">
+              <li><i class="ti-image"></i><span>Bloques visuales tipo evidencia integrados en cada tarjeta.</span></li>
+              <li><i class="ti-layout-media-center-alt"></i><span>Descripción técnica breve y profesional.</span></li>
+              <li><i class="ti-files"></i><span>Enlace centralizado al documento PDF completo.</span></li>
+              <li><i class="ti-link"></i><span>Navegación consistente entre Inicio, Parciales y SQL Injection.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <h3 class="mb-3">Cierre del módulo</h3>
+          <p>
+            La sección <b>ROAD TO HALL OF FAME – SQL Injection</b> sintetiza el desarrollo de la Actividad 08
+            en una experiencia web clara, accesible y con enfoque profesional, integrando teoría, evidencia técnica,
+            organización visual y publicación funcional dentro del portafolio digital.
+          </p>
+          <a href="../docs/act08_Equipo4.pdf" class="hero-btn hero-btn-primary" download>
+            <i class="ti-download"></i> Descargar documento completo
+          </a>
+          <p class="footer-note mb-0">
+            Nota: coloca tu archivo PDF en la ruta <b>docs/act08_Equipo4.pdf</b> para que ambos botones funcionen.
           </p>
         </div>
       </div>
+    </section>
+  </main>
+
+  <footer class="footer py-3">
+    <div class="container">
+      <p class="small mb-0 text-light">
+        &copy; <script>document.write(new Date().getFullYear())</script>
+        Mayeli Sánchez · ROAD TO HALL OF FAME · SQL Injection · UPSLP
+      </p>
     </div>
-  </section>
+  </footer>
 
   <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
   <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
@@ -69,5 +795,161 @@
   <script src="../assets/vendors/owl-carousel/owl.carousel.js"></script>
   <script src="../assets/js/johndoe.js"></script>
 
+  <script>
+    const labs = [
+      {
+        num: "01",
+        title: "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data",
+        level: "Apprentice",
+        type: "WHERE-based",
+        desc: "Manipulación de la cláusula WHERE para romper el filtro de categoría y recuperar información no visible."
+      },
+      {
+        num: "02",
+        title: "SQL injection vulnerability allowing login bypass",
+        level: "Apprentice",
+        type: "Login bypass",
+        desc: "Alteración de la lógica de autenticación para iniciar sesión sin credenciales válidas."
+      },
+      {
+        num: "03",
+        title: "SQL injection attack, querying the database type and version on Oracle",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Uso de UNION SELECT y vistas del sistema para revelar el tipo y versión del motor Oracle."
+      },
+      {
+        num: "04",
+        title: "SQL injection attack, querying the database type and version on MySQL and Microsoft",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Enumeración de versión del DBMS mediante UNION y funciones compatibles con MySQL / Microsoft SQL Server."
+      },
+      {
+        num: "05",
+        title: "SQL injection attack, listing the database contents (non-Oracle)",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Reconocimiento de tablas y columnas para recuperar usuarios y contraseñas en motores no Oracle."
+      },
+      {
+        num: "06",
+        title: "SQL injection attack, listing the database contents on Oracle",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Enumeración de metadatos en Oracle con el objetivo de localizar credenciales administrativas."
+      },
+      {
+        num: "07",
+        title: "SQL injection UNION attack, determining the number of columns returned by the query",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Identificación del número exacto de columnas necesarias para preparar una explotación con UNION."
+      },
+      {
+        num: "08",
+        title: "SQL injection UNION attack, finding a column containing text",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Determinación de la columna compatible con texto para desplegar resultados sensibles en la respuesta."
+      },
+      {
+        num: "09",
+        title: "SQL injection UNION attack, retrieving data from other tables",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Extracción directa de datos desde tablas distintas a la original, incluyendo credenciales."
+      },
+      {
+        num: "10",
+        title: "SQL injection UNION attack, retrieving multiple values in a single column",
+        level: "Practitioner",
+        type: "UNION-based",
+        desc: "Concatenación de múltiples valores en una sola columna para exfiltrar información útil de forma compacta."
+      },
+      {
+        num: "11",
+        title: "Blind SQL injection with conditional responses",
+        level: "Practitioner",
+        type: "Blind SQLi",
+        desc: "Obtención de información a partir de cambios observables en la respuesta de la aplicación."
+      },
+      {
+        num: "12",
+        title: "Blind SQL injection with conditional errors",
+        level: "Practitioner",
+        type: "Blind SQLi",
+        desc: "Aprovechamiento de errores condicionados para inferir estructura y valores internos de la base de datos."
+      },
+      {
+        num: "13",
+        title: "Visible error-based SQL injection",
+        level: "Practitioner",
+        type: "Error-based",
+        desc: "Forzado de errores visibles en el servidor para obtener datos directamente desde el mensaje generado."
+      },
+      {
+        num: "14",
+        title: "Blind SQL injection with time delays",
+        level: "Practitioner",
+        type: "Time-based",
+        desc: "Confirmación de la vulnerabilidad a través de retrasos intencionales en la respuesta del servidor."
+      },
+      {
+        num: "15",
+        title: "Blind SQL injection with time delays and information retrieval",
+        level: "Practitioner",
+        type: "Time-based",
+        desc: "Extracción progresiva de datos usando condiciones y tiempos de espera como canal de inferencia."
+      },
+      {
+        num: "16",
+        title: "Blind SQL injection with out-of-band interaction",
+        level: "Practitioner",
+        type: "Out-of-band",
+        desc: "Validación de interacción externa desde el servidor hacia un canal alterno controlado."
+      },
+      {
+        num: "17",
+        title: "Blind SQL injection with out-of-band data exfiltration",
+        level: "Practitioner",
+        type: "Out-of-band",
+        desc: "Exfiltración de datos sensibles a través de un canal secundario cuando la respuesta directa no es viable."
+      },
+      {
+        num: "18",
+        title: "SQL injection with filter bypass via XML encoding",
+        level: "Practitioner",
+        type: "Filter bypass",
+        desc: "Evasión de filtros de entrada empleando codificación XML para lograr la ejecución del payload."
+      }
+    ];
+
+    const roadmapGrid = document.getElementById('roadmapGrid');
+
+    roadmapGrid.innerHTML = labs.map(lab => `
+      <article class="lab-card">
+        <div class="lab-top">
+          <div class="lab-num">${lab.num}</div>
+          <div class="lab-badges">
+            <span class="badge-pill badge-level">${lab.level}</span>
+            <span class="badge-pill badge-type">${lab.type}</span>
+            <span class="badge-pill badge-ok">Evidencia</span>
+          </div>
+        </div>
+
+        <div class="lab-thumb">
+          <span>Lab ${lab.num}</span>
+        </div>
+
+        <h4>${lab.title}</h4>
+        <p>${lab.desc}</p>
+
+        <div class="lab-actions">
+          <a href="#detalle" class="lab-link"><i class="ti-search"></i>Resumen técnico</a>
+        </div>
+      </article>
+    `).join('');
+  </script>
 </body>
 </html>
