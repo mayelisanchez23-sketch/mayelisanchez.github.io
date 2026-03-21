@@ -623,12 +623,27 @@
     <section class="section pt-0">
       <div class="container">
 	<section class="section pt-0">
-  <div class="container">
-    <h2 class="section-title">Phishing Quiz</h2>
-    <p class="section-lead">
-      Simulación interactiva de escenarios de ingeniería social. Selecciona si cada caso es seguro o phishing.
-    </p>
-	<div class="content-card quiz-card">
+  <div class="content-card quiz-card" id="start-screen">
+  <h3>Phishing Quiz</h3>
+
+  <p style="max-width:500px;margin:auto;">
+    Este ejercicio simula escenarios reales de ingeniería social para evaluar tu capacidad de identificar intentos de phishing.
+  </p>
+
+  <ul style="text-align:left; max-width:500px; margin:15px auto; color:#6b7280;">
+    <li>Selecciona si cada escenario es <b>Seguro</b> o <b>Phishing</b>.</li>
+    <li>No se recopilan datos personales. Es una simulación educativa.</li>
+  </ul>
+
+  <input type="text" id="alias" placeholder="Ingresa tu alias (Ej: MayAth)"
+    class="form-control mb-3"
+    style="max-width:300px;margin:auto;">
+
+  <button class="btn btn-primary btn-rounded" onclick="startQuiz()">
+    Comenzar
+  </button>
+</div>
+	<div class="content-card quiz-card" id="quiz" style="display:none;">
 
   <div class="progress-bar-container">
     <div class="progress-bar" id="bar"></div>
@@ -707,11 +722,25 @@ const quiz = [
 let current = 0;
 let score = 0;
 let answers = [];
+let player = "";
+
+function startQuiz() {
+  player = document.getElementById("alias").value;
+
+  if (player === "") {
+    alert("Ingresa un alias");
+    return;
+  }
+
+  document.getElementById("start-screen").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+
+  loadQuestion();
+}
 
 function loadQuestion() {
   document.getElementById("question").innerText = quiz[current].q;
   document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de 10";
-  document.getElementById("feedback").innerText = "";
 
   let progressPercent = ((current) / quiz.length) * 100;
   document.getElementById("bar").style.width = progressPercent + "%";
@@ -728,9 +757,9 @@ function answer(user) {
 
   if (user === correct) {
     score += 10;
-    document.getElementById("feedback").innerText = "✔ Correcto - " + quiz[current].feedback;
+    document.getElementById("feedback").innerText = "✔ Correcto";
   } else {
-    document.getElementById("feedback").innerText = "❌ Incorrecto - " + quiz[current].feedback;
+    document.getElementById("feedback").innerText = "❌ Incorrecto";
   }
 
   setTimeout(() => {
@@ -740,40 +769,33 @@ function answer(user) {
     } else {
       showResult();
     }
-  }, 1200);
+  }, 1000);
 }
 
 function showResult() {
-  let nivel = "";
+  let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 
-  if (score >= 90) nivel = "Excelente";
-  else if (score >= 70) nivel = "Bueno";
-  else if (score >= 50) nivel = "Regular";
-  else nivel = "Riesgo alto";
+  ranking.push({ name: player, score: score });
 
-  let resumen = "<h4 style='margin-top:20px;'>Resumen:</h4><ul style='text-align:left;'>";
+  ranking.sort((a, b) => b.score - a.score);
 
-  answers.forEach((a, i) => {
-    resumen += `<li>
-      <b>Pregunta ${i+1}:</b> ${a.user === a.correct ? "✔" : "❌"}
-      (Correcta: ${a.correct})
-    </li>`;
+  localStorage.setItem("ranking", JSON.stringify(ranking));
+
+  let tabla = "<h4>🏆 Ranking</h4><ol style='text-align:left;'>";
+
+  ranking.slice(0,5).forEach(r => {
+    tabla += `<li>${r.name} - ${r.score}</li>`;
   });
 
-  resumen += "</ul>";
+  tabla += "</ol>";
 
-  document.querySelector(".quiz-card").innerHTML = `
-    <h3>Resultado Final</h3>
-    <p><b>Puntaje:</b> ${score}/100</p>
-    <p><b>Nivel:</b> ${nivel}</p>
-    <p style="font-size:0.9rem;color:#6b7280;">
-      Simulación educativa sin captura de datos reales.
-    </p>
-    ${resumen}
+  document.getElementById("quiz").innerHTML = `
+    <h3>Resultado</h3>
+    <p><b>${player}</b></p>
+    <p>Puntaje: ${score}/100</p>
+    ${tabla}
   `;
 }
-
-loadQuestion();
-</script>	
+</script>
 </body>
 </html>
