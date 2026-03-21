@@ -537,6 +537,25 @@
 
     <section class="section pt-0">
       <div class="container">
+	<section class="section pt-0">
+  <div class="container">
+    <h2 class="section-title">Phishing Quiz</h2>
+    <p class="section-lead">
+      Simulación interactiva de escenarios de ingeniería social. Selecciona si cada caso es seguro o phishing.
+    </p>
+
+    <div class="content-card text-center">
+      <p id="progress">Pregunta 1 de 10</p>
+
+      <h4 id="question" style="margin-bottom:20px;"></h4>
+
+      <button class="btn btn-success btn-rounded m-2" onclick="answer('seguro')">Seguro</button>
+      <button class="btn btn-danger btn-rounded m-2" onclick="answer('phishing')">Phishing</button>
+
+      <p id="feedback" style="margin-top:15px;font-weight:bold;"></p>
+    </div>
+  </div>
+</section>
         <h2 class="section-title">Referencias</h2>
         <ol class="ref-list">
           <li>Hoxhunt. <i>Phishing Training for Employees</i>. <a href="https://hoxhunt.com/product/phishing-training" target="_blank">https://hoxhunt.com/product/phishing-training</a></li>
@@ -574,6 +593,64 @@
   <script src="../assets/vendors/isotope/isotope.pkgd.js"></script>
   <script src="../assets/vendors/owl-carousel/owl.carousel.js"></script>
   <script src="../assets/js/johndoe.js"></script>
+	<script>
+const quiz = [
+  { q: "Tu cuenta será bloqueada en 24 horas. Verifica aquí: http://bbva-seguridad.xyz", correct: "phishing", feedback: "Dominio falso y urgencia." },
+  { q: "Descarga el comprobante en archivo .zip", correct: "phishing", feedback: "Puede contener malware." },
+  { q: "Accede al sistema desde el portal corporativo habitual", correct: "seguro", feedback: "Canal oficial." },
+  { q: "Ganaste un iPhone. Regístrate aquí: bit.ly/regalo123", correct: "phishing", feedback: "Premio falso." },
+  { q: "Inicia sesión en microsoft-login-alert.com", correct: "phishing", feedback: "Dominio falso." },
+  { q: "Encuentras una USB desconocida", correct: "phishing", feedback: "Puede contener malware." },
+  { q: "Factura en PDF sin previo aviso", correct: "phishing", feedback: "Archivo inesperado." },
+  { q: "Consulta el reglamento en la intranet", correct: "seguro", feedback: "Plataforma oficial." },
+  { q: "SMS con link del banco", correct: "phishing", feedback: "No usan links por SMS." },
+  { q: "Aprueba acceso o perderás tu cuenta", correct: "phishing", feedback: "Presión engañosa." }
+];
 
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+  document.getElementById("question").innerText = quiz[current].q;
+  document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de 10";
+  document.getElementById("feedback").innerText = "";
+}
+
+function answer(user) {
+  if (user === quiz[current].correct) {
+    score += 10;
+    document.getElementById("feedback").innerText = "✔ Correcto - " + quiz[current].feedback;
+  } else {
+    document.getElementById("feedback").innerText = "❌ Incorrecto - " + quiz[current].feedback;
+  }
+
+  setTimeout(() => {
+    current++;
+    if (current < quiz.length) {
+      loadQuestion();
+    } else {
+      showResult();
+    }
+  }, 1200);
+}
+
+function showResult() {
+  let nivel = "";
+
+  if (score >= 90) nivel = "Excelente";
+  else if (score >= 70) nivel = "Bueno";
+  else if (score >= 50) nivel = "Regular";
+  else nivel = "Riesgo alto";
+
+  document.querySelector(".content-card").innerHTML = `
+    <h3>Resultado Final</h3>
+    <p>Puntaje: ${score}/100</p>
+    <p>Nivel: ${nivel}</p>
+    <p>Simulación educativa sin captura de datos reales.</p>
+  `;
+}
+
+loadQuestion();
+</script>
 </body>
 </html>
