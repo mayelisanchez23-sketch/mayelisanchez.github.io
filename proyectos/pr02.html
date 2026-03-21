@@ -231,6 +231,41 @@
         margin-top:-20px;
       }
     }
+	/* QUIZ MEJORADO */
+.quiz-card{
+  max-width: 750px;
+  margin: auto;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+#question{
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 25px 0;
+  line-height: 1.6;
+}
+
+#progress{
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.quiz-buttons{
+  margin-top: 25px;
+}
+
+.quiz-buttons button{
+  padding: 12px 28px;
+  font-size: 1rem;
+}
+
+#feedback{
+  margin-top: 20px;
+  font-size: 1rem;
+}
   </style>
 </head>
 
@@ -544,16 +579,23 @@
       Simulación interactiva de escenarios de ingeniería social. Selecciona si cada caso es seguro o phishing.
     </p>
 
-    <div class="content-card text-center">
-      <p id="progress">Pregunta 1 de 10</p>
+    <div class="content-card quiz-card">
+  <p id="progress">Pregunta 1 de 10</p>
 
-      <h4 id="question" style="margin-bottom:20px;"></h4>
+  <h4 id="question"></h4>
 
-      <button class="btn btn-success btn-rounded m-2" onclick="answer('seguro')">Seguro</button>
-      <button class="btn btn-danger btn-rounded m-2" onclick="answer('phishing')">Phishing</button>
+  <div class="quiz-buttons">
+    <button class="btn btn-success btn-rounded m-2" onclick="answer('seguro')">
+      ✔ Seguro
+    </button>
 
-      <p id="feedback" style="margin-top:15px;font-weight:bold;"></p>
-    </div>
+    <button class="btn btn-danger btn-rounded m-2" onclick="answer('phishing')">
+      ❌ Phishing
+    </button>
+  </div>
+
+  <p id="feedback"></p>
+</div>
   </div>
 </section>
         <h2 class="section-title">Referencias</h2>
