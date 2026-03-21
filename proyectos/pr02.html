@@ -705,18 +705,19 @@
   <script src="../assets/vendors/isotope/isotope.pkgd.js"></script>
   <script src="../assets/vendors/owl-carousel/owl.carousel.js"></script>
   <script src="../assets/js/johndoe.js"></script>
-<script>
+	
+  <script>
 const quiz = [
-  { q: "Tu cuenta será bloqueada en 24 horas. Verifica aquí: http://bbva-seguridad.xyz", correct: "phishing", feedback: "Dominio falso y urgencia." },
-  { q: "Descarga el comprobante en archivo .zip", correct: "phishing", feedback: "Puede contener malware." },
-  { q: "Accede al sistema desde el portal corporativo habitual", correct: "seguro", feedback: "Canal oficial." },
-  { q: "Ganaste un iPhone. Regístrate aquí: bit.ly/regalo123", correct: "phishing", feedback: "Premio falso." },
-  { q: "Inicia sesión en microsoft-login-alert.com", correct: "phishing", feedback: "Dominio falso." },
-  { q: "Encuentras una USB desconocida", correct: "phishing", feedback: "Puede contener malware." },
-  { q: "Factura en PDF sin previo aviso", correct: "phishing", feedback: "Archivo inesperado." },
-  { q: "Consulta el reglamento en la intranet", correct: "seguro", feedback: "Plataforma oficial." },
-  { q: "SMS con link del banco", correct: "phishing", feedback: "No usan links por SMS." },
-  { q: "Aprueba acceso o perderás tu cuenta", correct: "phishing", feedback: "Presión engañosa." }
+  { q: "Tu cuenta será bloqueada en 24 horas. Verifica aquí: http://bbva-seguridad.xyz", correct: "phishing", feedback: "Dominio falso y uso de urgencia, típico en ataques de phishing." },
+  { q: "Descarga el comprobante en archivo .zip", correct: "phishing", feedback: "Los archivos comprimidos pueden contener malware." },
+  { q: "Accede al sistema desde el portal corporativo habitual", correct: "seguro", feedback: "Uso de un canal oficial y confiable." },
+  { q: "Ganaste un iPhone. Regístrate aquí: bit.ly/regalo123", correct: "phishing", feedback: "Premios falsos y enlaces acortados son señales de riesgo." },
+  { q: "Inicia sesión en microsoft-login-alert.com", correct: "phishing", feedback: "El dominio no corresponde a Microsoft." },
+  { q: "Encuentras una USB desconocida", correct: "phishing", feedback: "Puede tratarse de un ataque físico con malware." },
+  { q: "Factura en PDF sin previo aviso", correct: "phishing", feedback: "Archivos inesperados pueden ser peligrosos." },
+  { q: "Consulta el reglamento en la intranet", correct: "seguro", feedback: "Uso de plataforma interna oficial." },
+  { q: "SMS con link del banco", correct: "phishing", feedback: "Los bancos no envían enlaces por SMS." },
+  { q: "Aprueba acceso o perderás tu cuenta", correct: "phishing", feedback: "Uso de presión psicológica para engañar." }
 ];
 
 let current = 0;
@@ -741,6 +742,7 @@ function startQuiz() {
 function loadQuestion() {
   document.getElementById("question").innerText = quiz[current].q;
   document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de 10";
+  document.getElementById("feedback").innerText = "";
 
   let progressPercent = ((current) / quiz.length) * 100;
   document.getElementById("bar").style.width = progressPercent + "%";
@@ -757,9 +759,11 @@ function answer(user) {
 
   if (user === correct) {
     score += 10;
-    document.getElementById("feedback").innerText = "✔ Correcto";
+    document.getElementById("feedback").innerHTML =
+      "✔ <b>Correcto</b><br><span style='color:#6b7280'>" + quiz[current].feedback + "</span>";
   } else {
-    document.getElementById("feedback").innerText = "❌ Incorrecto";
+    document.getElementById("feedback").innerHTML =
+      "❌ <b>Incorrecto</b><br><span style='color:#6b7280'>" + quiz[current].feedback + "</span>";
   }
 
   setTimeout(() => {
@@ -769,14 +773,20 @@ function answer(user) {
     } else {
       showResult();
     }
-  }, 1000);
+  }, 1800);
 }
 
 function showResult() {
+  let nivel = "";
+
+  if (score >= 90) nivel = "Excelente";
+  else if (score >= 70) nivel = "Bueno";
+  else if (score >= 50) nivel = "Regular";
+  else nivel = "Riesgo alto";
+
   let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 
   ranking.push({ name: player, score: score });
-
   ranking.sort((a, b) => b.score - a.score);
 
   localStorage.setItem("ranking", JSON.stringify(ranking));
@@ -789,12 +799,58 @@ function showResult() {
 
   tabla += "</ol>";
 
+  let resumen = "<h4 style='margin-top:20px;'>Resumen:</h4><ul style='text-align:left;'>";
+
+  answers.forEach((a, i) => {
+    resumen += `<li>
+      <b>Pregunta ${i+1}:</b> ${a.user === a.correct ? "✔" : "❌"}
+      (Correcta: ${a.correct})
+    </li>`;
+  });
+
+  resumen += "</ul>";
+
   document.getElementById("quiz").innerHTML = `
-    <h3>Resultado</h3>
+    <h3>Resultado Final</h3>
     <p><b>${player}</b></p>
-    <p>Puntaje: ${score}/100</p>
+    <p><b>Puntaje:</b> ${score}/100</p>
+    <p><b>Nivel:</b> ${nivel}</p>
+
     ${tabla}
+    ${resumen}
+
+    <button class="btn btn-primary btn-rounded mt-3" onclick="restartQuiz()">
+      🔄 Reintentar
+    </button>
+
+    <p style="font-size:0.9rem;color:#6b7280;margin-top:10px;">
+      Simulación educativa sin captura de datos reales.
+    </p>
   `;
+}
+
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  answers = [];
+
+  document.getElementById("quiz").innerHTML = `
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="bar"></div>
+    </div>
+
+    <p id="progress"></p>
+    <h4 id="question"></h4>
+
+    <div class="quiz-buttons">
+      <button class="btn btn-success btn-rounded m-2" onclick="answer('seguro')">✔ Seguro</button>
+      <button class="btn btn-danger btn-rounded m-2" onclick="answer('phishing')">❌ Phishing</button>
+    </div>
+
+    <p id="feedback"></p>
+  `;
+
+  loadQuestion();
 }
 </script>
 </body>
