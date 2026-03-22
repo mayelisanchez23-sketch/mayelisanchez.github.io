@@ -616,8 +616,12 @@
   </div>
 </section>
 
-        <h2 class="section-title">Referencias</h2>
-        <ol class="ref-list">
+
+        <section class="section pt-0">
+  <div class="container">
+
+    <h2 class="section-title">Referencias</h2>
+    <ol class="ref-list">
           <li>Hoxhunt. <i>Phishing Training for Employees</i>. <a href="https://hoxhunt.com/product/phishing-training" target="_blank">https://hoxhunt.com/product/phishing-training</a></li>
           <li>Hoxhunt. <i>The Hoxhunt Human Risk Management Platform</i>. <a href="https://hoxhunt.com/" target="_blank">https://hoxhunt.com/</a></li>
           <li>Proofpoint. <i>Phishing Simulations, Assessments & Tests</i>. <a href="https://www.proofpoint.com/us/products/security-awareness-training/phishing-simulations" target="_blank">https://www.proofpoint.com/us/products/security-awareness-training/phishing-simulations</a></li>
@@ -705,10 +709,17 @@ const quiz = [
     feedback: "Las apps oficiales son seguras."
   },
   {
-    q: "Encuentras una USB desconocida y decides conectarla.",
-    correct: "phishing",
-    feedback: "Puede contener malware."
-  },
+  q: `
+  <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+    <b>Soporte TI</b><br>
+    Hola, detectamos un problema con tu cuenta corporativa.<br>
+    Para evitar suspensión, descarga el archivo adjunto y ejecuta la validación.<br><br>
+    <b>Archivo:</b> verificacion_seguridad.exe
+  </div>
+  `,
+  correct: "phishing",
+  feedback: "Un archivo ejecutable (.exe) es altamente sospechoso. Las empresas no validan cuentas así."
+},
   {
     q: "Recibes un correo con un PDF que no esperabas.",
     correct: "phishing",
@@ -720,10 +731,17 @@ const quiz = [
     feedback: "Los bancos no envían links."
   },
   {
-    q: "Un compañero te envía un archivo esperado de un proyecto.",
-    correct: "seguro",
-    feedback: "Contexto esperado."
-  }
+  q: `
+  <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+    <b>Google</b><br>
+    Se detectó un inicio de sesión desde un nuevo dispositivo.<br>
+    Si no fuiste tú, revisa la actividad aquí:<br>
+    <a href="https://accounts.google.com/security-checkup">accounts.google.com</a>
+  </div>
+  `,
+  correct: "seguro",
+  feedback: "El dominio es legítimo (google.com). No todos los mensajes de alerta son phishing."
+}
 ];
 
 let current = 0;
