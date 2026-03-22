@@ -831,8 +831,23 @@ function showResult(){
     <hr>
 
     <h4>📊 Análisis de desempeño</h4>
-    <p><b>Tiempo promedio:</b> ${promedio.toFixed(2)} seg</p>
-    <p><b>Pregunta más difícil:</b> #${index}</p>
+
+<div style="margin:20px 0;">
+  <p><b>Precisión</b></p>
+  <div style="background:#e5e7eb;border-radius:10px;height:20px;">
+    <div style="width:${score}%;background:#10b981;height:100%;border-radius:10px;"></div>
+  </div>
+</div>
+
+<div style="margin:20px 0;">
+  <p><b>Tiempo promedio</b></p>
+  <div style="background:#e5e7eb;border-radius:10px;height:20px;">
+    <div style="width:${Math.min(promedio*10,100)}%;background:#3b82f6;height:100%;border-radius:10px;"></div>
+  </div>
+</div>
+
+<p><b>Tiempo promedio:</b> ${promedio.toFixed(2)} seg</p>
+<p><b>Pregunta más difícil:</b> #${index}</p>
 
     <hr>
 
