@@ -27,6 +27,10 @@
       background:#f4f6f9;
       color:#1f2937;
     }
+    
+    html{
+  scroll-behavior: smooth;
+}
 
     .pr02-hero{
       padding:120px 0 80px;
@@ -267,6 +271,36 @@
   width:0%;
   background:#ff6b81;
 }
+  .top-tabs{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:30px auto;
+  padding:10px;
+  background:#0f172a;
+  border-radius:50px;
+  width:fit-content;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.top-tabs a{
+  text-decoration:none;
+  color:#cbd5f5;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:600;
+  transition:all .3s ease;
+}
+
+.top-tabs a:hover{
+  background:#1e293b;
+}
+
+.top-tabs .active{
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;
+  box-shadow:0 5px 15px rgba(99,102,241,.5);
+}
   </style>
 </head>
 
@@ -292,9 +326,15 @@
     </div>
   </nav>
 
+  <div class="top-tabs">
+  <a href="#investigacion">📊 Investigación</a>
+  <a href="#comparativa">📈 Comparativa</a>
+  <a href="#quiz-section" class="active">🎯 Quiz Interactivo</a>
+</div>
+
   <header class="pr02-hero">
     <div class="container">
-      <span class="eyebrow">PR02 · Punto 1</span>
+      <span class="eyebrow">PR02</span>
       <h1>El eslabón más débil:<br>diseño ético de una campaña de ingeniería social</h1>
       <p>
         Investigación comparativa de plataformas profesionales de simulación de phishing y concientización
@@ -323,7 +363,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section id="investigacion" class="section pt-0">
       <div class="container">
         <h2 class="section-title">Análisis comparativo de plataformas</h2>
         <p class="section-lead">
@@ -447,7 +487,7 @@
       </div>
     </section>
 
-    <section class="section pt-0">
+    <section id="comparativa" class="section pt-0">
       <div class="container">
         <h2 class="section-title">Tabla técnica comparativa</h2>
         <p class="section-lead">
@@ -571,7 +611,7 @@
       </div>
     </section>
 
-    <section class="section pt-0">
+    <section id="quiz-section" class="section pt-0">
   <div class="container">
 
     <!-- INICIO -->
