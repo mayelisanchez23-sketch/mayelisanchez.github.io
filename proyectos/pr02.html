@@ -1,43 +1,243 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="PR02 - Investigación comparativa de plataformas de simulación de phishing">
+  <meta name="author" content="Mayeli Sánchez">
+  <title>PR02 | Ingeniería social</title>
 
-<title>PR02 | Ingeniería social</title>
+  <link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../assets/css/johndoe.css">
 
-<link rel="stylesheet" href="../assets/vendors/themify-icons/css/themify-icons.css">
-<link rel="stylesheet" href="../assets/css/johndoe.css">
+  <style>
+    :root{
+      --primary:#ff6b81;
+      --primary-dark:#ff4f69;
+      --dark:#111827;
+      --dark-2:#1f2937;
+      --soft:#f8fafc;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --card:#ffffff;
+      --shadow:0 16px 35px rgba(15,23,42,.08);
+    }
 
-<style>
-body{
-  background:#f4f6f9;
-}
+    body{
+      background:#f4f6f9;
+      color:#1f2937;
+    }
 
-/* HERO */
-.pr02-hero{
-  padding:120px 0 80px;
-  background:linear-gradient(135deg, #111827, #1f2937);
-  color:#fff;
-}
+    .pr02-hero{
+      padding:120px 0 80px;
+      background:
+        radial-gradient(circle at top left, rgba(255,107,129,.18), transparent 28%),
+        linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      color:#fff;
+    }
 
-/* TARJETAS */
-.content-card{
-  background:#fff;
-  border-radius:20px;
-  padding:30px;
-  box-shadow:0 16px 35px rgba(0,0,0,0.08);
-  margin-bottom:30px;
-}
+    .pr02-hero h1{
+      font-size:clamp(2.2rem, 6vw, 4.2rem);
+      font-weight:800;
+      line-height:1.05;
+      margin-bottom:14px;
+    }
 
-/* QUIZ */
-.quiz-card{
+    .pr02-hero .eyebrow{
+      display:inline-block;
+      padding:6px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      font-size:.85rem;
+      letter-spacing:.08rem;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .pr02-hero p{
+      max-width:780px;
+      color:rgba(255,255,255,.86);
+      font-size:1.04rem;
+      margin-bottom:0;
+    }
+
+    .section-title{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--dark);
+      margin-bottom:10px;
+    }
+
+    .section-lead{
+      color:var(--muted);
+      max-width:850px;
+      margin-bottom:2rem;
+    }
+
+    .content-card,
+    .platform-card,
+    .summary-card{
+      background:var(--card);
+      border:1px solid #edf0f4;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .content-card{
+      padding:28px;
+      margin-top:-45px;
+      position:relative;
+      z-index:10;
+    }
+
+    .content-card p{
+      color:var(--muted);
+      margin-bottom:1rem;
+    }
+
+    .platform-card{
+      height:100%;
+      overflow:hidden;
+      transition:.25s ease;
+    }
+
+    .platform-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 22px 42px rgba(15,23,42,.10);
+    }
+
+    .platform-top{
+      padding:20px 22px;
+      background:linear-gradient(135deg, var(--primary), #ff97a7);
+      color:#fff;
+    }
+
+    .platform-top h4{
+      margin:0;
+      font-weight:800;
+    }
+
+    .platform-body{
+      padding:22px;
+    }
+
+    .platform-tag{
+      display:inline-block;
+      margin-bottom:10px;
+      padding:5px 11px;
+      border-radius:999px;
+      background:#ffe5ea;
+      color:#c2185b;
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .platform-body p{
+      color:var(--muted);
+      margin-bottom:0;
+      font-size:.96rem;
+    }
+
+    .table-wrap{
+      overflow-x:auto;
+      background:#fff;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      border:1px solid #edf0f4;
+    }
+
+    .custom-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:1100px;
+    }
+
+    .custom-table thead th{
+      background:#111827;
+      color:#fff;
+      padding:16px 14px;
+      font-size:.92rem;
+      text-align:left;
+      border-right:1px solid rgba(255,255,255,.08);
+    }
+
+    .custom-table tbody td{
+      padding:16px 14px;
+      border-top:1px solid #eef2f7;
+      vertical-align:top;
+      color:#4b5563;
+      font-size:.95rem;
+    }
+
+    .custom-table tbody tr:nth-child(even){
+      background:#fafbfc;
+    }
+
+    .summary-card{
+      padding:26px;
+      height:100%;
+    }
+
+    .summary-card h4{
+      font-size:1.15rem;
+      font-weight:800;
+      margin-bottom:14px;
+      color:var(--dark);
+    }
+
+    .summary-card p,
+    .summary-card li{
+      color:var(--muted);
+    }
+
+    .summary-card ul{
+      padding-left:1.2rem;
+      margin-bottom:0;
+    }
+
+    .ref-list{
+      background:#fff;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      border:1px solid #edf0f4;
+      padding:24px 26px;
+    }
+
+    .ref-list li{
+      margin-bottom:12px;
+      color:#4b5563;
+    }
+
+    .ref-list a{
+      color:var(--primary-dark);
+      word-break:break-word;
+    }
+
+    .badge-mini{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.78rem;
+      font-weight:700;
+      background:#e8eefc;
+      color:#1d4ed8;
+      margin-right:6px;
+      margin-bottom:6px;
+    }
+
+    @media (max-width: 767px){
+      .content-card{
+        margin-top:-20px;
+      }
+    }
+    .quiz-card{
   max-width:1000px;
   width:95%;
   margin:40px auto;
   padding:50px 40px;
-  border-radius:20px;
   text-align:center;
+  border-radius:20px;
   box-shadow:0 20px 40px rgba(0,0,0,0.08);
 }
 
@@ -48,18 +248,11 @@ body{
 
 .quiz-sub{
   color:#6b7280;
-  max-width:700px;
-  margin:auto;
 }
 
 #question{
   font-size:1.6rem;
   margin:30px 0;
-}
-
-.quiz-buttons button{
-  padding:14px 32px;
-  font-size:1.1rem;
 }
 
 .progress-bar-container{
@@ -74,122 +267,563 @@ body{
   width:0%;
   background:#ff6b81;
 }
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav class="navbar sticky-top navbar-light bg-white">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand font-weight-bold" href="../index.html">Mayeli Sánchez</a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarPR02"
+        aria-controls="navbarPR02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarPR02">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="../road-to-hall-of-fame/sql-injection.html" class="nav-link">Hall of Fame</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link">Proyectos</a></li>
+          <li class="nav-item"><a href="../actividades/parciales.html" class="nav-link">Actividades</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="pr02-hero">
+    <div class="container">
+      <span class="eyebrow">PR02 · Punto 1</span>
+      <h1>El eslabón más débil:<br>diseño ético de una campaña de ingeniería social</h1>
+      <p>
+        Investigación comparativa de plataformas profesionales de simulación de phishing y concientización
+        en ciberseguridad, analizadas desde un enfoque técnico, ético y orientado a la reducción del riesgo humano.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section pt-0">
+      <div class="container">
+        <div class="content-card">
+          <h2 class="section-title">Introducción</h2>
+          <p>
+            Para el diseño ético de una campaña de ingeniería social, se analizaron ocho plataformas del mercado
+            enfocadas en <b>security awareness training</b>, <b>simulación de phishing</b> y <b>medición del riesgo humano</b>.
+            La comparación considera capacidades técnicas, métricas, automatización, enfoque formativo y utilidad
+            para fortalecer la resiliencia de los usuarios frente a correos maliciosos.
+          </p>
+          <p class="mb-0">
+            Las plataformas revisadas fueron: <b>Hoxhunt, Proofpoint, KnowBe4, Cofense, Phished, NINJIO, Mimecast e Infosec IQ</b>.
+            El objetivo de esta investigación es identificar cuáles ofrecen mejores condiciones para campañas éticas,
+            medibles y útiles en programas de concientización de ciberseguridad.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Análisis comparativo de plataformas</h2>
+        <p class="section-lead">
+          Cada plataforma fue revisada por su enfoque principal, capacidades destacadas y valor para campañas
+          de simulación de phishing dentro de programas de seguridad organizacional.
+        </p>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>Hoxhunt</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Adaptativa y gamificada</span>
+                <p>
+                  Hoxhunt centra su propuesta en entrenamiento personalizado, automatización y gamificación.
+                  Su plataforma destaca por simulaciones adaptativas, retroalimentación inmediata y enfoque en
+                  cambio de conducta con alta participación del usuario.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>Proofpoint</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Riesgo humano empresarial</span>
+                <p>
+                  Proofpoint combina simulaciones de phishing, evaluaciones y análisis del riesgo humano.
+                  Es especialmente fuerte para organizaciones que buscan una visión más ejecutiva del comportamiento
+                  del usuario y de la exposición general de la empresa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>KnowBe4</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Biblioteca amplia y métricas maduras</span>
+                <p>
+                  KnowBe4 ofrece una de las propuestas más extensas del mercado, con pruebas simuladas de phishing,
+                  contenido multilenguaje, landing pages y métricas como el <i>Phish-prone Percentage</i>, útil para
+                  medir susceptibilidad inicial y evolución del usuario.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>Cofense</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Amenazas reales y respuesta</span>
+                <p>
+                  Cofense se orienta a resiliencia frente a phishing real, con simulaciones alimentadas por inteligencia
+                  de amenazas, analítica y entrenamiento continuo. Resulta atractiva para escenarios que buscan mayor
+                  cercanía con campañas observadas en operación.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>Phished</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">IA y automatización continua</span>
+                <p>
+                  Phished enfatiza simulaciones automatizadas, sesiones frecuentes y una estrategia orientada
+                  a reducir incidentes derivados de error humano. Su propuesta es atractiva para campañas continuas
+                  con menor carga operativa manual.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>NINJIO</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Storytelling y cambio conductual</span>
+                <p>
+                  NINJIO combina microlearning, simulación dinámica y evaluación de susceptibilidades humanas.
+                  Su fortaleza está en la sensibilización conductual y el engagement, más allá de una visión
+                  puramente técnica del phishing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>Mimecast</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Integración con awareness por correo</span>
+                <p>
+                  Mimecast integra awareness training con simulaciones de phishing y spear phishing.
+                  Su propuesta es útil para organizaciones que ya manejan seguridad del correo y desean sumar
+                  formación periódica con campañas prácticas y seguimiento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="platform-card">
+              <div class="platform-top"><h4>Infosec IQ</h4></div>
+              <div class="platform-body">
+                <span class="platform-tag">Formación por rol y cumplimiento</span>
+                <p>
+                  Infosec IQ ofrece entrenamiento por rol, simulaciones de phishing y herramientas de cumplimiento.
+                  Es una opción equilibrada para organizaciones que desean combinar cultura, reducción de eventos
+                  y programas de concientización más estructurados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <h2 class="section-title">Tabla técnica comparativa</h2>
+        <p class="section-lead">
+          Comparación resumida de enfoque, capacidades y utilidad de cada plataforma para campañas éticas
+          de simulación de phishing.
+        </p>
+
+        <div class="table-wrap">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Plataforma</th>
+                <th>Enfoque principal</th>
+                <th>Capacidades destacadas</th>
+                <th>Métricas / medición</th>
+                <th>Fortaleza para campañas éticas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Hoxhunt</b></td>
+                <td>Entrenamiento adaptativo y gamificado</td>
+                <td>Simulaciones personalizadas, feedback inmediato, rutas adaptativas</td>
+                <td>Participación, progreso, reporte y cambio conductual</td>
+                <td>Muy fuerte en compromiso del usuario y refuerzo positivo</td>
+              </tr>
+              <tr>
+                <td><b>Proofpoint</b></td>
+                <td>Riesgo humano empresarial</td>
+                <td>Simulaciones, evaluaciones, cultura y automatización basada en riesgo</td>
+                <td>Usuarios vulnerables, evaluaciones y dashboards de riesgo</td>
+                <td>Fuerte para diagnóstico organizacional y toma de decisiones</td>
+              </tr>
+              <tr>
+                <td><b>KnowBe4</b></td>
+                <td>Awareness masivo con amplia biblioteca</td>
+                <td>Pruebas simuladas, landing pages, multilenguaje, IA</td>
+                <td>Phish-prone Percentage y comparativos</td>
+                <td>Muy útil para medición inicial y despliegue rápido</td>
+              </tr>
+              <tr>
+                <td><b>Cofense</b></td>
+                <td>Phishing real y respuesta posterior al perímetro</td>
+                <td>Simulaciones dinámicas, inteligencia de amenazas, reporter</td>
+                <td>Analítica en tiempo real y respuesta del usuario</td>
+                <td>Muy fuerte en realismo y alineación con amenazas actuales</td>
+              </tr>
+              <tr>
+                <td><b>Phished</b></td>
+                <td>IA y automatización continua</td>
+                <td>Simulaciones automáticas, sesiones frecuentes, gamificación</td>
+                <td>Riesgo humano e incidentes evitados</td>
+                <td>Útil para campañas constantes con poca carga operativa</td>
+              </tr>
+              <tr>
+                <td><b>NINJIO</b></td>
+                <td>Cambio conductual y storytelling</td>
+                <td>Microlearning, susceptibilidad emocional, simulación dinámica</td>
+                <td>Engagement y vulnerabilidades conductuales</td>
+                <td>Muy buena para cultura y sensibilización continua</td>
+              </tr>
+              <tr>
+                <td><b>Mimecast</b></td>
+                <td>Awareness integrado al ecosistema de correo</td>
+                <td>Phishing, spear phishing, quizzes y campañas programables</td>
+                <td>Seguimiento y progreso de campañas</td>
+                <td>Útil para organizaciones con enfoque fuerte en email security</td>
+              </tr>
+              <tr>
+                <td><b>Infosec IQ</b></td>
+                <td>Entrenamiento por rol y cumplimiento</td>
+                <td>Simulaciones, plantillas, recursos por industria y rol</td>
+                <td>Reducción de eventos, phish rate y cumplimiento</td>
+                <td>Equilibrio entre awareness, simulación y compliance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <h2 class="section-title">Conclusión comparativa</h2>
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="summary-card">
+              <h4>Plataformas que más destacan</h4>
+              <p>
+                A partir del análisis, las plataformas que sobresalen por equilibrio entre simulación,
+                medición y utilidad formativa son:
+              </p>
+              <div class="mb-3">
+                <span class="badge-mini">Hoxhunt</span>
+                <span class="badge-mini">Proofpoint</span>
+                <span class="badge-mini">KnowBe4</span>
+                <span class="badge-mini">Cofense</span>
+              </div>
+              <p class="mb-0">
+                Cada una resalta por un criterio distinto: personalización, analítica de riesgo,
+                amplitud de contenido o cercanía con amenazas reales.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="summary-card">
+              <h4>Conclusión final</h4>
+              <p>
+                Para un proyecto académico con enfoque ético, no basta con elegir la plataforma más popular,
+                sino la que mejor permita <b>simular, medir, retroalimentar y mejorar la conducta del usuario</b>
+                sin volver la experiencia punitiva.
+              </p>
+              <p class="mb-0">
+                En ese sentido, las plataformas más adecuadas para sustentar una campaña ética de concientización
+                son aquellas que combinan realismo, métricas claras y formación progresiva.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pt-0">
   <div class="container">
-    <a class="navbar-brand" href="../index.html">Mayeli Sánchez</a>
+
+    <!-- INICIO -->
+    <div class="content-card quiz-card" id="start-screen">
+
+      <h2 class="quiz-title">Phishing Quiz</h2>
+
+      <p class="quiz-sub">
+        Este ejercicio simula escenarios reales de ingeniería social.
+      </p>
+
+      <ul style="text-align:left; max-width:500px; margin:15px auto; color:#6b7280;">
+        <li>Selecciona si cada escenario es <b>Seguro</b> o <b>Phishing</b>.</li>
+        <li>No se recopilan datos personales.</li>
+      </ul>
+
+      <input id="alias" placeholder="Alias"
+        class="form-control mb-3"
+        style="max-width:300px;margin:auto;">
+
+      <button class="btn btn-primary" onclick="startQuiz()">Comenzar</button>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="content-card quiz-card" id="quiz" style="display:none;">
+
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="bar"></div>
+      </div>
+
+      <p id="progress"></p>
+      <div id="question"></div>
+
+      <div class="quiz-buttons">
+        <button class="btn btn-success" onclick="answer('seguro')">✔ Seguro</button>
+        <button class="btn btn-danger" onclick="answer('phishing')">❌ Phishing</button>
+      </div>
+
+      <p id="feedback"></p>
+    </div>
+
   </div>
-</nav>
-
-<!-- HERO -->
-<header class="pr02-hero">
-  <div class="container">
-    <h1>PR02 - Ingeniería social</h1>
-  </div>
-</header>
-
-<main>
-
-<!-- QUIZ -->
-<section class="section">
-<div class="container">
-
-<!-- INICIO -->
-<div class="content-card quiz-card" id="start-screen">
-
-<h2 class="quiz-title">Phishing Quiz</h2>
-
-<p class="quiz-sub">
-Simulación de escenarios reales para identificar ataques de phishing.
-</p>
-
-<input id="alias" placeholder="Ingresa tu alias"
-class="form-control mb-3" style="max-width:300px;margin:auto;">
-
-<button class="btn btn-primary btn-rounded" onclick="startQuiz()">
-Comenzar
-</button>
-
-</div>
-
-<!-- QUIZ -->
-<div class="content-card quiz-card" id="quiz" style="display:none;">
-
-<div class="progress-bar-container">
-<div class="progress-bar" id="bar"></div>
-</div>
-
-<p id="progress"></p>
-
-<div id="question"></div>
-
-<div class="quiz-buttons">
-<button class="btn btn-success m-2" onclick="answer('seguro')">✔ Seguro</button>
-<button class="btn btn-danger m-2" onclick="answer('phishing')">❌ Phishing</button>
-</div>
-
-<p id="feedback"></p>
-
-</div>
-
-</div>
 </section>
+      </div>
+</section>
+        <h2 class="section-title">Referencias</h2>
+        <ol class="ref-list">
+          <li>Hoxhunt. <i>Phishing Training for Employees</i>. <a href="https://hoxhunt.com/product/phishing-training" target="_blank">https://hoxhunt.com/product/phishing-training</a></li>
+          <li>Hoxhunt. <i>The Hoxhunt Human Risk Management Platform</i>. <a href="https://hoxhunt.com/" target="_blank">https://hoxhunt.com/</a></li>
+          <li>Proofpoint. <i>Phishing Simulations, Assessments & Tests</i>. <a href="https://www.proofpoint.com/us/products/security-awareness-training/phishing-simulations" target="_blank">https://www.proofpoint.com/us/products/security-awareness-training/phishing-simulations</a></li>
+          <li>Proofpoint. <i>Mitigate Human Risk</i>. <a href="https://www.proofpoint.com/us/products/mitigate-human-risk" target="_blank">https://www.proofpoint.com/us/products/mitigate-human-risk</a></li>
+          <li>KnowBe4. <i>Security Awareness Training</i>. <a href="https://www.knowbe4.com/products/security-awareness-training" target="_blank">https://www.knowbe4.com/products/security-awareness-training</a></li>
+          <li>KnowBe4. <i>Phishing Security Test</i>. <a href="https://www.knowbe4.com/free-cybersecurity-tools/phishing-security-test" target="_blank">https://www.knowbe4.com/free-cybersecurity-tools/phishing-security-test</a></li>
+          <li>Cofense. <i>PhishMe Security Awareness Training Platform</i>. <a href="https://cofense.com/phishme-security-awareness-training-%28sat%29-platform" target="_blank">https://cofense.com/phishme-security-awareness-training-%28sat%29-platform</a></li>
+          <li>Phished. <i>Phishing Simulations</i>. <a href="https://phished.io/phishing-simulations" target="_blank">https://phished.io/phishing-simulations</a></li>
+          <li>Phished. <i>Holistic Training</i>. <a href="https://phished.io/" target="_blank">https://phished.io/</a></li>
+          <li>NINJIO. <i>Cybersecurity Awareness Training & Human Risk Management</i>. <a href="https://ninjio.com/" target="_blank">https://ninjio.com/</a></li>
+          <li>NINJIO. <i>Simulated Phishing & Phishing Awareness Training</i>. <a href="https://ninjio.com/phish3d/" target="_blank">https://ninjio.com/phish3d/</a></li>
+          <li>Mimecast. <i>What is Phishing Training?</i>. <a href="https://www.mimecast.com/content/phishing-training/" target="_blank">https://www.mimecast.com/content/phishing-training/</a></li>
+          <li>Mimecast. <i>Security Awareness Training</i>. <a href="https://www.mimecast.com/products/mimecast-engage-awareness-training/" target="_blank">https://www.mimecast.com/products/mimecast-engage-awareness-training/</a></li>
+          <li>Infosec IQ. <i>Security Awareness & Phishing Training</i>. <a href="https://www.infosecinstitute.com/iq/" target="_blank">https://www.infosecinstitute.com/iq/</a></li>
+          <li>Infosec IQ. <i>Phishing Simulations</i>. <a href="https://www.infosecinstitute.com/iq/phishing-simulations/" target="_blank">https://www.infosecinstitute.com/iq/phishing-simulations/</a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
 
-</main>
+  <footer class="footer py-3">
+    <div class="container">
+      <p class="small mb-0 text-light">
+        &copy; <script>document.write(new Date().getFullYear())</script>
+        Mayeli Sánchez · PR02 · Ingeniería social · UPSLP
+      </p>
+    </div>
+  </footer>
 
-<script>
+  <script src="../assets/vendors/jquery/jquery-3.4.1.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+  <script src="../assets/vendors/bootstrap/bootstrap.affix.js"></script>
+  <script src="../assets/vendors/isotope/isotope.pkgd.js"></script>
+  <script src="../assets/vendors/owl-carousel/owl.carousel.js"></script>
+  <script src="../assets/js/johndoe.js"></script>
+	
+  <script>
 const quiz = [
-{ q:"Correo del banco con link extraño", correct:"phishing", feedback:"Dominio falso"},
-{ q:"Notificación en app oficial", correct:"seguro", feedback:"Canal seguro"},
-{
-q:`<div style="border:1px solid #ddd;padding:10px">
-<b>Microsoft</b><br>Verifica aquí:<br>
-<a>microsoft-security.net</a></div>`,
-correct:"phishing",
-feedback:"Dominio falso"
-}
+  {
+    q: "Recibes un correo de tu banco indicando actividad inusual. El enlace no coincide con el dominio oficial.",
+    correct: "phishing",
+    feedback: "Dominio incorrecto y urgencia = phishing."
+  },
+
+  {
+    q: "Tu empresa te pide revisar un documento en la intranet corporativa sin enlaces externos.",
+    correct: "seguro",
+    feedback: "Uso de canal interno seguro."
+  },
+
+  // 📧 CORREO
+  {
+    q: `
+    <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+      <b>Microsoft Security</b><br>
+      Detectamos actividad sospechosa<br>
+      <a>http://microsoft-security-check.net</a>
+    </div>
+    `,
+    correct: "phishing",
+    feedback: "El dominio no pertenece a Microsoft."
+  },
+
+  // 📱 WHATSAPP
+  {
+    q: `
+    <div style="text-align:left;background:#e5ddd5;padding:10px;border-radius:10px;">
+      <b>Jefe:</b> Estoy en reunión, necesito ayuda urgente.
+      <br>¿Puedes hacer una transferencia?
+    </div>
+    `,
+    correct: "phishing",
+    feedback: "Suplantación + urgencia."
+  },
+
+  // 🔐 LOGIN
+  {
+    q: `
+    <div style="border:1px solid #ddd;padding:20px;text-align:center;border-radius:10px;">
+      <h4>Iniciar sesión</h4>
+      <input placeholder="Correo"><br>
+      <input type="password"><br>
+      <p style="color:red">Expira en 2 min</p>
+    </div>
+    `,
+    correct: "phishing",
+    feedback: "Página falsa con presión."
+  },
+
+  {
+    q: "Recibes una notificación dentro de la app oficial del banco.",
+    correct: "seguro",
+    feedback: "Las apps oficiales son seguras."
+  },
+
+  {
+    q: "Encuentras una USB desconocida y decides conectarla.",
+    correct: "phishing",
+    feedback: "Puede contener malware."
+  },
+
+  {
+    q: "Recibes un correo con un PDF que no esperabas.",
+    correct: "phishing",
+    feedback: "Archivos inesperados son riesgo."
+  },
+
+  {
+    q: "SMS con enlace para desbloquear cuenta bancaria.",
+    correct: "phishing",
+    feedback: "Los bancos no envían links."
+  },
+
+  {
+    q: "Un compañero te envía un archivo esperado de un proyecto.",
+    correct: "seguro",
+    feedback: "Contexto esperado."
+  }
 ];
 
-let current=0,score=0,player="";
+let current = 0;
+let score = 0;
+let player = "";
 
 function startQuiz(){
-player=document.getElementById("alias").value;
-if(!player){alert("Ingresa alias");return;}
-document.getElementById("start-screen").style.display="none";
-document.getElementById("quiz").style.display="block";
-loadQuestion();
+  player = document.getElementById("alias").value;
+
+  if(!player){
+    alert("Ingresa un alias");
+    return;
+  }
+
+  document.getElementById("start-screen").style.display="none";
+  document.getElementById("quiz").style.display="block";
+
+  loadQuestion();
 }
 
 function loadQuestion(){
-document.getElementById("question").innerHTML=quiz[current].q;
-document.getElementById("progress").innerText=`Pregunta ${current+1}`;
-document.getElementById("bar").style.width=(current/quiz.length*100)+"%";
+  document.getElementById("question").innerHTML = quiz[current].q;
+  document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de 10";
+
+  let progress = (current / quiz.length) * 100;
+  document.getElementById("bar").style.width = progress + "%";
+
+  document.getElementById("feedback").innerText = "";
 }
 
 function answer(user){
-if(user===quiz[current].correct){score+=10;}
-document.getElementById("feedback").innerText=quiz[current].feedback;
+  let correct = quiz[current].correct;
 
-setTimeout(()=>{
-current++;
-if(current<quiz.length) loadQuestion();
-else showResult();
-},1000);
+  if(user === correct){
+    score += 10;
+    document.getElementById("feedback").innerHTML =
+      "✔ Correcto<br><span style='color:#6b7280'>" + quiz[current].feedback + "</span>";
+  }else{
+    document.getElementById("feedback").innerHTML =
+      "❌ Incorrecto<br><span style='color:#6b7280'>" + quiz[current].feedback + "</span>";
+  }
+
+  setTimeout(()=>{
+    current++;
+    if(current < quiz.length){
+      loadQuestion();
+    }else{
+      showResult();
+    }
+  },1500);
 }
 
 function showResult(){
-document.getElementById("quiz").innerHTML=`
-<h3>${player}</h3>
-<p>Puntaje: ${score}</p>
-<button onclick="location.reload()">Reintentar</button>
-`;
+  let nivel = "";
+
+  if(score >= 90) nivel="Excelente";
+  else if(score >=70) nivel="Bueno";
+  else if(score >=50) nivel="Regular";
+  else nivel="Riesgo alto";
+
+  let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+
+  ranking.push({name:player, score:score});
+  ranking.sort((a,b)=>b.score-a.score);
+
+  localStorage.setItem("ranking", JSON.stringify(ranking));
+
+  let top = "<h4>🏆 Ranking</h4><ol>";
+  ranking.slice(0,5).forEach(r=>{
+    top += `<li>${r.name} - ${r.score}</li>`;
+  });
+  top += "</ol>";
+
+  document.getElementById("quiz").innerHTML = `
+    <h3>${player}</h3>
+    <p><b>Puntaje:</b> ${score}/100</p>
+    <p><b>Nivel:</b> ${nivel}</p>
+
+    ${top}
+
+    <button class="btn btn-primary mt-3" onclick="restartQuiz()">🔄 Reintentar</button>
+  `;
+}
+
+function restartQuiz(){
+  location.reload();
 }
 </script>
-
 </body>
 </html>
