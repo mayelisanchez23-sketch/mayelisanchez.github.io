@@ -708,18 +708,71 @@
 	
   <script>
 const quiz = [
-  { q: "Tu cuenta será bloqueada en 24 horas. Verifica aquí: http://bbva-seguridad.xyz", correct: "phishing", feedback: "Dominio falso y uso de urgencia, típico en ataques de phishing." },
-  { q: "Descarga el comprobante en archivo .zip", correct: "phishing", feedback: "Los archivos comprimidos pueden contener malware." },
-  { q: "Accede al sistema desde el portal corporativo habitual", correct: "seguro", feedback: "Uso de un canal oficial y confiable." },
-  { q: "Ganaste un iPhone. Regístrate aquí: bit.ly/regalo123", correct: "phishing", feedback: "Premios falsos y enlaces acortados son señales de riesgo." },
-  { q: "Inicia sesión en microsoft-login-alert.com", correct: "phishing", feedback: "El dominio no corresponde a Microsoft." },
-  { q: "Encuentras una USB desconocida", correct: "phishing", feedback: "Puede tratarse de un ataque físico con malware." },
-  { q: "Factura en PDF sin previo aviso", correct: "phishing", feedback: "Archivos inesperados pueden ser peligrosos." },
-  { q: "Consulta el reglamento en la intranet", correct: "seguro", feedback: "Uso de plataforma interna oficial." },
-  { q: "SMS con link del banco", correct: "phishing", feedback: "Los bancos no envían enlaces por SMS." },
-  { q: "Aprueba acceso o perderás tu cuenta", correct: "phishing", feedback: "Uso de presión psicológica para engañar." }
-];
+  {
+    q: "Recibes un correo de tu banco indicando que detectaron actividad inusual en tu cuenta. El mensaje dice que debes verificar tu identidad en menos de 24 horas mediante un enlace proporcionado. El correo tiene buen diseño, pero el enlace dirige a una página con dominio diferente al oficial.",
+    correct: "phishing",
+    feedback: "Aunque el diseño es convincente, el dominio no coincide con el banco y usa urgencia."
+  },
+  {
+    q: "Una empresa de paquetería te envía un correo indicando que tu envío no pudo ser entregado. Incluye un enlace para reprogramar la entrega desde su sitio oficial.",
+    correct: "seguro",
+    feedback: "Si el dominio es oficial y esperas el paquete, es un caso legítimo."
+  },
+  {
+    q: "Recibes un mensaje de WhatsApp indicando que ganaste un premio, pero debes ingresar a un enlace acortado para reclamarlo.",
+    correct: "phishing",
+    feedback: "Los enlaces acortados y premios inesperados son señales de fraude."
+  },
+  {
+    q: "Tu empresa envía un aviso indicando que revises un documento en la intranet corporativa sin incluir enlaces externos.",
+    correct: "seguro",
+    feedback: "El uso de plataformas internas seguras indica que es legítimo."
+  },
 
+  // 🔥 ESCENARIO TIPO CORREO VISUAL
+  {
+    q: `
+    <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+      <p><b>De:</b> soporte@microsoft.com</p>
+      <p><b>Asunto:</b> Verificación de seguridad</p>
+      <hr>
+      <p>Estimado usuario,</p>
+      <p>Detectamos un intento de acceso no autorizado en su cuenta.</p>
+      <p>Por favor confirme su identidad accediendo al siguiente enlace:</p>
+      <p><a href="#">http://microsoft-security-check.net</a></p>
+      <p>Gracias,<br>Equipo de Microsoft</p>
+    </div>
+    `,
+    correct: "phishing",
+    feedback: "Aunque parece oficial, el enlace no pertenece al dominio real de Microsoft."
+  },
+
+  {
+    q: "Encuentras una USB en tu oficina con etiqueta de 'Información importante'. Decides conectarla a tu equipo.",
+    correct: "phishing",
+    feedback: "Los dispositivos desconocidos pueden contener malware."
+  },
+  {
+    q: "Recibes un correo con un archivo PDF de factura, pero no recuerdas haber realizado ninguna compra.",
+    correct: "phishing",
+    feedback: "Archivos inesperados son una técnica común de ataque."
+  },
+  {
+    q: "Tu banco te envía una notificación desde su app oficial indicando actividad sospechosa sin pedir datos.",
+    correct: "seguro",
+    feedback: "El uso de la app oficial es un canal seguro."
+  },
+  {
+    q: "Recibes un SMS con un enlace para desbloquear tu cuenta bancaria.",
+    correct: "phishing",
+    feedback: "Los bancos no envían enlaces por SMS."
+  },
+  {
+    q: "Un compañero te envía un archivo por correo interno relacionado con un proyecto en el que estás trabajando.",
+    correct: "seguro",
+    feedback: "Si proviene de un contacto conocido y contexto esperado, es legítimo."
+  }
+];
 let current = 0;
 let score = 0;
 let answers = [];
@@ -740,7 +793,7 @@ function startQuiz() {
 }
 
 function loadQuestion() {
-  document.getElementById("question").innerText = quiz[current].q;
+  document.getElementById("question").innerHTML = quiz[current].q;
   document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de 10";
   document.getElementById("feedback").innerText = "";
 
