@@ -709,25 +709,47 @@ const quiz = [
     feedback: "Las apps oficiales son seguras."
   },
   {
-    q: "Encuentras una USB desconocida y decides conectarla.",
-    correct: "phishing",
-    feedback: "Puede contener malware."
-  },
+  q: `
+  <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+    <b>Soporte TI</b><br>
+    Hola, detectamos un problema con tu cuenta corporativa.<br>
+    Para evitar suspensión, descarga el archivo adjunto y ejecuta la validación.<br><br>
+    <b>Archivo:</b> verificacion_seguridad.exe
+  </div>
+  `,
+  correct: "phishing",
+  feedback: "Un archivo ejecutable (.exe) es altamente sospechoso. Las empresas no validan cuentas así."
+},
   {
-    q: "Recibes un correo con un PDF que no esperabas.",
-    correct: "phishing",
-    feedback: "Archivos inesperados son riesgo."
-  },
+  q: `
+  <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+    <b>Google</b><br>
+    Se detectó un inicio de sesión desde un nuevo dispositivo.<br>
+    Si no fuiste tú, revisa la actividad aquí:<br>
+    <a href="https://accounts.google.com/security-checkup">accounts.google.com</a>
+  </div>
+  `,
+  correct: "seguro",
+  feedback: "El dominio es legítimo (google.com). No todos los mensajes de alerta son phishing."
+},
   {
     q: "SMS con enlace para desbloquear cuenta bancaria.",
     correct: "phishing",
     feedback: "Los bancos no envían links."
   },
   {
-    q: "Un compañero te envía un archivo esperado de un proyecto.",
-    correct: "seguro",
-    feedback: "Contexto esperado."
-  }
+  q: `
+  <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+    <b>Área de Recursos Humanos</b><br>
+    Estimado colaborador,<br>
+    se ha actualizado la política interna de vacaciones.<br>
+    Puedes revisarla en el siguiente enlace corporativo:<br><br>
+    <a href="https://vuteq.com.seguridad-empleados.info/vacaciones">Ver documento</a>
+  </div>
+  `,
+  correct: "phishing",
+  feedback: "Aunque parece corporativo, el dominio real es 'seguridad-empleados.info', no 'vuteq.com'. Es un subdominio engañoso."
+}
 ];
 
 let current = 0;
