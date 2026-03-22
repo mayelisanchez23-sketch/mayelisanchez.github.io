@@ -726,10 +726,18 @@ const quiz = [
     feedback: "Archivos inesperados son riesgo."
   },
   {
-    q: "SMS con enlace para desbloquear cuenta bancaria.",
-    correct: "phishing",
-    feedback: "Los bancos no envían links."
-  },
+  q: `
+  <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
+    <b>Área de Recursos Humanos</b><br>
+    Estimado colaborador,<br>
+    se ha actualizado la política interna de vacaciones.<br>
+    Puedes revisarla en el siguiente enlace corporativo:<br><br>
+    <a href="https://vuteq.com.seguridad-empleados.info/vacaciones">Ver documento</a>
+  </div>
+  `,
+  correct: "phishing",
+  feedback: "Aunque parece corporativo, el dominio real es 'seguridad-empleados.info', no 'vuteq.com'. Es un subdominio engañoso."
+},
   {
   q: `
   <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
