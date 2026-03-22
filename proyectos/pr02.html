@@ -615,8 +615,7 @@
 
   </div>
 </section>
-      </div>
-</section>
+
         <h2 class="section-title">Referencias</h2>
         <ol class="ref-list">
           <li>Hoxhunt. <i>Phishing Training for Employees</i>. <a href="https://hoxhunt.com/product/phishing-training" target="_blank">https://hoxhunt.com/product/phishing-training</a></li>
@@ -662,14 +661,11 @@ const quiz = [
     correct: "phishing",
     feedback: "Dominio incorrecto y urgencia = phishing."
   },
-
   {
     q: "Tu empresa te pide revisar un documento en la intranet corporativa sin enlaces externos.",
     correct: "seguro",
     feedback: "Uso de canal interno seguro."
   },
-
-  // 📧 CORREO
   {
     q: `
     <div style="text-align:left;border:1px solid #ddd;padding:15px;border-radius:10px;">
@@ -681,8 +677,6 @@ const quiz = [
     correct: "phishing",
     feedback: "El dominio no pertenece a Microsoft."
   },
-
-  // 📱 WHATSAPP
   {
     q: `
     <div style="text-align:left;background:#e5ddd5;padding:10px;border-radius:10px;">
@@ -693,8 +687,6 @@ const quiz = [
     correct: "phishing",
     feedback: "Suplantación + urgencia."
   },
-
-  // 🔐 LOGIN
   {
     q: `
     <div style="border:1px solid #ddd;padding:20px;text-align:center;border-radius:10px;">
@@ -707,31 +699,26 @@ const quiz = [
     correct: "phishing",
     feedback: "Página falsa con presión."
   },
-
   {
     q: "Recibes una notificación dentro de la app oficial del banco.",
     correct: "seguro",
     feedback: "Las apps oficiales son seguras."
   },
-
   {
     q: "Encuentras una USB desconocida y decides conectarla.",
     correct: "phishing",
     feedback: "Puede contener malware."
   },
-
   {
     q: "Recibes un correo con un PDF que no esperabas.",
     correct: "phishing",
     feedback: "Archivos inesperados son riesgo."
   },
-
   {
     q: "SMS con enlace para desbloquear cuenta bancaria.",
     correct: "phishing",
     feedback: "Los bancos no envían links."
   },
-
   {
     q: "Un compañero te envía un archivo esperado de un proyecto.",
     correct: "seguro",
@@ -744,7 +731,7 @@ let score = 0;
 let player = "";
 
 function startQuiz(){
-  player = document.getElementById("alias").value;
+  player = document.getElementById("alias").value.trim();
 
   if(!player){
     alert("Ingresa un alias");
@@ -759,16 +746,23 @@ function startQuiz(){
 
 function loadQuestion(){
   document.getElementById("question").innerHTML = quiz[current].q;
-  document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de 10";
+  document.getElementById("progress").innerText = "Pregunta " + (current+1) + " de " + quiz.length;
 
-  let progress = (current / quiz.length) * 100;
+  // 🔥 CORREGIDO
+  let progress = ((current+1) / quiz.length) * 100;
   document.getElementById("bar").style.width = progress + "%";
 
   document.getElementById("feedback").innerText = "";
+
+  // 🔥 bloquear/desbloquear botones
+  document.querySelectorAll('.quiz-buttons button').forEach(btn => btn.disabled = false);
 }
 
 function answer(user){
   let correct = quiz[current].correct;
+
+  // 🔥 bloquear botones
+  document.querySelectorAll('.quiz-buttons button').forEach(btn => btn.disabled = true);
 
   if(user === correct){
     score += 10;
@@ -786,7 +780,7 @@ function answer(user){
     }else{
       showResult();
     }
-  },1500);
+  },1200);
 }
 
 function showResult(){
@@ -801,6 +795,9 @@ function showResult(){
 
   ranking.push({name:player, score:score});
   ranking.sort((a,b)=>b.score-a.score);
+
+  // 🔥 límite ranking
+  ranking = ranking.slice(0,10);
 
   localStorage.setItem("ranking", JSON.stringify(ranking));
 
@@ -824,6 +821,6 @@ function showResult(){
 function restartQuiz(){
   location.reload();
 }
-</script>
+</script>  
 </body>
 </html>
