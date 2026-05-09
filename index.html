@@ -1,251 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Portafolio digital de evidencias académicas para CNO V – Seguridad Informática (UPSLP).">
-  <meta name="author" content="Mayeli Sánchez">
-  <title>Portafolio | Seguridad Informática – Mayeli Sánchez</title>
-
-  <!-- Iconos -->
-  <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-  <!-- Bootstrap + estilos de la plantilla -->
-  <link rel="stylesheet" href="assets/css/johndoe.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de Seguridad Informatica - Mayeli Sanchez - UPSLP">
+    <meta name="theme-color" content="#00ff41">
+    <title>Mayeli Sanchez | Cybersecurity Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="inicio">
-
-  <!-- HERO / PORTADA -->
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <h4 class="header-subtitle">Portafolio Digital</h4>
-        <h1 class="header-title">Mayeli Sánchez</h1>
-        <h6 class="header-mono">CNO V – Seguridad Informática · UPSLP · 9.º semestre</h6>
-        <h6 class="header-mono">Alias: MayAth</h6>
-        <a class="btn btn-primary btn-rounded" href="#pf01">
-          <i class="ti-arrow-down pr-2"></i>Ver Portafolio
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- NAV -->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="510">
-  <div class="container">
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
-        <li class="nav-item"><a href="road-to-hall-of-fame/sql-injection.html" class="nav-link">Hall of Fame</a></li>
-      </ul>
-
-      <ul class="navbar-nav brand">
-        <img src="assets/imgs/avatar.jpg" alt="Avatar" class="brand-img">
-        <li class="brand-txt">
-          <h5 class="brand-title">Mayeli Sánchez</h5>
-          <div class="brand-subtitle">Portafolio · Seguridad Informática</div>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="proyectos/index.html" class="nav-link">Proyectos</a>
-        </li>
-        <li class="nav-item">
-          <a href="actividades/parciales.html" class="nav-link">Actividades</a>
-        </li>
-        <li class="nav-item last-item">
-          <a href="#contacto" class="nav-link">Contacto</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  <!-- PORTAFOLIO / PF01 -->
-  <section class="section" id="pf01">
-    <div class="container">
-      <h2 class="mb-5"><span class="text-danger">Portafolio Académico</span></h2>
-
-      <!-- Row 1 -->
-      <div class="row">
-        <!-- Información académica -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <div class="mt-2">
-                <h4>Información académica</h4>
-                <span class="line"></span>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="subtitle mb-1"><b>Nombre:</b> Mayeli Sánchez</p>
-              <p class="subtitle mb-1"><b>Carrera:</b> Ingeniería en Tecnologías de la Información</p>
-              <p class="subtitle mb-1"><b>Institución:</b> Universidad Politécnica de San Luis Potosí (UPSLP)</p>
-              <p class="subtitle mb-1"><b>Asignatura:</b> Seguridad Informática</p>
-              <p class="subtitle mb-1"><b>Periodo:</b> Noveno semestre · 2026</p>
-
-              <hr>
-
-              <a class="btn btn-primary btn-rounded mt-2" href="actividades/parciales.html">
-                <i class="ti-agenda pr-2"></i>Ver actividades por parcial
-              </a>
-            </div>
-          </div>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="index.html" class="nav-link active">inicio</a></li>
+                <li><a href="actividades.html" class="nav-link">actividades</a></li>
+                <li><a href="proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Presentación -->
-        <div class="col-md-6 col-lg-8">
-          <div class="card">
-            <div class="card-header">
-              <div class="mt-2">
-                <h4>Presentación del portafolio</h4>
-                <span class="line"></span>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="subtitle">
-                Este portafolio académico reúne las evidencias desarrolladas durante el curso de <b>Seguridad Informática</b>,
-                documentando el proceso de aprendizaje, análisis y aplicación de conceptos técnicos en entornos reales y simulados.
-              </p>
-
-              <p class="subtitle">
-                A través de cada actividad se presentan estudios de caso, análisis comparativos, interpretación de marcos normativos y
-                aplicación de metodologías orientadas a la protección de la información, defensa en red y evaluación de vulnerabilidades.
-              </p>
-
-              <p class="subtitle mb-0">
-                El objetivo de este espacio es reflejar no solo el cumplimiento académico, sino también mi evolución profesional en el área
-                de tecnologías de la información y ciberseguridad.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="row">
-        <!-- Perfil -->
-        <div class="col-md-6 col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <div class="mt-2">
-                <h4>Perfil del estudiante</h4>
-                <span class="line"></span>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="subtitle mb-0">
-                Soy estudiante de Ingeniería en Tecnologías de la Información en la Universidad Politécnica de San Luis Potosí (UPSLP),
-                actualmente cursando noveno semestre. Complemento mi formación académica realizando prácticas profesionales en
-                <b>Vuteq Industries México</b>, donde colaboro en el área de soporte técnico.
-                <br><br>
-                Me motiva no solo resolver incidencias, sino comprender a fondo el origen de los errores y explicar a los usuarios el porqué
-                de cada solución. Considero que el soporte técnico no se trata únicamente de “arreglar equipos”, sino de generar confianza,
-                claridad y aprendizaje en cada interacción.
-                <br><br>
-                Tengo un especial interés en la <b>ciberseguridad</b>, el análisis de vulnerabilidades y la protección de la información. Me
-                entusiasma seguir aprendiendo de cada proyecto, de mis docentes y de los líderes con quienes colaboro profesionalmente, con
-                el objetivo de fortalecer tanto mis habilidades técnicas como mi criterio profesional.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Info técnica -->
-        <div class="col-md-6 col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <div class="mt-2">
-                <h4>Información técnica</h4>
-                <span class="line"></span>
-              </div>
-            </div>
-            <div class="card-body">
-              <ul class="subtitle mb-0">
-                <li><b>Stack tecnológico:</b> HTML5, CSS3, JavaScript, Bootstrap.</li>
-                <li><b>Control de versiones:</b> Git y GitHub (flujo de trabajo con commits estructurados).</li>
-                <li><b>Publicación:</b> GitHub Pages con HTTPS habilitado.</li>
-                <li><b>Enfoque de seguridad:</b> estructura organizada, enlaces relativos seguros y navegación consistente.</li>
-                <li><b>Documentación académica:</b> artículos técnicos en formato HTML + exportación en PDF.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACTO (sección independiente, ya sin bloque raro) -->
-  <section class="section" id="contacto">
-    <div class="container">
-      <h2 class="mb-5"><span class="text-danger">Contacto</span></h2>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-header">
-              <div class="mt-2">
-                <h4>Formulario de contacto</h4>
-                <span class="line"></span>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="subtitle">Este sitio incluye un formulario para recibir mensajes.</p>
-
-              <form class="mt-3" action="https://formspree.io/f/mpqrqojp" method="POST">
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <input class="form-control" type="text" name="name" placeholder="Nombre" required>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <input class="form-control" type="email" name="email" placeholder="Correo" required>
-                  </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">mayeli@kali:~</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">$</span> <span class="command">whoami</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Mayeli Sanchez - Estudiante de Seguridad Informatica</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span> <span class="command">cat universidad.txt</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Universidad Politecnica de San Luis Potosi (UPSLP)</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span> <span class="command">ls ./skills/</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">pentesting/ sql-injection/ network-security/ forensics/</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span> <span class="command">echo $STATUS</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Aprendiendo y hackeando (eticamente) <span class="comment"># siempre con permiso</span></span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                  <textarea class="form-control" name="message" placeholder="Mensaje *" rows="7" required></textarea>
+                <h1 class="hero-title">
+                    Portafolio de<br>
+                    <span class="highlight">Seguridad Informatica</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Documentando mi aprendizaje en ciberseguridad: desde analisis de vulnerabilidades 
+                    hasta configuracion de firewalls y VPNs.
+                </p>
+                <div class="hero-buttons">
+                    <a href="actividades.html" class="btn btn-primary">
+                        &gt; Ver Actividades
+                    </a>
+                    <a href="hall-of-fame.html" class="btn btn-secondary">
+                        [ Hall of Fame ]
+                    </a>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Enviar</button>
-              </form>
-
-              <hr>
-              <p class="subtitle mb-0"><b>Certificado SSL:</b> GitHub Pages (HTTPS)</p>
             </div>
-          </div>
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Labs SQL Injection</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Actividades Completadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Parciales Documentados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Proyecto Principal</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer py-3">
-    <div class="container">
-      <p class="small mb-0 text-light">
-        &copy; <script>document.write(new Date().getFullYear())</script> Mayeli Sánchez · Portafolio Ciberseguridad · UPSLP · Seguridad Informática
-      </p>
-    </div>
-  </footer>
+    <!-- Featured Activities -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="icon">&gt;</span>
+                    Actividades Destacadas
+                </h2>
+                <p class="section-subtitle">// Ultimos trabajos y practicas de seguridad</p>
+            </div>
 
-  <!-- core -->
-  <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-  <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-  <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+            <div class="cards-grid">
+                <!-- Pentesting -->
+                <article class="activity-card">
+                    <div class="card-header">
+                        <span class="card-number">ACT_05</span>
+                        <span class="card-tag">Parcial 1</span>
+                    </div>
+                    <h3 class="card-title">Pentesting con Kali Linux</h3>
+                    <p class="card-description">
+                        Pruebas de penetracion utilizando herramientas como Nmap, Metasploit y analisis de vulnerabilidades en entornos controlados.
+                    </p>
+                    <div class="card-footer">
+                        <a href="actividades/parcial-1/pentesting.html" class="card-link">
+                            ./ver_mas --&gt;
+                        </a>
+                    </div>
+                </article>
 
-  <!-- plugins -->
-  <script src="assets/vendors/isotope/isotope.pkgd.js"></script>
-  <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
+                <!-- SQL Injection -->
+                <article class="activity-card">
+                    <div class="card-header">
+                        <span class="card-number">HALL_OF_FAME</span>
+                        <span class="card-tag parcial-3">Parcial 3</span>
+                    </div>
+                    <h3 class="card-title">SQL Injection Labs</h3>
+                    <p class="card-description">
+                        18 laboratorios completados de PortSwigger Academy sobre diferentes tecnicas de inyeccion SQL y bypass de autenticacion.
+                    </p>
+                    <div class="card-footer">
+                        <a href="hall-of-fame.html" class="card-link">
+                            ./ver_mas --&gt;
+                        </a>
+                    </div>
+                </article>
 
-  <!-- johndoe js -->
-  <script src="assets/js/johndoe.js"></script>
+                <!-- IPSec VPN -->
+                <article class="activity-card">
+                    <div class="card-header">
+                        <span class="card-number">ACT_06</span>
+                        <span class="card-tag parcial-2">Parcial 2</span>
+                    </div>
+                    <h3 class="card-title">IPSec VPN Configuration</h3>
+                    <p class="card-description">
+                        Implementacion y configuracion de VPN site-to-site usando IPSec para comunicaciones seguras entre redes.
+                    </p>
+                    <div class="card-footer">
+                        <a href="actividades/parcial-2/ipsec-vpn.html" class="card-link">
+                            ./ver_mas --&gt;
+                        </a>
+                    </div>
+                </article>
 
+                <!-- IPTables -->
+                <article class="activity-card">
+                    <div class="card-header">
+                        <span class="card-number">ACT_03</span>
+                        <span class="card-tag">Parcial 1</span>
+                    </div>
+                    <h3 class="card-title">Firewall con IPTables</h3>
+                    <p class="card-description">
+                        Configuracion de reglas de firewall en Linux usando IPTables para filtrado de paquetes y proteccion de red.
+                    </p>
+                    <div class="card-footer">
+                        <a href="actividades/parcial-1/iptables.html" class="card-link">
+                            ./ver_mas --&gt;
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="icon">&gt;</span>
+                    Proyecto Principal
+                </h2>
+                <p class="section-subtitle">// Investigacion y concientizacion en seguridad</p>
+            </div>
+
+            <article class="activity-card" style="max-width: 600px;">
+                <div class="card-header">
+                    <span class="card-number">PR02</span>
+                    <span class="card-tag parcial-2">Proyecto</span>
+                </div>
+                <h3 class="card-title">Ingenieria Social: Concientizacion y Prevencion</h3>
+                <p class="card-description">
+                    Analisis de tecnicas de ingenieria social, phishing y manipulacion psicologica. 
+                    Incluye quiz interactivo para evaluar conocimientos sobre seguridad.
+                </p>
+                <div class="card-footer">
+                    <a href="proyectos/pr02.html" class="card-link">
+                        ./explorar_proyecto --&gt;
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="terminal-icon">&gt;_</span>
+                        <strong>mayeli@security</strong>
+                    </div>
+                    <p class="footer-description">
+                        Portafolio de practicas y proyectos de la materia de Seguridad Informatica en UPSLP.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">./navegacion</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="actividades.html">Actividades</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">./parciales</h4>
+                    <ul class="footer-links">
+                        <li><a href="actividades.html#parcial-1">Parcial 1</a></li>
+                        <li><a href="actividades.html#parcial-2">Parcial 2</a></li>
+                        <li><a href="actividades.html#parcial-3">Parcial 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

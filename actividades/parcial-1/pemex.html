@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Ciberataque PEMEX | Mayeli Sanchez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../../index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">inicio</a></li>
+                <li><a href="../../actividades.html" class="nav-link active">actividades</a></li>
+                <li><a href="../../proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="../../hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Activity Content -->
+    <article class="activity-detail">
+        <div class="container">
+            <div class="activity-content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <a href="../../index.html">~</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html">actividades</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html#parcial-1">parcial-1</a>
+                    <span class="separator">/</span>
+                    <span class="current">pemex</span>
+                </nav>
+
+                <!-- Header -->
+                <header style="margin-bottom: 2rem;">
+                    <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_01 - Parcial 1</span>
+                    <h1 class="page-title" style="padding: 0;">
+                        Analisis de Ciberataque <span class="highlight">PEMEX</span>
+                    </h1>
+                </header>
+
+                <!-- Meta -->
+                <div class="activity-meta">
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Ransomware
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> DoppelPaymer
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Noviembre 2019
+                    </span>
+                </div>
+
+                <!-- Content -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Descripcion del Incidente</h2>
+                    <p>
+                        El 10 de noviembre de 2019, Petroleos Mexicanos (PEMEX) sufrio un ataque de ransomware 
+                        que afecto aproximadamente el 5% de sus computadoras. El malware utilizado fue 
+                        DoppelPaymer, una variante sofisticada que cifra archivos y exige rescate en criptomonedas.
+                    </p>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Vector de Ataque</h2>
+                    <ul>
+                        <li>Correo electronico de phishing como punto de entrada inicial</li>
+                        <li>Explotacion de vulnerabilidades en sistemas no parcheados</li>
+                        <li>Movimiento lateral dentro de la red corporativa</li>
+                        <li>Cifrado de archivos criticos con extension .locked</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Impacto</h2>
+                    <ul>
+                        <li>Demanda de rescate: 565 Bitcoin (~4.9 millones USD)</li>
+                        <li>Sistemas administrativos comprometidos</li>
+                        <li>Interrupcion de operaciones en algunas areas</li>
+                        <li>Afectacion a la continuidad del negocio</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Comando del Atacante</h2>
+                    <div class="code-block">
+                        <code>
+# Payload tipico de DoppelPaymer<br>
+> Encrypt-Files -Path "C:\*" -Extension ".locked"<br>
+> Create-RansomNote -Amount "565 BTC" -Wallet "bc1q..."<br>
+> Disable-Recovery -DeleteShadowCopies $true
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Lecciones Aprendidas</h2>
+                    <ul>
+                        <li>Importancia de mantener sistemas actualizados</li>
+                        <li>Necesidad de backups offline y probados regularmente</li>
+                        <li>Capacitacion continua contra phishing</li>
+                        <li>Segmentacion de red para limitar movimiento lateral</li>
+                        <li>Plan de respuesta a incidentes documentado</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Recomendaciones de Prevencion</h2>
+                    <div class="code-block">
+                        <code>
+# Checklist de seguridad<br>
+[x] Actualizaciones de seguridad al dia<br>
+[x] Solucion EDR implementada<br>
+[x] Backups 3-2-1 (3 copias, 2 medios, 1 offsite)<br>
+[x] Segmentacion de red<br>
+[x] MFA en accesos criticos<br>
+[x] Capacitacion anti-phishing trimestral
+                        </code>
+                    </div>
+                </section>
+
+                <!-- Download PDF -->
+                <div class="download-section" style="margin-top: 3rem; padding: 1.5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--primary); border-radius: 8px;">
+                    <p style="margin-bottom: 1rem; color: var(--primary);">&gt; Descargar documento completo:</p>
+                    <a href="../pdf/actividad-01-pemex.pdf" target="_blank" class="btn btn-primary">
+                        [download] actividad-01-pemex.pdf
+                    </a>
+                </div>
+
+                <!-- Navigation -->
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <a href="../../actividades.html" class="btn btn-secondary">
+                        &lt;-- cd ../actividades
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

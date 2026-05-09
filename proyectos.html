@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proyectos de Seguridad Informatica - Mayeli Sanchez - UPSLP">
+    <title>Proyectos | Mayeli Sanchez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="index.html" class="nav-link">inicio</a></li>
+                <li><a href="actividades.html" class="nav-link">actividades</a></li>
+                <li><a href="proyectos.html" class="nav-link active">proyectos</a></li>
+                <li><a href="hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">~</a>
+                <span class="separator">/</span>
+                <span class="current">proyectos</span>
+            </nav>
+            <h1 class="page-title">
+                <span class="highlight">&gt;</span> Proyectos
+            </h1>
+            <p class="page-description">
+                Investigaciones y proyectos especiales de seguridad informatica
+            </p>
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cards-grid">
+                <!-- PR02 -->
+                <article class="activity-card">
+                    <div class="card-header">
+                        <span class="card-number">PR02</span>
+                        <span class="card-tag parcial-2">Proyecto</span>
+                    </div>
+                    <h3 class="card-title">Ingenieria Social: Concientizacion y Prevencion</h3>
+                    <p class="card-description">
+                        Investigacion completa sobre tecnicas de ingenieria social, phishing, pretexting, 
+                        baiting y otras formas de manipulacion. Incluye quiz interactivo para evaluar 
+                        conocimientos sobre identificacion de amenazas.
+                    </p>
+                    <div class="card-footer">
+                        <a href="proyectos/pr02.html" class="card-link">
+                            ./explorar_proyecto --&gt;
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="terminal-window" style="max-width: 700px;">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">info_proyectos.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cat ./readme.txt</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">Los proyectos son investigaciones mas extensas</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">que profundizan en temas especificos de seguridad.</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment"># Incluyen:</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">- Investigacion teorica</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">- Analisis de casos reales</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">- Componentes interactivos</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">- Conclusiones y recomendaciones</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="terminal-icon">&gt;_</span>
+                        <strong>mayeli@security</strong>
+                    </div>
+                    <p class="footer-description">
+                        Portafolio de practicas y proyectos de la materia de Seguridad Informatica en UPSLP.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">./navegacion</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="actividades.html">Actividades</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">./parciales</h4>
+                    <ul class="footer-links">
+                        <li><a href="actividades.html#parcial-1">Parcial 1</a></li>
+                        <li><a href="actividades.html#parcial-2">Parcial 2</a></li>
+                        <li><a href="actividades.html#parcial-3">Parcial 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hall of Fame SQL Injection - Mayeli Sanchez - UPSLP">
+    <title>Hall of Fame | SQL Injection Labs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="index.html" class="nav-link">inicio</a></li>
+                <li><a href="actividades.html" class="nav-link">actividades</a></li>
+                <li><a href="proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="hall-of-fame.html" class="nav-link active">hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hall of Fame Header -->
+    <header class="hall-of-fame-header">
+        <div class="container">
+            <div class="trophy-icon">&#127942;</div>
+            <h1 class="hof-title">
+                Hall of <span class="highlight">Fame</span>
+            </h1>
+            <p class="hof-subtitle">
+                SQL Injection Labs - PortSwigger Academy
+            </p>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #ffc800;">18</div>
+                    <div class="stat-label">Labs Completados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #ffc800;">100%</div>
+                    <div class="stat-label">Tasa de Exito</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #ffc800;">6</div>
+                    <div class="stat-label">Categorias</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Labs Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="icon" style="color: #ffc800;">&gt;</span>
+                    Laboratorios Completados
+                </h2>
+                <p class="section-subtitle">// Cada lab representa una tecnica diferente de SQL Injection</p>
+            </div>
+
+            <div class="lab-grid">
+                <!-- Lab 1 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_01</div>
+                    <h3 class="lab-title">SQL injection vulnerability in WHERE clause</h3>
+                    <span class="lab-difficulty apprentice">Apprentice</span>
+                </article>
+
+                <!-- Lab 2 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_02</div>
+                    <h3 class="lab-title">SQL injection vulnerability allowing login bypass</h3>
+                    <span class="lab-difficulty apprentice">Apprentice</span>
+                </article>
+
+                <!-- Lab 3 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_03</div>
+                    <h3 class="lab-title">SQL injection attack, querying database type and version (Oracle)</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 4 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_04</div>
+                    <h3 class="lab-title">SQL injection attack, querying database type and version (MySQL/Microsoft)</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 5 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_05</div>
+                    <h3 class="lab-title">SQL injection attack, listing database contents (non-Oracle)</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 6 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_06</div>
+                    <h3 class="lab-title">SQL injection attack, listing database contents (Oracle)</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 7 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_07</div>
+                    <h3 class="lab-title">SQL injection UNION attack, determining columns</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 8 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_08</div>
+                    <h3 class="lab-title">SQL injection UNION attack, finding column with useful data</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 9 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_09</div>
+                    <h3 class="lab-title">SQL injection UNION attack, retrieving data from other tables</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 10 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_10</div>
+                    <h3 class="lab-title">SQL injection UNION attack, retrieving multiple values in single column</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 11 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_11</div>
+                    <h3 class="lab-title">Blind SQL injection with conditional responses</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 12 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_12</div>
+                    <h3 class="lab-title">Blind SQL injection with conditional errors</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 13 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_13</div>
+                    <h3 class="lab-title">Visible error-based SQL injection</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 14 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_14</div>
+                    <h3 class="lab-title">Blind SQL injection with time delays</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 15 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_15</div>
+                    <h3 class="lab-title">Blind SQL injection with time delays and information retrieval</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 16 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_16</div>
+                    <h3 class="lab-title">Blind SQL injection with out-of-band interaction</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 17 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_17</div>
+                    <h3 class="lab-title">Blind SQL injection with out-of-band data exfiltration</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+
+                <!-- Lab 18 -->
+                <article class="lab-card">
+                    <div class="lab-number">LAB_18</div>
+                    <h3 class="lab-title">SQL injection with filter bypass via XML encoding</h3>
+                    <span class="lab-difficulty practitioner">Practitioner</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Info -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="terminal-window" style="max-width: 700px; margin: 0 auto;">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">sql_injection_summary.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cat ./categorias.txt</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output">Tecnicas aprendidas:</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment"># WHERE clause injection</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment"># UNION attacks</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment"># Blind SQL injection (conditional, time-based)</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment"># Out-of-band techniques</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="comment"># Filter bypass techniques</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">echo "Status: COMPLETADO"</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="output" style="color: #ffc800;">Status: COMPLETADO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="terminal-icon">&gt;_</span>
+                        <strong>mayeli@security</strong>
+                    </div>
+                    <p class="footer-description">
+                        Portafolio de practicas y proyectos de la materia de Seguridad Informatica en UPSLP.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">./navegacion</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="actividades.html">Actividades</a></li>
+                        <li><a href="proyectos.html">Proyectos</a></li>
+                        <li><a href="hall-of-fame.html">Hall of Fame</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">./parciales</h4>
+                    <ul class="footer-links">
+                        <li><a href="actividades.html#parcial-1">Parcial 1</a></li>
+                        <li><a href="actividades.html#parcial-2">Parcial 2</a></li>
+                        <li><a href="actividades.html#parcial-3">Parcial 3</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

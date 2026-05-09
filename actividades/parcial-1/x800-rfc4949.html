@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estandares X.800 y RFC 4949 | Mayeli Sanchez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../../index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">inicio</a></li>
+                <li><a href="../../actividades.html" class="nav-link active">actividades</a></li>
+                <li><a href="../../proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="../../hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Activity Content -->
+    <article class="activity-detail">
+        <div class="container">
+            <div class="activity-content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <a href="../../index.html">~</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html">actividades</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html#parcial-1">parcial-1</a>
+                    <span class="separator">/</span>
+                    <span class="current">x800-rfc4949</span>
+                </nav>
+
+                <!-- Header -->
+                <header style="margin-bottom: 2rem;">
+                    <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_02 - Parcial 1</span>
+                    <h1 class="page-title" style="padding: 0;">
+                        Estandares <span class="highlight">X.800</span> y <span class="highlight">RFC 4949</span>
+                    </h1>
+                </header>
+
+                <!-- Meta -->
+                <div class="activity-meta">
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> ITU-T
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> IETF
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Estandares
+                    </span>
+                </div>
+
+                <!-- Content -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> X.800 - Arquitectura de Seguridad OSI</h2>
+                    <p>
+                        El estandar X.800 de ITU-T define la arquitectura de seguridad para el modelo OSI. 
+                        Establece un marco de referencia para implementar servicios y mecanismos de seguridad 
+                        en sistemas de comunicacion.
+                    </p>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Servicios de Seguridad (X.800)</h2>
+                    <ul>
+                        <li><strong>Autenticacion:</strong> Verificacion de identidad de entidades</li>
+                        <li><strong>Control de Acceso:</strong> Prevencion de uso no autorizado</li>
+                        <li><strong>Confidencialidad:</strong> Proteccion contra divulgacion no autorizada</li>
+                        <li><strong>Integridad:</strong> Deteccion de modificaciones no autorizadas</li>
+                        <li><strong>No Repudio:</strong> Proteccion contra negacion de acciones</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Mecanismos de Seguridad</h2>
+                    <div class="code-block">
+                        <code>
+MECANISMOS_ESPECIFICOS = {<br>
+&nbsp;&nbsp;"cifrado": "Transformacion criptografica de datos",<br>
+&nbsp;&nbsp;"firma_digital": "Anexo criptografico para autenticidad",<br>
+&nbsp;&nbsp;"control_acceso": "Mecanismos para hacer cumplir derechos",<br>
+&nbsp;&nbsp;"integridad": "Checksum, hash, MAC",<br>
+&nbsp;&nbsp;"intercambio_autenticacion": "Challenge-response",<br>
+&nbsp;&nbsp;"padding": "Proteccion contra analisis de trafico"<br>
+}
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> RFC 4949 - Internet Security Glossary</h2>
+                    <p>
+                        El RFC 4949 es un glosario que define terminologia de seguridad utilizada en 
+                        documentos de Internet. Proporciona definiciones precisas para conceptos clave 
+                        en ciberseguridad.
+                    </p>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Terminos Clave (RFC 4949)</h2>
+                    <div class="code-block">
+                        <code>
+$ cat /etc/security/glossary.conf<br><br>
+
+THREAT="Potencial violacion de seguridad"<br>
+VULNERABILITY="Debilidad en un sistema"<br>
+ATTACK="Asalto a la seguridad del sistema"<br>
+RISK="Probabilidad de amenaza explotando vulnerabilidad"<br>
+COUNTERMEASURE="Accion para reducir amenaza/vulnerabilidad"<br>
+ASSET="Recurso del sistema con valor"
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Comparacion de Estandares</h2>
+                    <ul>
+                        <li><strong>X.800:</strong> Enfoque en arquitectura y servicios de seguridad</li>
+                        <li><strong>RFC 4949:</strong> Enfoque en terminologia y definiciones</li>
+                        <li>Ambos son complementarios para entender seguridad de redes</li>
+                        <li>X.800 es mas tecnico/implementacion, RFC 4949 es mas conceptual</li>
+                    </ul>
+                </section>
+
+                <!-- Download PDF -->
+                <div class="download-section" style="margin-top: 3rem; padding: 1.5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--primary); border-radius: 8px;">
+                    <p style="margin-bottom: 1rem; color: var(--primary);">&gt; Descargar documento completo:</p>
+                    <a href="../pdf/actividad-02-x800-rfc4949.pdf" target="_blank" class="btn btn-primary">
+                        [download] actividad-02-x800-rfc4949.pdf
+                    </a>
+                </div>
+
+                <!-- Navigation -->
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <a href="../../actividades.html" class="btn btn-secondary">
+                        &lt;-- cd ../actividades
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

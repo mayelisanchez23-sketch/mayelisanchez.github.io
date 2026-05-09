@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defensa de Red | Mayeli Sanchez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../../index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">inicio</a></li>
+                <li><a href="../../actividades.html" class="nav-link active">actividades</a></li>
+                <li><a href="../../proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="../../hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Activity Content -->
+    <article class="activity-detail">
+        <div class="container">
+            <div class="activity-content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <a href="../../index.html">~</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html">actividades</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html#parcial-1">parcial-1</a>
+                    <span class="separator">/</span>
+                    <span class="current">defensa-red</span>
+                </nav>
+
+                <!-- Header -->
+                <header style="margin-bottom: 2rem;">
+                    <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_04 - Parcial 1</span>
+                    <h1 class="page-title" style="padding: 0;">
+                        Defensa de <span class="highlight">Red</span>
+                    </h1>
+                </header>
+
+                <!-- Meta -->
+                <div class="activity-meta">
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Defense in Depth
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> IDS/IPS
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Segmentacion
+                    </span>
+                </div>
+
+                <!-- Content -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Defensa en Profundidad</h2>
+                    <p>
+                        La defensa en profundidad es una estrategia que utiliza multiples capas de seguridad 
+                        para proteger los activos de una organizacion. Si una capa falla, las siguientes 
+                        continuan proporcionando proteccion.
+                    </p>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Capas de Defensa</h2>
+                    <div class="code-block">
+                        <code>
+CAPAS_SEGURIDAD = [<br>
+&nbsp;&nbsp;"1. Perimetro (Firewall, DMZ)",<br>
+&nbsp;&nbsp;"2. Red (IDS/IPS, Segmentacion)",<br>
+&nbsp;&nbsp;"3. Host (Antivirus, HIDS)",<br>
+&nbsp;&nbsp;"4. Aplicacion (WAF, Validacion)",<br>
+&nbsp;&nbsp;"5. Datos (Cifrado, DLP)",<br>
+&nbsp;&nbsp;"6. Usuario (Capacitacion, MFA)"<br>
+]
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Sistemas IDS/IPS</h2>
+                    <ul>
+                        <li><strong>IDS (Intrusion Detection System):</strong> Detecta y alerta sobre actividad sospechosa</li>
+                        <li><strong>IPS (Intrusion Prevention System):</strong> Detecta y bloquea automaticamente</li>
+                        <li><strong>NIDS:</strong> Monitorea trafico de red</li>
+                        <li><strong>HIDS:</strong> Monitorea actividad en hosts individuales</li>
+                    </ul>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Segmentacion de Red</h2>
+                    <div class="code-block">
+                        <code>
+# Ejemplo de segmentacion con VLANs<br><br>
+
+VLAN 10 - Servidores (192.168.10.0/24)<br>
+VLAN 20 - Usuarios (192.168.20.0/24)<br>
+VLAN 30 - Invitados (192.168.30.0/24)<br>
+VLAN 40 - IoT (192.168.40.0/24)<br>
+VLAN 99 - Administracion (192.168.99.0/24)<br><br>
+
+# ACLs entre VLANs para control de trafico
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Zero Trust Architecture</h2>
+                    <ul>
+                        <li>Nunca confiar, siempre verificar</li>
+                        <li>Acceso con minimo privilegio</li>
+                        <li>Asumir que la red esta comprometida</li>
+                        <li>Microsegmentacion</li>
+                        <li>Autenticacion continua</li>
+                    </ul>
+                </section>
+
+                <!-- Download PDF -->
+                <div class="download-section" style="margin-top: 3rem; padding: 1.5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--primary); border-radius: 8px;">
+                    <p style="margin-bottom: 1rem; color: var(--primary);">&gt; Descargar documento completo:</p>
+                    <a href="../pdf/actividad-04-defensa-red.pdf" target="_blank" class="btn btn-primary">
+                        [download] actividad-04-defensa-red.pdf
+                    </a>
+                </div>
+
+                <!-- Navigation -->
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <a href="../../actividades.html" class="btn btn-secondary">
+                        &lt;-- cd ../actividades
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall con IPTables | Mayeli Sanchez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="../../index.html" class="navbar-brand">
+                <span class="terminal-icon">&gt;_</span>
+                <span class="brand-text">
+                    <span class="user">mayeli</span><span class="at">@</span><span class="host">security</span><span class="prompt">:~$</span>
+                </span>
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">[menu]</button>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">inicio</a></li>
+                <li><a href="../../actividades.html" class="nav-link active">actividades</a></li>
+                <li><a href="../../proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="../../hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Activity Content -->
+    <article class="activity-detail">
+        <div class="container">
+            <div class="activity-content">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb">
+                    <a href="../../index.html">~</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html">actividades</a>
+                    <span class="separator">/</span>
+                    <a href="../../actividades.html#parcial-1">parcial-1</a>
+                    <span class="separator">/</span>
+                    <span class="current">iptables</span>
+                </nav>
+
+                <!-- Header -->
+                <header style="margin-bottom: 2rem;">
+                    <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_03 - Parcial 1</span>
+                    <h1 class="page-title" style="padding: 0;">
+                        Firewall con <span class="highlight">IPTables</span>
+                    </h1>
+                </header>
+
+                <!-- Meta -->
+                <div class="activity-meta">
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Linux
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Netfilter
+                    </span>
+                    <span class="meta-item">
+                        <span class="icon">&gt;</span> Firewall
+                    </span>
+                </div>
+
+                <!-- Content -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Introduccion</h2>
+                    <p>
+                        IPTables es una herramienta de firewall integrada en el kernel de Linux que permite 
+                        filtrar paquetes de red, realizar NAT y manipular el trafico. Es fundamental para 
+                        la seguridad de servidores Linux.
+                    </p>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Estructura de IPTables</h2>
+                    <div class="code-block">
+                        <code>
+# Tablas principales:<br>
+- filter: Filtrado de paquetes (INPUT, OUTPUT, FORWARD)<br>
+- nat: Traduccion de direcciones (PREROUTING, POSTROUTING)<br>
+- mangle: Modificacion de paquetes<br>
+- raw: Excepciones al connection tracking
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Comandos Basicos</h2>
+                    <div class="code-block">
+                        <code>
+# Ver reglas actuales<br>
+$ sudo iptables -L -n -v<br><br>
+
+# Limpiar todas las reglas<br>
+$ sudo iptables -F<br><br>
+
+# Politica por defecto: DROP<br>
+$ sudo iptables -P INPUT DROP<br>
+$ sudo iptables -P FORWARD DROP<br>
+$ sudo iptables -P OUTPUT ACCEPT
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Reglas de Seguridad Implementadas</h2>
+                    <div class="code-block">
+                        <code>
+# Permitir loopback<br>
+$ sudo iptables -A INPUT -i lo -j ACCEPT<br><br>
+
+# Permitir conexiones establecidas<br>
+$ sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT<br><br>
+
+# Permitir SSH (puerto 22)<br>
+$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br><br>
+
+# Permitir HTTP/HTTPS<br>
+$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>
+$ sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT<br><br>
+
+# Bloquear ping floods<br>
+$ sudo iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT<br><br>
+
+# Registrar paquetes denegados<br>
+$ sudo iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: "
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Proteccion contra Ataques</h2>
+                    <div class="code-block">
+                        <code>
+# Proteccion contra SYN Flood<br>
+$ sudo iptables -A INPUT -p tcp --syn -m limit --limit 1/s --limit-burst 3 -j ACCEPT<br><br>
+
+# Bloquear paquetes invalidos<br>
+$ sudo iptables -A INPUT -m state --state INVALID -j DROP<br><br>
+
+# Proteccion contra port scanning<br>
+$ sudo iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP<br>
+$ sudo iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
+                        </code>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2><span class="icon">#</span> Guardar Reglas</h2>
+                    <div class="code-block">
+                        <code>
+# Guardar reglas (Debian/Ubuntu)<br>
+$ sudo iptables-save > /etc/iptables/rules.v4<br><br>
+
+# Restaurar reglas<br>
+$ sudo iptables-restore < /etc/iptables/rules.v4<br><br>
+
+# Para persistencia, instalar iptables-persistent<br>
+$ sudo apt install iptables-persistent
+                        </code>
+                    </div>
+                </section>
+
+                <!-- Download PDF -->
+                <div class="download-section" style="margin-top: 3rem; padding: 1.5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid var(--primary); border-radius: 8px;">
+                    <p style="margin-bottom: 1rem; color: var(--primary);">&gt; Descargar documento completo:</p>
+                    <a href="../pdf/actividad-03-iptables.pdf" target="_blank" class="btn btn-primary">
+                        [download] actividad-03-iptables.pdf
+                    </a>
+                </div>
+
+                <!-- Navigation -->
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <a href="../../actividades.html" class="btn btn-secondary">
+                        &lt;-- cd ../actividades
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="margin-top: 0; border-top: none;">
+                <p class="footer-copyright">
+                    <span class="text-green">&gt;</span> 2024 Mayeli Sanchez | 
+                    <a href="#">UPSLP</a> | 
+                    Seguridad Informatica
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
