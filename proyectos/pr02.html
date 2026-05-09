@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
+        /* Override variables for compatibility */
+        :root {
+            --primary: #00ff41;
+            --bg-primary: #0a0a0a;
+        }
          /* Tabs navigation */
         .top-tabs {
             display: flex;
@@ -83,10 +88,13 @@
             font-weight: 600;
         }
         .platform-body p {
-            color: var(--text-secondary);
+            color: #bbbbbb;
             margin: 0;
             font-size: 0.95rem;
             line-height: 1.6;
+        }
+        .platform-card {
+            background: #111111;
         }
 
         /* Table */
@@ -113,12 +121,18 @@
         .custom-table tbody td {
             padding: 14px 12px;
             border-bottom: 1px solid var(--border-color);
-            color: var(--text-secondary);
+            color: #cccccc;
             font-size: 0.9rem;
             vertical-align: top;
         }
         .custom-table tbody tr:hover {
-            background: rgba(0, 255, 65, 0.03);
+            background: rgba(0, 255, 65, 0.05);
+        }
+        .custom-table tbody tr {
+            background: #111111;
+        }
+        .custom-table tbody tr:nth-child(even) {
+            background: #0d0d0d;
         }
 
         /* Quiz styles */
@@ -172,21 +186,34 @@
             margin: 1.5rem 0;
             line-height: 1.6;
             text-align: left;
+            color: #e0e0e0;
+        }
+        #question p {
+            color: #e0e0e0;
         }
         .email-simulation {
             text-align: left;
             border: 1px solid var(--border-color);
             padding: 1.25rem;
             border-radius: 10px;
-            background: var(--bg-secondary);
+            background: #1a1a1a;
             margin: 1rem 0;
+            color: #e0e0e0;
+        }
+        .email-simulation p,
+        .email-simulation span {
+            color: #e0e0e0;
         }
         .email-simulation b {
-            color: var(--cyan);
+            color: #00d4ff;
         }
         .email-simulation a {
-            color: var(--primary);
+            color: #00ff41;
             word-break: break-all;
+        }
+        .email-simulation .email-meta {
+            color: #aaaaaa;
+            font-size: 0.9rem;
         }
         .whatsapp-simulation {
             text-align: left;
@@ -194,6 +221,11 @@
             padding: 1rem;
             border-radius: 10px;
             margin: 1rem 0;
+            color: #ffffff;
+        }
+        .whatsapp-simulation p,
+        .whatsapp-simulation span {
+            color: #ffffff;
         }
         .whatsapp-simulation b {
             color: #25d366;
@@ -203,23 +235,32 @@
             padding: 1.5rem;
             text-align: center;
             border-radius: 10px;
-            background: var(--bg-secondary);
+            background: #1a1a1a;
             margin: 1rem 0;
+            color: #e0e0e0;
+        }
+        .login-simulation p,
+        .login-simulation label {
+            color: #e0e0e0;
         }
         .login-simulation input {
             display: block;
             width: 80%;
             margin: 0.5rem auto;
             padding: 8px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
+            background: #0a0a0a;
+            border: 1px solid #333;
             border-radius: 4px;
-            color: var(--text-primary);
+            color: #e0e0e0;
         }
         .login-simulation .warning {
             color: #ff6464;
             font-size: 0.9rem;
             margin-top: 1rem;
+        }
+        .login-simulation h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
         }
         .quiz-buttons {
             display: flex;
@@ -277,15 +318,19 @@
 
         /* Results */
         .result-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+            background: #111111;
+            border: 1px solid #1a1a1a;
             border-radius: 12px;
             padding: 1.5rem;
             margin: 1rem 0;
         }
         .result-card h4 {
-            color: var(--cyan);
+            color: #00d4ff;
             margin-bottom: 1rem;
+        }
+        .result-card p,
+        .result-card span {
+            color: #cccccc;
         }
         .progress-result {
             height: 20px;
@@ -332,20 +377,26 @@
             margin: 2rem 0;
         }
         .summary-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            background: #111111;
+            border: 1px solid #1a1a1a;
             border-radius: 12px;
             padding: 1.5rem;
         }
         .summary-card h4 {
-            color: var(--cyan);
+            color: #00d4ff;
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
         .summary-card p {
-            color: var(--text-secondary);
+            olor: #bbbbbb;
             margin-bottom: 0.75rem;
             line-height: 1.6;
+        }
+        .summary-card ul {
+            color: #bbbbbb;
+        }
+        .summary-card li {
+            color: #bbbbbb;
         }
         .badge-mini {
             display: inline-block;
@@ -366,16 +417,17 @@
         }
         .ref-list li {
             margin-bottom: 0.75rem;
-            color: var(--text-secondary);
+            color: #bbbbbb;
             font-size: 0.9rem;
             line-height: 1.5;
         }
         .ref-list a {
-            color: var(--primary);
+            color: #00ff41;
             word-break: break-all;
         }
         .ref-list a:hover {
             text-decoration: underline;
+            color: #00d4ff;
         }
 
         /* Section visibility */
