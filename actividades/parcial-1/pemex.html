@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analisis Ciberataque PEMEX | Mayeli Sanchez</title>
+     <title>Actividad 01 | Ciberataque a PEMEX</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,89 +48,147 @@
                 <header style="margin-bottom: 2rem;">
                     <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_01 - Parcial 1</span>
                     <h1 class="page-title" style="padding: 0;">
-                        Analisis de Ciberataque <span class="highlight">PEMEX</span>
+                        Analisis del ciberataque a <span class="highlight">PEMEX</span>
                     </h1>
                 </header>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Ransomware
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> DoppelPaymer
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Noviembre 2019
-                    </span>
-                </div>
-
-                <!-- Content -->
+                <!-- 1) Introduccion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Descripcion del Incidente</h2>
+                    <h2><span class="icon">#</span> 1) Introduccion</h2>
                     <p>
-                        El 10 de noviembre de 2019, Petroleos Mexicanos (PEMEX) sufrio un ataque de ransomware 
-                        que afecto aproximadamente el 5% de sus computadoras. El malware utilizado fue 
-                        DoppelPaymer, una variante sofisticada que cifra archivos y exige rescate en criptomonedas.
+                        El 10 de noviembre de 2019, Petroleos Mexicanos (PEMEX) fue victima de un ataque de ransomware de alto impacto,
+                        atribuido al grupo <strong>Indrik Spider</strong> mediante la variante <strong>DoppelPaymer</strong>. El incidente paralizo procesos administrativos
+                        y logisticos, afectando la continuidad operativa y generando impacto economico y reputacional.
                     </p>
                 </section>
 
+                <!-- 2) Desarrollo -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Vector de Ataque</h2>
+                    <h2><span class="icon">#</span> 2) Desarrollo</h2>
+                    <p><strong>Actor y malware:</strong> operacion tipo "Big Game Hunting" con DoppelPaymer.</p>
+                    
+                    <h3>Tecnicas y etapas (ejemplos):</h3>
                     <ul>
-                        <li>Correo electronico de phishing como punto de entrada inicial</li>
-                        <li>Explotacion de vulnerabilidades en sistemas no parcheados</li>
-                        <li>Movimiento lateral dentro de la red corporativa</li>
-                        <li>Cifrado de archivos criticos con extension .locked</li>
+                        <li>Phishing como vector inicial (carga de malware).</li>
+                        <li>Movimiento lateral con servicios remotos (RDP/SMB) y robo de credenciales.</li>
+                        <li>Exfiltracion de informacion previa al cifrado (doble extorsion).</li>
+                        <li>Impacto por cifrado y respuesta de emergencia (apagado de red).</li>
+                    </ul>
+
+                    <h3>Factores que facilitaron el ataque:</h3>
+                    <ul>
+                        <li>Gestion deficiente de vulnerabilidades (servicios desactualizados / superficie de ataque expuesta).</li>
+                        <li>Uso de sistemas legados y falta de segmentacion.</li>
+                        <li>Respaldos no aislados (riesgo de cifrado de backups).</li>
+                    </ul>
+
+                    <h3>Mapeo rapido a MITRE ATT&CK</h3>
+                    <ul>
+                        <li><strong>T1566:</strong> Phishing (vector inicial).</li>
+                        <li><strong>T1021:</strong> Remote Services (movimiento lateral por RDP/SMB).</li>
+                        <li><strong>T1490:</strong> Inhibit System Recovery (eliminacion de mecanismos de recuperacion).</li>
                     </ul>
                 </section>
 
+                <!-- 3) Material -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Impacto</h2>
-                    <ul>
-                        <li>Demanda de rescate: 565 Bitcoin (~4.9 millones USD)</li>
-                        <li>Sistemas administrativos comprometidos</li>
-                        <li>Interrupcion de operaciones en algunas areas</li>
-                        <li>Afectacion a la continuidad del negocio</li>
-                    </ul>
-                </section>
+                    <h2><span class="icon">#</span> 3) Material</h2>
+                    
+                    <h3>Linea del tiempo del incidente</h3>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha / fase</th>
+                                    <th>Evento</th>
+                                    <th>Descripcion tecnica</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sept - Oct 2019</td>
+                                    <td>Infiltracion silenciosa</td>
+                                    <td>Acceso inicial y reconocimiento interno para identificar sistemas criticos.</td>
+                                </tr>
+                                <tr>
+                                    <td>01 - 08 Nov 2019</td>
+                                    <td>Movimiento lateral</td>
+                                    <td>Extraccion de credenciales y propagacion mediante servicios remotos.</td>
+                                </tr>
+                                <tr>
+                                    <td>09 Nov 2019</td>
+                                    <td>Exfiltracion</td>
+                                    <td>Robo de informacion antes de ejecutar el cifrado (doble extorsion).</td>
+                                </tr>
+                                <tr>
+                                    <td>10 Nov 2019</td>
+                                    <td>Detonacion del cifrado</td>
+                                    <td>Ejecucion masiva del ransomware y bloqueo de sistemas administrativos.</td>
+                                </tr>
+                                <tr>
+                                    <td>11 - 12 Nov 2019</td>
+                                    <td>Respuesta de emergencia</td>
+                                    <td>Aislamiento y apagado preventivo de la red institucional.</td>
+                                </tr>
+                                <tr>
+                                    <td>30 Nov 2019</td>
+                                    <td>Filtracion publica</td>
+                                    <td>Publicacion de datos robados tras la negativa de pago.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Comando del Atacante</h2>
-                    <div class="code-block">
-                        <code>
-# Payload tipico de DoppelPaymer<br>
-> Encrypt-Files -Path "C:\*" -Extension ".locked"<br>
-> Create-RansomNote -Amount "565 BTC" -Wallet "bc1q..."<br>
-> Disable-Recovery -DeleteShadowCopies $true
-                        </code>
+                    <h3 style="margin-top: 2rem;">Evaluacion del impacto (Modelo CIA)</h3>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Dimension</th>
+                                    <th>Nivel de impacto</th>
+                                    <th>Consecuencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Confidencialidad</td>
+                                    <td><span class="status-critical">Critico</span></td>
+                                    <td>Exposicion de informacion sensible y datos estrategicos.</td>
+                                </tr>
+                                <tr>
+                                    <td>Integridad</td>
+                                    <td><span class="status-high">Alto</span></td>
+                                    <td>Alteracion y cifrado irreversible de archivos y sistemas.</td>
+                                </tr>
+                                <tr>
+                                    <td>Disponibilidad</td>
+                                    <td><span class="status-critical">Muy alto</span></td>
+                                    <td>Paralisis operativa y afectacion de servicios logisticos nacionales.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
+                <!-- 4) Reflexion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Lecciones Aprendidas</h2>
-                    <ul>
-                        <li>Importancia de mantener sistemas actualizados</li>
-                        <li>Necesidad de backups offline y probados regularmente</li>
-                        <li>Capacitacion continua contra phishing</li>
-                        <li>Segmentacion de red para limitar movimiento lateral</li>
-                        <li>Plan de respuesta a incidentes documentado</li>
-                    </ul>
+                    <h2><span class="icon">#</span> 4) Reflexion</h2>
+                    <p>
+                        Este caso demuestra que un incidente de gran escala no siempre depende de tecnicas "imparables", sino de fallas
+                        acumuladas en gestion: parches pendientes, infraestructura obsoleta, falta de segmentacion y controles de respaldo.
+                        En Mexico y LATAM, priorizar medidas practicas (inventario, parcheo, MFA, respaldos inmutables y monitoreo) puede
+                        reducir drasticamente el impacto operativo y economico.
+                    </p>
                 </section>
 
+                <!-- 5) Referencias -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Recomendaciones de Prevencion</h2>
-                    <div class="code-block">
-                        <code>
-# Checklist de seguridad<br>
-[x] Actualizaciones de seguridad al dia<br>
-[x] Solucion EDR implementada<br>
-[x] Backups 3-2-1 (3 copias, 2 medios, 1 offsite)<br>
-[x] Segmentacion de red<br>
-[x] MFA en accesos criticos<br>
-[x] Capacitacion anti-phishing trimestral
-                        </code>
-                    </div>
+                    <h2><span class="icon">#</span> 5) Referencias</h2>
+                    <ul>
+                        <li>Auditoria Superior de la Federacion (ASF) - Informes relacionados a TI y ciberseguridad.</li>
+                        <li>MITRE ATT&CK Framework - tecnicas asociadas a phishing, movimiento lateral e impacto.</li>
+                        <li>Reportes de inteligencia de amenazas (p. ej., analisis de DoppelPaymer y grupos asociados).</li>
+                    </ul>
                 </section>
 
                 <!-- Download PDF -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defensa de Red | Mayeli Sanchez</title>
+    <title>Actividad 04 | Defensa en red</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,84 +48,151 @@
                 <header style="margin-bottom: 2rem;">
                     <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_04 - Parcial 1</span>
                     <h1 class="page-title" style="padding: 0;">
-                        Defensa de <span class="highlight">Red</span>
+                        Mecanismos de defensa en red (<span class="highlight">Firewall con iptables</span>)
                     </h1>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">
+                        Implementacion de reglas en <strong>iptables</strong> para aplicar una politica restrictiva y permitir unicamente el trafico necesario
+                        de acuerdo con una topologia tipica LAN-Firewall-Internet.
+                    </p>
                 </header>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Defense in Depth
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> IDS/IPS
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Segmentacion
-                    </span>
-                </div>
-
-                <!-- Content -->
+                 <!-- 1) Introduccion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Defensa en Profundidad</h2>
+                    <h2><span class="icon">#</span> 1) Introduccion</h2>
                     <p>
-                        La defensa en profundidad es una estrategia que utiliza multiples capas de seguridad 
-                        para proteger los activos de una organizacion. Si una capa falla, las siguientes 
-                        continuan proporcionando proteccion.
+                        Un firewall perimetral debe aplicar el principio de <strong>minimo privilegio</strong>: bloquear por defecto y permitir solo lo requerido.
+                        Con iptables es posible definir reglas por <strong>protocolo</strong>, <strong>IP origen/destino</strong>, <strong>puertos</strong> y <strong>estado</strong> de la conexion,
+                        logrando un control fino del trafico entre redes.
                     </p>
                 </section>
 
+                <!-- 2) Desarrollo -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Capas de Defensa</h2>
+                    <h2><span class="icon">#</span> 2) Desarrollo</h2>
+                    
+                    <h3>Politica base recomendada</h3>
+                    <p>Primero se establece una politica restrictiva y se permite el trafico de sesiones ya establecidas.</p>
+                    
                     <div class="code-block">
                         <code>
-CAPAS_SEGURIDAD = [<br>
-&nbsp;&nbsp;"1. Perimetro (Firewall, DMZ)",<br>
-&nbsp;&nbsp;"2. Red (IDS/IPS, Segmentacion)",<br>
-&nbsp;&nbsp;"3. Host (Antivirus, HIDS)",<br>
-&nbsp;&nbsp;"4. Aplicacion (WAF, Validacion)",<br>
-&nbsp;&nbsp;"5. Datos (Cifrado, DLP)",<br>
-&nbsp;&nbsp;"6. Usuario (Capacitacion, MFA)"<br>
-]
+# Politica por defecto (restrictiva)<br>
+iptables -P INPUT DROP<br>
+iptables -P FORWARD DROP<br>
+iptables -P OUTPUT ACCEPT<br><br>
+
+# Permitir loopback<br>
+iptables -A INPUT -i lo -j ACCEPT<br><br>
+
+# Permitir conexiones ya establecidas o relacionadas<br>
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT<br>
+iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
                         </code>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Reglas especificas solicitadas</h3>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Accion solicitada</th>
+                                    <th>Regla iptables (ejemplo)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Establecer una politica restrictiva</td>
+                                    <td><code>iptables -P INPUT DROP; iptables -P FORWARD DROP</code></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Permitir trafico de conexiones ya establecidas</td>
+                                    <td><code>iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</code></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Aceptar trafico DNS saliente de la red local</td>
+                                    <td><code>iptables -A FORWARD -p udp -s 192.1.2.0/24 --dport 53 -m state --state NEW -j ACCEPT</code></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Aceptar correo entrante desde Internet al servidor de correo</td>
+                                    <td><code>iptables -A FORWARD -p tcp -d 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT</code></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Permitir correo saliente del servidor de correo hacia Internet</td>
+                                    <td><code>iptables -A FORWARD -p tcp -s 192.1.2.10 --dport 25 -m state --state NEW -j ACCEPT</code></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Aceptar conexiones HTTP desde Internet al servidor web</td>
+                                    <td><code>iptables -A FORWARD -p tcp -d 192.1.2.11 --dport 80 -m state --state NEW -j ACCEPT</code></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Permitir trafico HTTP/HTTPS de la red local hacia Internet</td>
+                                    <td><code>iptables -A FORWARD -p tcp -s 192.1.2.0/24 -m state --state NEW -m multiport --dports 80,443 -j ACCEPT</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="margin-top: 1rem;">
+                        <em>Nota: las IP de servidores (192.1.2.10 correo, 192.1.2.11 web) deben ajustarse a la topologia real.</em>
+                    </p>
+                </section>
+
+                <!-- 3) Material -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> 3) Material multimedia</h2>
+                    <p>A continuacion se resume el objetivo del filtrado por zonas:</p>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Zona</th>
+                                    <th>Trafico permitido</th>
+                                    <th>Motivo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LAN → Internet</td>
+                                    <td>DNS, HTTP/HTTPS</td>
+                                    <td>Navegacion y resolucion de nombres.</td>
+                                </tr>
+                                <tr>
+                                    <td>Internet → Servidores (DMZ/LAN)</td>
+                                    <td>HTTP al web, SMTP al mail</td>
+                                    <td>Publicacion controlada de servicios.</td>
+                                </tr>
+                                <tr>
+                                    <td>Internet → LAN (clientes)</td>
+                                    <td>Bloqueado</td>
+                                    <td>Evitar accesos no autorizados a equipos internos.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
+                <!-- 4) Reflexion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Sistemas IDS/IPS</h2>
-                    <ul>
-                        <li><strong>IDS (Intrusion Detection System):</strong> Detecta y alerta sobre actividad sospechosa</li>
-                        <li><strong>IPS (Intrusion Prevention System):</strong> Detecta y bloquea automaticamente</li>
-                        <li><strong>NIDS:</strong> Monitorea trafico de red</li>
-                        <li><strong>HIDS:</strong> Monitorea actividad en hosts individuales</li>
-                    </ul>
+                    <h2><span class="icon">#</span> 4) Reflexion</h2>
+                    <p>
+                        Un error comun en firewalls es permitir "demasiado" por comodidad. Con una politica restrictiva y reglas especificas
+                        por estado, IP y puertos, se reduce la superficie de ataque y se limita el impacto ante intrusiones. Ademas, separar
+                        servicios publicos (web/correo) y restringir accesos desde Internet hacia clientes internos mejora la postura de seguridad.
+                    </p>
                 </section>
 
+                <!-- 5) Referencias -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Segmentacion de Red</h2>
-                    <div class="code-block">
-                        <code>
-# Ejemplo de segmentacion con VLANs<br><br>
-
-VLAN 10 - Servidores (192.168.10.0/24)<br>
-VLAN 20 - Usuarios (192.168.20.0/24)<br>
-VLAN 30 - Invitados (192.168.30.0/24)<br>
-VLAN 40 - IoT (192.168.40.0/24)<br>
-VLAN 99 - Administracion (192.168.99.0/24)<br><br>
-
-# ACLs entre VLANs para control de trafico
-                        </code>
-                    </div>
-                </section>
-
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Zero Trust Architecture</h2>
+                    <h2><span class="icon">#</span> 5) Referencias</h2>
                     <ul>
-                        <li>Nunca confiar, siempre verificar</li>
-                        <li>Acceso con minimo privilegio</li>
-                        <li>Asumir que la red esta comprometida</li>
-                        <li>Microsegmentacion</li>
-                        <li>Autenticacion continua</li>
+                        <li>Netfilter/iptables - conceptos de cadenas, politicas y filtrado stateful.</li>
+                        <li>Material de clase y practica de firewall perimetral.</li>
                     </ul>
                 </section>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caso OxyMonster - Dark Web | Mayeli Sanchez</title>
+    <title>Actividad 07 | Oxymonster (Dark Web)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,95 +48,102 @@
                 <header style="margin-bottom: 2rem;">
                     <span class="card-tag parcial-2" style="margin-bottom: 1rem; display: inline-block;">ACT_07 - Parcial 2</span>
                     <h1 class="page-title" style="padding: 0;">
-                        Caso <span class="highlight">OxyMonster</span> - Dark Web
+                        La caida del mayor traficante de la dark web (<span class="highlight">Oxymonster</span>)
                     </h1>
                 </header>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Dark Web
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Forense Digital
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Criptomonedas
-                    </span>
-                </div>
-
-                <!-- Content -->
+                <!-- 1) Introduccion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> El Caso</h2>
+                    <h2><span class="icon">#</span> 1) Introduccion</h2>
                     <p>
-                        Gal Vallerius, conocido como "OxyMonster", fue un vendedor de drogas en Dream Market, 
-                        uno de los mercados mas grandes de la dark web. Su caso es un ejemplo de como las 
-                        tecnicas de investigacion forense digital pueden identificar a criminales anonimos.
+                        En esta actividad se analizo el caso "Oxymonster", un vendedor destacado dentro de mercados de la dark web.
+                        A partir del video y el cuestionario, se identifican elementos clave del funcionamiento de estos mercados
+                        (reputacion, escrow, mixers y anonimato), asi como los errores operativos que permitieron su identificacion
+                        y vinculacion con delitos de trafico.
                     </p>
                 </section>
 
+                <!-- 2) Desarrollo -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Perfil del Sospechoso</h2>
-                    <div class="code-block">
-                        <code>
-$ cat /case/oxymonster/profile.json<br><br>
+                    <h2><span class="icon">#</span> 2) Desarrollo</h2>
+                    
+                    <h3>2.1 Autoridades y operacion</h3>
+                    <ul>
+                        <li><strong>Agencias involucradas:</strong> DEA y FBI.</li>
+                        <li><strong>Mercado principal mencionado:</strong> Dream Market.</li>
+                    </ul>
 
-{<br>
-&nbsp;&nbsp;"alias": "OxyMonster",<br>
-&nbsp;&nbsp;"nombre_real": "Gal Vallerius",<br>
-&nbsp;&nbsp;"nacionalidad": "Frances",<br>
-&nbsp;&nbsp;"edad_arresto": 36,<br>
-&nbsp;&nbsp;"mercado": "Dream Market",<br>
-&nbsp;&nbsp;"productos": "Opioides, estimulantes",<br>
-&nbsp;&nbsp;"transacciones_btc": "$700,000+"<br>
-}
-                        </code>
+                    <h3 style="margin-top: 1.5rem;">2.2 Como funciona un mercado en la dark web?</h3>
+                    <ul>
+                        <li><strong>Reputacion:</strong> se construye con calificaciones/comentarios (tipo "Amazon"), ventas exitosas y buena atencion.</li>
+                        <li><strong>Escrow:</strong> el dinero queda "retenido" por el mercado hasta que se confirma la entrega, reduciendo estafas.</li>
+                        <li><strong>Mixer:</strong> servicio que intenta "mezclar" transacciones para dificultar el rastreo del origen/destino de criptomonedas.</li>
+                    </ul>
+
+                    <h3 style="margin-top: 1.5rem;">2.3 Linea de tiempo (resumen del analisis)</h3>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Dato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Inicio de actividades (Oxymonster)</td>
+                                    <td>Mayo 2016</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiempo para rol de administrador</td>
+                                    <td>Aproximadamente 7 meses</td>
+                                </tr>
+                                <tr>
+                                    <td>Droga principal mencionada</td>
+                                    <td>Fentanilo</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </section>
 
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Tecnicas de Investigacion</h2>
-                    <ul>
-                        <li><strong>Analisis de Blockchain:</strong> Rastreo de transacciones Bitcoin</li>
-                        <li><strong>Correlacion de Identidades:</strong> Vinculacion de alias con identidad real</li>
-                        <li><strong>OSINT:</strong> Analisis de redes sociales y presencia online</li>
-                        <li><strong>Analisis Estilistico:</strong> Patrones de escritura unicos</li>
-                        <li><strong>Cooperacion Internacional:</strong> DEA, FBI, Europol</li>
-                    </ul>
-                </section>
-
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Errores del Criminal</h2>
-                    <ul>
-                        <li>Uso del mismo estilo de escritura en foros publicos y dark web</li>
-                        <li>Conexion de wallets de Bitcoin a exchanges con KYC</li>
-                        <li>Informacion personal filtrada en perfiles antiguos</li>
-                        <li>Patrones de comportamiento predecibles</li>
-                    </ul>
-                </section>
-
-                <section class="content-section">
-                    <h2><span class="icon">#</span> El Arresto</h2>
+                    <h3 style="margin-top: 1.5rem;">2.4 Error clave y vinculacion</h3>
                     <p>
-                        Vallerius fue arrestado en el Aeropuerto Internacional de Atlanta en agosto de 2017 
-                        mientras viajaba a una competencia de barbas. Los agentes encontraron su laptop 
-                        desbloqueada con acceso a sus wallets de Bitcoin y cuentas de Dream Market.
+                        En tu evidencia se anota que el error principal fue mantenerse demasiado tiempo operando y dejar rastros
+                        (por ejemplo, actividad prolongada y detalles que permiten correlacion). Tambien se menciona que los agentes
+                        lograron vincularlo por <strong>patrones en comentarios/forma de escribir</strong> y otros indicios operativos.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        Como evidencia definitiva, en tu hoja aparecen elementos como <strong>TOR</strong> y el <strong>codigo PGP</strong> asociado a "Oxymonster"
+                        (usados como parte del proceso de atribucion y correlacion).
                     </p>
                 </section>
 
+                <!-- 3) Material -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Lecciones de Seguridad</h2>
-                    <div class="code-block">
-                        <code>
-# Desde perspectiva de investigacion forense:<br><br>
+                    <h2><span class="icon">#</span> 3) Material (evidencia)</h2>
+                    <p>
+                        Se adjunta el cuestionario resuelto del analisis del video (evidencia en PDF).
+                    </p>
+                </section>
 
-[+] La anonimidad total es muy dificil de mantener<br>
-[+] El analisis de blockchain es efectivo<br>
-[+] Los patrones de comportamiento dejan rastros<br>
-[+] La cooperacion internacional es clave<br>
-[+] Los errores humanos comprometen la seguridad
-                        </code>
-                    </div>
+                <!-- 4) Reflexion -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> 4) Reflexion</h2>
+                    <p>
+                        Este caso muestra que el "anonimato" en la dark web no es absoluto: la atribucion puede lograrse combinando
+                        rastros tecnicos (como correlacion de actividad y criptomonedas) con rastros humanos (estilo de escritura,
+                        habitos y errores operativos). En ciberseguridad, la leccion mas fuerte es que los sistemas pueden tener
+                        protecciones, pero el factor humano y la persistencia del patron suelen abrir la puerta a la identificacion.
+                    </p>
+                </section>
+
+                <!-- 5) Referencias -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> 5) Referencias</h2>
+                    <ul>
+                        <li>Video/Material de clase: "La caida del mayor traficante de la dark web (Oxymonster)".</li>
+                        <li>Conceptos vistos en clase: mercados dark web, escrow, mixers, PGP y anonimato operativo.</li>
+                    </ul>
                 </section>
 
                 <!-- Download PDF -->

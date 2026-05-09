@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firewall con IPTables | Mayeli Sanchez</title>
+     <title>Actividad 03 | iptables</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,121 +48,148 @@
                 <header style="margin-bottom: 2rem;">
                     <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_03 - Parcial 1</span>
                     <h1 class="page-title" style="padding: 0;">
-                        Firewall con <span class="highlight">IPTables</span>
+                        Interpretacion y traduccion de politicas en <span class="highlight">iptables</span>
                     </h1>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">
+                        Articulo sobre el filtrado de trafico en Linux mediante <strong>iptables</strong>, interpretando reglas y su impacto en seguridad perimetral.
+                    </p>
                 </header>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Linux
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Netfilter
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Firewall
-                    </span>
-                </div>
-
-                <!-- Content -->
+                <!-- 1) Introduccion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Introduccion</h2>
+                    <h2><span class="icon">#</span> 1) Introduccion</h2>
                     <p>
-                        IPTables es una herramienta de firewall integrada en el kernel de Linux que permite 
-                        filtrar paquetes de red, realizar NAT y manipular el trafico. Es fundamental para 
-                        la seguridad de servidores Linux.
+                        <strong>iptables</strong> es la herramienta clasica en Linux para administrar reglas de filtrado de paquetes a nivel kernel (Netfilter).
+                        Su uso es clave para aplicar politicas de seguridad como "denegar por defecto", permitir servicios especificos y controlar conexiones
+                        segun protocolo, puertos y estado de la sesion.
                     </p>
                 </section>
 
+                <!-- 2) Desarrollo -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Estructura de IPTables</h2>
-                    <div class="code-block">
-                        <code>
-# Tablas principales:<br>
-- filter: Filtrado de paquetes (INPUT, OUTPUT, FORWARD)<br>
-- nat: Traduccion de direcciones (PREROUTING, POSTROUTING)<br>
-- mangle: Modificacion de paquetes<br>
-- raw: Excepciones al connection tracking
-                        </code>
+                    <h2><span class="icon">#</span> 2) Desarrollo</h2>
+                    
+                    <h3>Conceptos base</h3>
+                    <ul>
+                        <li><strong>Cadenas:</strong> INPUT (hacia el host), OUTPUT (desde el host), FORWARD (transito entre redes).</li>
+                        <li><strong>Acciones:</strong> ACCEPT (permitir), DROP (bloquear silencioso), REJECT (bloquear con respuesta).</li>
+                        <li><strong>Stateful firewall:</strong> filtrado por estado (NEW, ESTABLISHED, RELATED).</li>
+                    </ul>
+
+                    <h3 style="margin-top: 2rem;">Anatomia de una regla</h3>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Parte</th>
+                                    <th>Ejemplo</th>
+                                    <th>Significado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cadena</td>
+                                    <td><code>-A INPUT</code></td>
+                                    <td>Aplica a trafico que entra al host.</td>
+                                </tr>
+                                <tr>
+                                    <td>Protocolo</td>
+                                    <td><code>-p tcp</code></td>
+                                    <td>Filtra solo TCP.</td>
+                                </tr>
+                                <tr>
+                                    <td>Puerto destino</td>
+                                    <td><code>--dport 22</code></td>
+                                    <td>Servicio destino (ej. SSH).</td>
+                                </tr>
+                                <tr>
+                                    <td>Estado</td>
+                                    <td><code>-m state --state NEW</code></td>
+                                    <td>Conexiones nuevas.</td>
+                                </tr>
+                                <tr>
+                                    <td>Accion</td>
+                                    <td><code>-j ACCEPT</code></td>
+                                    <td>Permite el trafico.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+
+                    <h3 style="margin-top: 2rem;">Ejemplos (interpretacion / traduccion)</h3>
+                    <ul>
+                        <li>
+                            <strong>Permitir conexiones establecidas:</strong><br>
+                            <code class="code-inline">iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</code><br>
+                            <em>Traduccion: "Deja pasar respuestas y trafico relacionado a sesiones ya abiertas."</em>
+                        </li>
+                        <li style="margin-top: 1rem;">
+                            <strong>Bloquear un puerto especifico (ej. Telnet 23):</strong><br>
+                            <code class="code-inline">iptables -A INPUT -p tcp --dport 23 -j DROP</code><br>
+                            <em>Traduccion: "Bloquea conexiones entrantes al servicio Telnet."</em>
+                        </li>
+                        <li style="margin-top: 1rem;">
+                            <strong>Permitir SSH solo desde una IP:</strong><br>
+                            <code class="code-inline">iptables -A INPUT -p tcp -s 192.168.1.10 --dport 22 -m state --state NEW -j ACCEPT</code><br>
+                            <em>Traduccion: "Solo el host 192.168.1.10 puede iniciar SSH al servidor."</em>
+                        </li>
+                    </ul>
                 </section>
 
+                <!-- 3) Material -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Comandos Basicos</h2>
-                    <div class="code-block">
-                        <code>
-# Ver reglas actuales<br>
-$ sudo iptables -L -n -v<br><br>
-
-# Limpiar todas las reglas<br>
-$ sudo iptables -F<br><br>
-
-# Politica por defecto: DROP<br>
-$ sudo iptables -P INPUT DROP<br>
-$ sudo iptables -P FORWARD DROP<br>
-$ sudo iptables -P OUTPUT ACCEPT
-                        </code>
+                    <h2><span class="icon">#</span> 3) Material</h2>
+                    <h3>Flujo de decision (vista rapida)</h3>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de trafico</th>
+                                    <th>Cadena tipica</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Internet → Servidor</td>
+                                    <td>INPUT</td>
+                                    <td>Acceso HTTP/HTTPS al host</td>
+                                </tr>
+                                <tr>
+                                    <td>Servidor → Internet</td>
+                                    <td>OUTPUT</td>
+                                    <td>Actualizaciones / DNS / descargas</td>
+                                </tr>
+                                <tr>
+                                    <td>LAN → WAN (router/firewall)</td>
+                                    <td>FORWARD</td>
+                                    <td>Clientes navegando</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <p style="margin-top: 1rem;">
+                        <em>Nota: En firewall perimetral, la cadena <strong>FORWARD</strong> suele ser la mas utilizada para controlar trafico entre redes.</em>
+                    </p>
                 </section>
 
+                <!-- 4) Reflexion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Reglas de Seguridad Implementadas</h2>
-                    <div class="code-block">
-                        <code>
-# Permitir loopback<br>
-$ sudo iptables -A INPUT -i lo -j ACCEPT<br><br>
-
-# Permitir conexiones establecidas<br>
-$ sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT<br><br>
-
-# Permitir SSH (puerto 22)<br>
-$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br><br>
-
-# Permitir HTTP/HTTPS<br>
-$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>
-$ sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT<br><br>
-
-# Bloquear ping floods<br>
-$ sudo iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT<br><br>
-
-# Registrar paquetes denegados<br>
-$ sudo iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: "
-                        </code>
-                    </div>
+                    <h2><span class="icon">#</span> 4) Reflexion</h2>
+                    <p>
+                        Una politica bien disenada en iptables reduce superficie de ataque aplicando "<strong>denegar por defecto</strong>" y habilitando
+                        unicamente servicios necesarios. El filtrado por estado ayuda a permitir respuestas legitimas sin abrir el firewall de mas.
+                        Errores comunes: abrir puertos innecesarios, no limitar por IP origen y no registrar (logging) eventos relevantes.
+                    </p>
                 </section>
 
+                <!-- 5) Referencias -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Proteccion contra Ataques</h2>
-                    <div class="code-block">
-                        <code>
-# Proteccion contra SYN Flood<br>
-$ sudo iptables -A INPUT -p tcp --syn -m limit --limit 1/s --limit-burst 3 -j ACCEPT<br><br>
-
-# Bloquear paquetes invalidos<br>
-$ sudo iptables -A INPUT -m state --state INVALID -j DROP<br><br>
-
-# Proteccion contra port scanning<br>
-$ sudo iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP<br>
-$ sudo iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
-                        </code>
-                    </div>
-                </section>
-
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Guardar Reglas</h2>
-                    <div class="code-block">
-                        <code>
-# Guardar reglas (Debian/Ubuntu)<br>
-$ sudo iptables-save > /etc/iptables/rules.v4<br><br>
-
-# Restaurar reglas<br>
-$ sudo iptables-restore < /etc/iptables/rules.v4<br><br>
-
-# Para persistencia, instalar iptables-persistent<br>
-$ sudo apt install iptables-persistent
-                        </code>
-                    </div>
+                    <h2><span class="icon">#</span> 5) Referencias</h2>
+                    <ul>
+                        <li>Documentacion de Netfilter/iptables (Linux).</li>
+                        <li>Material de clase y practicas de filtrado en firewall.</li>
+                    </ul>
                 </section>
 
                 <!-- Download PDF -->

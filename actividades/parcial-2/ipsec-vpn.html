@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPSec VPN Configuration | Mayeli Sanchez</title>
+    <title>Actividad 06 | Implementacion IPSec VPN</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,101 +48,88 @@
                 <header style="margin-bottom: 2rem;">
                     <span class="card-tag parcial-2" style="margin-bottom: 1rem; display: inline-block;">ACT_06 - Parcial 2</span>
                     <h1 class="page-title" style="padding: 0;">
-                        <span class="highlight">IPSec</span> VPN Configuration
+                        Implementacion <span class="highlight">IPSec VPN</span>
                     </h1>
                 </header>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> IPSec
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Site-to-Site
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Tunneling
-                    </span>
-                </div>
-
-                <!-- Content -->
+                <!-- 1) Introduccion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Que es IPSec?</h2>
+                     <h2><span class="icon">#</span> 1) Introduccion</h2>
                     <p>
-                        IPSec (Internet Protocol Security) es un conjunto de protocolos que proporcionan 
-                        seguridad a nivel de red mediante autenticacion y cifrado de paquetes IP. Se utiliza 
-                        principalmente para crear VPNs seguras.
+                        En esta actividad se realizo el montaje y configuracion base de una VPN sitio-a-sitio con IPSec en Cisco Packet Tracer.
+                        El objetivo fue comprender el flujo general de implementacion: validar conectividad entre sedes, definir el "trafico interesante"
+                        mediante ACL y preparar la negociacion inicial (ISAKMP/IKE) para el tunel VPN.
                     </p>
                 </section>
 
+                <!-- 2) Desarrollo -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Componentes de IPSec</h2>
+                    <h2><span class="icon">#</span> 2) Desarrollo</h2>
+                    
+                    <h3>2.1 Preparacion del entorno</h3>
                     <ul>
-                        <li><strong>AH (Authentication Header):</strong> Integridad y autenticacion</li>
-                        <li><strong>ESP (Encapsulating Security Payload):</strong> Confidencialidad, integridad y autenticacion</li>
-                        <li><strong>IKE (Internet Key Exchange):</strong> Negociacion de claves</li>
-                        <li><strong>SA (Security Association):</strong> Parametros de seguridad acordados</li>
+                        <li>Se descargo e instalo Cisco Packet Tracer desde NetAcad.</li>
+                        <li>Se verifico el acceso a recursos de Cisco Networking Academy para utilizar la herramienta.</li>
                     </ul>
+
+                    <h3 style="margin-top: 1.5rem;">2.2 Topologia y direccionamiento</h3>
+                    <p>
+                        Se construyo una topologia con dos sedes (LAN 192.168.1.0/24 y LAN 192.168.3.0/24) conectadas por un router "ISP"
+                        con enlaces publicos 209.165.100.0/24 y 209.165.200.0/24. El tunel IPSec se plantea entre los routers de borde.
+                    </p>
+
+                    <h3 style="margin-top: 1.5rem;">2.3 Configuracion inicial de interfaces y rutas</h3>
+                    <p>
+                        Se configuraron las interfaces LAN/WAN de cada router, y se agregaron rutas (incluyendo ruta por defecto hacia el ISP)
+                        para asegurar conectividad entre redes antes de aplicar cifrado.
+                    </p>
+
+                    <h3 style="margin-top: 1.5rem;">2.4 Pruebas de conectividad (pre-VPN)</h3>
+                    <p>
+                        Se ejecutaron pruebas de conectividad mediante <strong>ping</strong> desde un host de una sede hacia la otra (ej. 192.168.3.10),
+                        confirmando que el enrutamiento funciona correctamente antes de iniciar la fase IPSec.
+                    </p>
+
+                    <h3 style="margin-top: 1.5rem;">2.5 ACL para trafico interesante</h3>
+                    <p>
+                        Se definio una ACL (access-list 100) para identificar el trafico entre 192.168.1.0/24 y 192.168.3.0/24 como trafico que debe
+                        viajar cifrado por el tunel. Esto es clave porque IPSec se activa al detectar trafico que coincida con esa politica.
+                    </p>
+
+                    <h3 style="margin-top: 1.5rem;">2.6 Problema detectado (ISAKMP)</h3>
+                    <p>
+                        Al continuar con la fase de negociacion, el entorno mostro que <strong>no se detecta ISAKMP</strong>, por lo que la configuracion quedo incompleta.
+                        Esto puede ocurrir en Packet Tracer por limitaciones del modelo/IOS simulado o por diferencias entre comandos (ISAKMP vs IKEv2).
+                    </p>
                 </section>
 
+                <!-- 3) Material -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Modos de Operacion</h2>
-                    <div class="code-block">
-                        <code>
-# Modo Transporte<br>
-- Solo cifra el payload<br>
-- Header IP original se mantiene<br>
-- Usado para comunicacion host-to-host<br><br>
-
-# Modo Tunel<br>
-- Cifra todo el paquete IP original<br>
-- Nuevo header IP se agrega<br>
-- Usado para VPN site-to-site
-                        </code>
-                    </div>
+                    <h2><span class="icon">#</span> 3) Material (evidencia)</h2>
+                    <p>
+                        Se adjunta evidencia en PDF con capturas de la instalacion, topologia, configuracion inicial, pruebas de conectividad,
+                        ACL aplicada y el error relacionado con ISAKMP.
+                    </p>
                 </section>
 
+                <!-- 4) Reflexion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Configuracion Site-to-Site</h2>
-                    <div class="code-block">
-                        <code>
-# Fase 1 - IKE (ISAKMP)<br>
-crypto isakmp policy 10<br>
-&nbsp;encryption aes 256<br>
-&nbsp;hash sha256<br>
-&nbsp;authentication pre-share<br>
-&nbsp;group 14<br>
-&nbsp;lifetime 86400<br><br>
-
-crypto isakmp key CLAVE_SECRETA address 203.0.113.1<br><br>
-
-# Fase 2 - IPSec Transform Set<br>
-crypto ipsec transform-set TSET esp-aes 256 esp-sha256-hmac<br>
-&nbsp;mode tunnel<br><br>
-
-# Crypto Map<br>
-crypto map VPN_MAP 10 ipsec-isakmp<br>
-&nbsp;set peer 203.0.113.1<br>
-&nbsp;set transform-set TSET<br>
-&nbsp;match address VPN_ACL
-                        </code>
-                    </div>
+                    <h2><span class="icon">#</span> 4) Reflexion</h2>
+                    <p>
+                        Esta practica mostro que una VPN IPSec depende primero de una red estable: si el enrutamiento y la conectividad no son correctos,
+                        el tunel no puede levantarse. Tambien dejo como aprendizaje que las herramientas de simulacion pueden limitar la implementacion,
+                        por lo que es necesario validar compatibilidad de comandos/modelos (por ejemplo, usar IKEv2 si aplica) o migrar a un entorno
+                        mas completo para laboratorio cuando Packet Tracer no soporte ciertos componentes.
+                    </p>
                 </section>
 
+                <!-- 5) Referencias -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Verificacion</h2>
-                    <div class="code-block">
-                        <code>
-# Verificar estado de IKE<br>
-$ show crypto isakmp sa<br><br>
-
-# Verificar tuneles IPSec<br>
-$ show crypto ipsec sa<br><br>
-
-# Ver estadisticas<br>
-$ show crypto engine connections active
-                        </code>
-                    </div>
+                    <h2><span class="icon">#</span> 5) Referencias</h2>
+                    <ul>
+                        <li>Guia / presentacion de clase: Implementacion IPSec VPN (Packet Tracer).</li>
+                        <li>Documentacion general de IPSec/IKE (conceptos de Phase 1 y Phase 2).</li>
+                    </ul>
                 </section>
 
                 <!-- Download PDF -->

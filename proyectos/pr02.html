@@ -3,74 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingenieria Social | Mayeli Sanchez</title>
+    <title>PR02 - Ingenieria Social | Mayeli Sanchez</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
+         /* Tabs navigation */
+        .top-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 2rem auto;
+            padding: 10px;
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+        .top-tabs a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .top-tabs a:hover {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--primary);
+        }
+        .top-tabs a.active {
+            background: var(--primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+        }
+
+        /* Platform cards */
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .platform-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
+        }
+        .platform-top {
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, var(--primary), var(--cyan));
+            color: var(--bg-primary);
+        }
+        .platform-top h4 {
+            margin: 0;
+            font-weight: 700;
+        }
+        .platform-body {
+            padding: 1.25rem;
+        }
+        .platform-tag {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .platform-body p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Table */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+        .custom-table thead th {
+            background: var(--bg-secondary);
+            color: var(--primary);
+            padding: 14px 12px;
+            font-size: 0.85rem;
+            text-align: left;
+            border-bottom: 2px solid var(--primary);
+            white-space: nowrap;
+        }
+        .custom-table tbody td {
+            padding: 14px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            vertical-align: top;
+        }
+        .custom-table tbody tr:hover {
+            background: rgba(0, 255, 65, 0.03);
+        }
+
+        /* Quiz styles */
         .quiz-container {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
         }
-        .quiz-question {
+        .quiz-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .quiz-sub {
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
-        .quiz-question h4 {
+        .quiz-input {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 300px;
+            margin: 1rem auto;
+            display: block;
+            font-family: inherit;
+        }
+        .quiz-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+        }
+        .progress-bar-container {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--cyan));
+            transition: width 0.3s ease;
+        }
+        #question {
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .email-simulation {
+            text-align: left;
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            margin: 1rem 0;
+        }
+        .email-simulation b {
+            color: var(--cyan);
+        }
+        .email-simulation a {
+            color: var(--primary);
+            word-break: break-all;
+        }
+        .whatsapp-simulation {
+            text-align: left;
+            background: #075e54;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .whatsapp-simulation b {
+            color: #25d366;
+        }
+        .login-simulation {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            margin: 1rem 0;
+        }
+        .login-simulation input {
+            display: block;
+            width: 80%;
+            margin: 0.5rem auto;
+            padding: 8px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+        .login-simulation .warning {
+            color: #ff6464;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .quiz-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .quiz-buttons button {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .quiz-buttons .btn-safe {
+            background: linear-gradient(135deg, var(--primary), #00cc33);
+            color: var(--bg-primary);
+        }
+        .quiz-buttons .btn-safe:hover {
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.4);
+            transform: scale(1.05);
+        }
+        .quiz-buttons .btn-phishing {
+            background: linear-gradient(135deg, #ff6464, #ff4444);
+            color: #fff;
+        }
+        .quiz-buttons .btn-phishing:hover {
+            box-shadow: 0 5px 20px rgba(255, 100, 100, 0.4);
+            transform: scale(1.05);
+        }
+        .quiz-buttons button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        #feedback {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            min-height: 60px;
+        }
+        #feedback.correct {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        #feedback.incorrect {
+            background: rgba(255, 100, 100, 0.1);
+            border: 1px solid #ff6464;
+            color: #ff6464;
+        }
+
+        /* Results */
+        .result-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .result-card h4 {
             color: var(--cyan);
             margin-bottom: 1rem;
         }
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .progress-result {
+            height: 20px;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            overflow: hidden;
         }
-        .quiz-option {
+        .progress-result .fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        .progress-result .fill.green {
+            background: linear-gradient(90deg, var(--primary), #00cc33);
+        }
+        .progress-result .fill.blue {
+            background: linear-gradient(90deg, var(--cyan), #0066ff);
+        }
+        .ranking-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .ranking-list li {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            background: var(--bg-secondary);
+            justify-content: space-between;
+        }
+        .ranking-list li:last-child {
+            border-bottom: none;
+        }
+        .ranking-list .rank {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Summary cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .summary-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            padding: 1.5rem;
         }
-        .quiz-option:hover {
-            border-color: var(--green-neon);
+        .summary-card h4 {
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
-        .quiz-option input {
-            accent-color: var(--green-neon);
+        .summary-card p {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
         }
-        .quiz-option.correct {
-            border-color: var(--green-neon);
-            background: rgba(0, 255, 65, 0.1);
+        .badge-mini {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--cyan);
+            margin-right: 6px;
+            margin-bottom: 6px;
         }
-        .quiz-option.incorrect {
-            border-color: #ff6464;
-            background: rgba(255, 100, 100, 0.1);
+
+        /* References */
+        .ref-list {
+            list-style-position: inside;
+            padding: 0;
         }
-        .quiz-result {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 4px;
+        .ref-list li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .ref-list a {
+            color: var(--primary);
+            word-break: break-all;
+        }
+        .ref-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section visibility */
+        .section-content {
             display: none;
         }
-        .quiz-result.show {
+        .section-content.active {
             display: block;
-        }
-        .quiz-result.success {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--green-neon);
-            color: var(--green-neon);
-        }
-        .quiz-result.partial {
-            background: rgba(255, 200, 0, 0.1);
-            border: 1px solid #ffc800;
-            color: #ffc800;
         }
     </style>
 </head>
@@ -94,192 +407,292 @@
         </div>
     </nav>
 
-    <!-- Project Content -->
-    <article class="activity-detail">
+    <!-- Hero -->
+    <header class="activity-header" style="padding: 100px 0 60px;">
         <div class="container">
-            <div class="activity-content">
-                <!-- Breadcrumb -->
-                <nav class="breadcrumb">
-                    <a href="../index.html">~</a>
-                    <span class="separator">/</span>
-                    <a href="../proyectos.html">proyectos</a>
-                    <span class="separator">/</span>
-                    <span class="current">pr02</span>
-                </nav>
+            <span class="card-tag parcial-2" style="margin-bottom: 1rem; display: inline-block;">PR02 - Proyecto</span>
+            <h1 class="page-title" style="padding: 0; font-size: clamp(1.8rem, 5vw, 3rem);">
+                El eslabon mas debil: <span class="highlight">diseno etico de una campana de ingenieria social</span>
+            </h1>
+            <p style="color: var(--text-secondary); max-width: 800px; margin-top: 1rem;">
+                Investigacion comparativa de plataformas profesionales de simulacion de phishing y concientizacion
+                en ciberseguridad, analizadas desde un enfoque tecnico, etico y orientado a la reduccion del riesgo humano.
+            </p>
+        </div>
+    </header>
 
-                <!-- Header -->
-                <header style="margin-bottom: 2rem;">
-                    <span class="card-tag parcial-2" style="margin-bottom: 1rem; display: inline-block;">PR02 - Proyecto</span>
-                    <h1 class="page-title" style="padding: 0;">
-                        Ingenieria Social: <span class="highlight">Concientizacion</span>
-                    </h1>
-                </header>
+    <!-- Tabs Navigation -->
+    <div class="top-tabs">
+        <a href="#investigacion" class="tab-link" onclick="showSection('investigacion', this)">Investigacion</a>
+        <a href="#comparativa" class="tab-link" onclick="showSection('comparativa', this)">Comparativa</a>
+        <a href="#quiz" class="tab-link active" onclick="showSection('quiz', this)">Quiz Interactivo</a>
+        <a href="#referencias" class="tab-link" onclick="showSection('referencias', this)">Referencias</a>
+    </div>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Phishing
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Manipulacion
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Prevencion
-                    </span>
-                </div>
+    <main class="container" style="padding-bottom: 3rem;">
 
-                <!-- Content -->
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Que es la Ingenieria Social?</h2>
-                    <p>
-                        La ingenieria social es el arte de manipular a las personas para que revelen 
-                        informacion confidencial o realicen acciones que comprometan la seguridad. 
-                        No requiere habilidades tecnicas avanzadas, sino comprension de la psicologia humana.
-                    </p>
-                </section>
+        <!-- SECCION: INVESTIGACION -->
+        <section id="investigacion" class="section-content">
+            <div class="content-section">
+                <h2><span class="icon">#</span> Introduccion</h2>
+                <p>
+                    Para el diseno etico de una campana de ingenieria social, se analizaron ocho plataformas del mercado
+                    enfocadas en <strong>security awareness training</strong>, <strong>simulacion de phishing</strong> y 
+                    <strong>medicion del riesgo humano</strong>.
+                </p>
+                <p>
+                    Las plataformas revisadas fueron: <strong>Hoxhunt, Proofpoint, KnowBe4, Cofense, Phished, NINJIO, Mimecast e Infosec IQ</strong>.
+                    El objetivo de esta investigacion es identificar cuales ofrecen mejores condiciones para campanas eticas,
+                    medibles y utiles en programas de concientizacion de ciberseguridad.
+                </p>
+            </div>
 
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Tecnicas Comunes</h2>
-                    <div class="code-block">
-                        <code>
-TECNICAS_INGENIERIA_SOCIAL = {<br>
-&nbsp;&nbsp;"phishing": "Correos falsos imitando entidades legitimas",<br>
-&nbsp;&nbsp;"pretexting": "Crear escenario falso para obtener info",<br>
-&nbsp;&nbsp;"baiting": "Dejar dispositivos infectados como carnada",<br>
-&nbsp;&nbsp;"quid_pro_quo": "Ofrecer algo a cambio de informacion",<br>
-&nbsp;&nbsp;"tailgating": "Seguir a alguien autorizado a areas restringidas",<br>
-&nbsp;&nbsp;"vishing": "Phishing por telefono",<br>
-&nbsp;&nbsp;"smishing": "Phishing por SMS"<br>
-}
-                        </code>
-                    </div>
-                </section>
+            <div class="content-section">
+                <h2><span class="icon">#</span> Analisis comparativo de plataformas</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Cada plataforma fue revisada por su enfoque principal, capacidades destacadas y valor para campanas
+                    de simulacion de phishing dentro de programas de seguridad organizacional.
+                </p>
 
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Senales de Alerta</h2>
-                    <ul>
-                        <li>Urgencia excesiva: "Actua ahora o perderas tu cuenta"</li>
-                        <li>Errores gramaticales y ortograficos</li>
-                        <li>Enlaces sospechosos (hover para verificar URL real)</li>
-                        <li>Solicitudes de informacion sensible por email</li>
-                        <li>Remitentes desconocidos o direcciones similares pero no identicas</li>
-                        <li>Ofertas demasiado buenas para ser verdad</li>
-                    </ul>
-                </section>
-
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Ejemplo de Phishing</h2>
-                    <div class="code-block">
-                        <code>
-De: soporte@banc0-seguro.com  <span style="color: #ff6464;">// Nota: es "banc0" con cero</span><br>
-Asunto: URGENTE: Su cuenta ha sido comprometida<br><br>
-
-Estimado cliente,<br><br>
-
-Hemos detectado actividad sospechosa en su cuenta.<br>
-Haga clic aqui para verificar su identidad:<br>
-https://banc0-seguro.com/verificar  <span style="color: #ff6464;">// Dominio falso</span><br><br>
-
-Si no actua en 24 horas, su cuenta sera suspendida.<br><br>
-
-<span style="color: #ff6464;">// Red flags: urgencia, dominio falso, solicitud de datos</span>
-                        </code>
-                    </div>
-                </section>
-
-                <!-- Quiz Section -->
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Quiz: Pon a Prueba tu Conocimiento</h2>
-                    
-                    <div class="quiz-container">
-                        <form id="quizForm">
-                            <!-- Question 1 -->
-                            <div class="quiz-question">
-                                <h4>&gt; Pregunta 1: Recibes un email de "tu banco" pidiendo verificar tu cuenta. Que debes hacer primero?</h4>
-                                <div class="quiz-options">
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q1" value="a">
-                                        <span>Hacer clic en el enlace y verificar</span>
-                                    </label>
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q1" value="b">
-                                        <span>Verificar el remitente y no hacer clic en enlaces</span>
-                                    </label>
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q1" value="c">
-                                        <span>Reenviar el correo a tus contactos</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Question 2 -->
-                            <div class="quiz-question">
-                                <h4>&gt; Pregunta 2: Encuentras una USB en el estacionamiento. Que haces?</h4>
-                                <div class="quiz-options">
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q2" value="a">
-                                        <span>Conectarla a tu computadora para ver que contiene</span>
-                                    </label>
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q2" value="b">
-                                        <span>Entregarla al departamento de IT o seguridad</span>
-                                    </label>
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q2" value="c">
-                                        <span>Quedartela, probablemente tiene archivos utiles</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Question 3 -->
-                            <div class="quiz-question">
-                                <h4>&gt; Pregunta 3: Alguien llama diciendo ser de soporte tecnico y pide tu password. Que haces?</h4>
-                                <div class="quiz-options">
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q3" value="a">
-                                        <span>Darle la password, es de soporte</span>
-                                    </label>
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q3" value="b">
-                                        <span>Negarte y reportar la llamada sospechosa</span>
-                                    </label>
-                                    <label class="quiz-option">
-                                        <input type="radio" name="q3" value="c">
-                                        <span>Darle solo una parte de la password</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <button type="button" class="btn btn-primary" onclick="checkQuiz()">&gt; Verificar Respuestas</button>
-                        </form>
-
-                        <div id="quizResult" class="quiz-result">
-                            <span id="resultText"></span>
+                <div class="platforms-grid">
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>Hoxhunt</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Adaptativa y gamificada</span>
+                            <p>Centra su propuesta en entrenamiento personalizado, automatizacion y gamificacion. Destaca por simulaciones adaptativas, retroalimentacion inmediata y enfoque en cambio de conducta.</p>
                         </div>
                     </div>
-                </section>
 
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Medidas de Prevencion</h2>
-                    <ul>
-                        <li>Capacitacion continua a empleados</li>
-                        <li>Verificar identidad antes de dar informacion</li>
-                        <li>Nunca compartir passwords por telefono o email</li>
-                        <li>Usar autenticacion de dos factores (2FA)</li>
-                        <li>Reportar intentos de ingenieria social</li>
-                        <li>Mantener software actualizado</li>
-                    </ul>
-                </section>
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>Proofpoint</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Riesgo humano empresarial</span>
+                            <p>Combina simulaciones de phishing, evaluaciones y analisis del riesgo humano. Fuerte para organizaciones que buscan una vision ejecutiva del comportamiento del usuario.</p>
+                        </div>
+                    </div>
 
-                <!-- Navigation -->
-                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                    <a href="../proyectos.html" class="btn btn-secondary">
-                        &lt;-- cd ../proyectos
-                    </a>
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>KnowBe4</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Biblioteca amplia y metricas maduras</span>
+                            <p>Ofrece pruebas simuladas de phishing, contenido multilenguaje, landing pages y metricas como el Phish-prone Percentage para medir susceptibilidad.</p>
+                        </div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>Cofense</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Amenazas reales y respuesta</span>
+                            <p>Se orienta a resiliencia frente a phishing real, con simulaciones alimentadas por inteligencia de amenazas, analitica y entrenamiento continuo.</p>
+                        </div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>Phished</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">IA y automatizacion continua</span>
+                            <p>Enfatiza simulaciones automatizadas, sesiones frecuentes y una estrategia orientada a reducir incidentes derivados de error humano.</p>
+                        </div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>NINJIO</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Storytelling y cambio conductual</span>
+                            <p>Combina microlearning, simulacion dinamica y evaluacion de susceptibilidades humanas. Fortaleza en sensibilizacion conductual y engagement.</p>
+                        </div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>Mimecast</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Integracion con awareness por correo</span>
+                            <p>Integra awareness training con simulaciones de phishing y spear phishing. Util para organizaciones con enfoque fuerte en email security.</p>
+                        </div>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-top"><h4>Infosec IQ</h4></div>
+                        <div class="platform-body">
+                            <span class="platform-tag">Formacion por rol y cumplimiento</span>
+                            <p>Ofrece entrenamiento por rol, simulaciones de phishing y herramientas de cumplimiento. Equilibrio entre cultura, reduccion de eventos y compliance.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Conclusion -->
+            <div class="content-section">
+                <h2><span class="icon">#</span> Conclusion comparativa</h2>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>Plataformas que mas destacan</h4>
+                        <p>A partir del analisis, las plataformas que sobresalen por equilibrio entre simulacion, medicion y utilidad formativa son:</p>
+                        <div style="margin: 1rem 0;">
+                            <span class="badge-mini">Hoxhunt</span>
+                            <span class="badge-mini">Proofpoint</span>
+                            <span class="badge-mini">KnowBe4</span>
+                            <span class="badge-mini">Cofense</span>
+                        </div>
+                        <p>Cada una resalta por un criterio distinto: personalizacion, analitica de riesgo, amplitud de contenido o cercania con amenazas reales.</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Conclusion final</h4>
+                        <p>Para un proyecto academico con enfoque etico, no basta con elegir la plataforma mas popular, sino la que mejor permita <strong>simular, medir, retroalimentar y mejorar la conducta del usuario</strong> sin volver la experiencia punitiva.</p>
+                        <p>Las plataformas mas adecuadas son aquellas que combinan realismo, metricas claras y formacion progresiva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCION: COMPARATIVA (TABLA) -->
+        <section id="comparativa" class="section-content">
+            <div class="content-section">
+                <h2><span class="icon">#</span> Tabla tecnica comparativa</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Comparacion resumida de enfoque, capacidades y utilidad de cada plataforma para campanas eticas de simulacion de phishing.
+                </p>
+
+                <div class="table-wrap">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Plataforma</th>
+                                <th>Enfoque principal</th>
+                                <th>Capacidades destacadas</th>
+                                <th>Metricas / medicion</th>
+                                <th>Fortaleza para campanas eticas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Hoxhunt</strong></td>
+                                <td>Entrenamiento adaptativo y gamificado</td>
+                                <td>Simulaciones personalizadas, feedback inmediato, rutas adaptativas</td>
+                                <td>Participacion, progreso, reporte y cambio conductual</td>
+                                <td>Muy fuerte en compromiso del usuario y refuerzo positivo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Proofpoint</strong></td>
+                                <td>Riesgo humano empresarial</td>
+                                <td>Simulaciones, evaluaciones, cultura y automatizacion basada en riesgo</td>
+                                <td>Usuarios vulnerables, evaluaciones y dashboards de riesgo</td>
+                                <td>Fuerte para diagnostico organizacional y toma de decisiones</td>
+                            </tr>
+                            <tr>
+                                <td><strong>KnowBe4</strong></td>
+                                <td>Awareness masivo con amplia biblioteca</td>
+                                <td>Pruebas simuladas, landing pages, multilenguaje, IA</td>
+                                <td>Phish-prone Percentage y comparativos</td>
+                                <td>Muy util para medicion inicial y despliegue rapido</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cofense</strong></td>
+                                <td>Phishing real y respuesta posterior al perimetro</td>
+                                <td>Simulaciones dinamicas, inteligencia de amenazas, reporter</td>
+                                <td>Analitica en tiempo real y respuesta del usuario</td>
+                                <td>Muy fuerte en realismo y alineacion con amenazas actuales</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phished</strong></td>
+                                <td>IA y automatizacion continua</td>
+                                <td>Simulaciones automaticas, sesiones frecuentes, gamificacion</td>
+                                <td>Riesgo humano e incidentes evitados</td>
+                                <td>Util para campanas constantes con poca carga operativa</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NINJIO</strong></td>
+                                <td>Cambio conductual y storytelling</td>
+                                <td>Microlearning, susceptibilidad emocional, simulacion dinamica</td>
+                                <td>Engagement y vulnerabilidades conductuales</td>
+                                <td>Muy buena para cultura y sensibilizacion continua</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mimecast</strong></td>
+                                <td>Awareness integrado al ecosistema de correo</td>
+                                <td>Phishing, spear phishing, quizzes y campanas programables</td>
+                                <td>Seguimiento y progreso de campanas</td>
+                                <td>Util para organizaciones con enfoque fuerte en email security</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Infosec IQ</strong></td>
+                                <td>Entrenamiento por rol y cumplimiento</td>
+                                <td>Simulaciones, plantillas, recursos por industria y rol</td>
+                                <td>Reduccion de eventos, phish rate y cumplimiento</td>
+                                <td>Equilibrio entre awareness, simulacion y compliance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCION: QUIZ INTERACTIVO -->
+        <section id="quiz" class="section-content active">
+            <!-- Pantalla de inicio -->
+            <div class="quiz-container" id="start-screen">
+                <h2 class="quiz-title">&gt;_ Phishing Quiz</h2>
+                <p class="quiz-sub">Este ejercicio simula escenarios reales de ingenieria social.</p>
+                
+                <ul style="text-align: left; max-width: 500px; margin: 1rem auto; color: var(--text-secondary);">
+                    <li>Selecciona si cada escenario es <strong>Seguro</strong> o <strong>Phishing</strong>.</li>
+                    <li>Recibiras retroalimentacion formativa por cada respuesta.</li>
+                    <li>No se recopilan datos personales.</li>
+                </ul>
+
+                <input type="text" id="alias" placeholder="Ingresa tu alias" class="quiz-input">
+                <button class="btn btn-primary" onclick="startQuiz()">&gt; Comenzar Quiz</button>
+            </div>
+
+            <!-- Pantalla del quiz -->
+            <div class="quiz-container" id="quiz-screen" style="display: none;">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="bar"></div>
+                </div>
+                <p id="progress" style="color: var(--text-secondary);"></p>
+                <div id="question"></div>
+                <div class="quiz-buttons">
+                    <button class="btn-safe" onclick="answer('seguro')">Seguro</button>
+                    <button class="btn-phishing" onclick="answer('phishing')">Phishing</button>
+                </div>
+                <div id="feedback"></div>
+            </div>
+
+            <!-- Pantalla de resultados -->
+            <div class="quiz-container" id="result-screen" style="display: none;"></div>
+        </section>
+
+        <!-- SECCION: REFERENCIAS -->
+        <section id="referencias" class="section-content">
+            <div class="content-section">
+                <h2><span class="icon">#</span> Referencias</h2>
+                <ol class="ref-list">
+                    <li>Hoxhunt. <em>Phishing Training for Employees</em>. <a href="https://hoxhunt.com/product/phishing-training" target="_blank">https://hoxhunt.com/product/phishing-training</a></li>
+                    <li>Hoxhunt. <em>The Hoxhunt Human Risk Management Platform</em>. <a href="https://hoxhunt.com/" target="_blank">https://hoxhunt.com/</a></li>
+                    <li>Proofpoint. <em>Phishing Simulations, Assessments & Tests</em>. <a href="https://www.proofpoint.com/us/products/security-awareness-training/phishing-simulations" target="_blank">https://www.proofpoint.com/us/products/security-awareness-training/phishing-simulations</a></li>
+                    <li>Proofpoint. <em>Mitigate Human Risk</em>. <a href="https://www.proofpoint.com/us/products/mitigate-human-risk" target="_blank">https://www.proofpoint.com/us/products/mitigate-human-risk</a></li>
+                    <li>KnowBe4. <em>Security Awareness Training</em>. <a href="https://www.knowbe4.com/products/security-awareness-training" target="_blank">https://www.knowbe4.com/products/security-awareness-training</a></li>
+                    <li>KnowBe4. <em>Phishing Security Test</em>. <a href="https://www.knowbe4.com/free-cybersecurity-tools/phishing-security-test" target="_blank">https://www.knowbe4.com/free-cybersecurity-tools/phishing-security-test</a></li>
+                    <li>Cofense. <em>PhishMe Security Awareness Training Platform</em>. <a href="https://cofense.com/phishme-security-awareness-training-%28sat%29-platform" target="_blank">https://cofense.com</a></li>
+                    <li>Phished. <em>Phishing Simulations</em>. <a href="https://phished.io/phishing-simulations" target="_blank">https://phished.io/phishing-simulations</a></li>
+                    <li>Phished. <em>Holistic Training</em>. <a href="https://phished.io/" target="_blank">https://phished.io/</a></li>
+                    <li>NINJIO. <em>Cybersecurity Awareness Training & Human Risk Management</em>. <a href="https://ninjio.com/" target="_blank">https://ninjio.com/</a></li>
+                    <li>NINJIO. <em>Simulated Phishing & Phishing Awareness Training</em>. <a href="https://ninjio.com/phish3d/" target="_blank">https://ninjio.com/phish3d/</a></li>
+                    <li>Mimecast. <em>What is Phishing Training?</em>. <a href="https://www.mimecast.com/content/phishing-training/" target="_blank">https://www.mimecast.com/content/phishing-training/</a></li>
+                    <li>Mimecast. <em>Security Awareness Training</em>. <a href="https://www.mimecast.com/products/mimecast-engage-awareness-training/" target="_blank">https://www.mimecast.com</a></li>
+                    <li>Infosec IQ. <em>Security Awareness & Phishing Training</em>. <a href="https://www.infosecinstitute.com/iq/" target="_blank">https://www.infosecinstitute.com/iq/</a></li>
+                    <li>Infosec IQ. <em>Phishing Simulations</em>. <a href="https://www.infosecinstitute.com/iq/phishing-simulations/" target="_blank">https://www.infosecinstitute.com/iq/phishing-simulations/</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+            <a href="../proyectos.html" class="btn btn-secondary">
+                &lt;-- cd ../proyectos
+            </a>
         </div>
-    </article>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -299,44 +712,247 @@ Si no actua en 24 horas, su cuenta sera suspendida.<br><br>
             document.getElementById('navMenu').classList.toggle('active');
         }
 
-        function checkQuiz() {
-            const answers = { q1: 'b', q2: 'b', q3: 'b' };
-            let correct = 0;
-            
-            // Reset styles
-            document.querySelectorAll('.quiz-option').forEach(opt => {
-                opt.classList.remove('correct', 'incorrect');
-            });
+        // Tab navigation
+        function showSection(sectionId, element) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Update tabs
+            document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
 
-            // Check each question
-            for (let q in answers) {
-                const selected = document.querySelector(`input[name="${q}"]:checked`);
-                if (selected) {
-                    const option = selected.closest('.quiz-option');
-                    if (selected.value === answers[q]) {
-                        correct++;
-                        option.classList.add('correct');
-                    } else {
-                        option.classList.add('incorrect');
-                        // Highlight correct answer
-                        document.querySelector(`input[name="${q}"][value="${answers[q]}"]`)
-                            .closest('.quiz-option').classList.add('correct');
-                    }
-                }
+        // Quiz data - 10 escenarios realistas
+        const quiz = [
+            {
+                q: `<div class="email-simulation">
+                    <b>De: soporte@banc0-seguro.com</b><br>
+                    <b>Asunto: URGENTE - Actividad sospechosa detectada</b><br><br>
+                    Estimado cliente,<br><br>
+                    Hemos detectado actividad inusual en su cuenta. Para evitar el bloqueo, verifique su identidad:<br><br>
+                    <a>http://banc0-seguro.com/verificar-cuenta</a><br><br>
+                    Si no actua en 24 horas, su cuenta sera suspendida.
+                </div>`,
+                correct: "phishing",
+                feedback: "El dominio usa un cero en lugar de 'o' (banc0 vs banco). Ademas, genera urgencia excesiva y solicita datos por enlace externo. Los bancos legitimos no operan asi."
+            },
+            {
+                q: `<p>Tu empresa te envia un correo interno pidiendote revisar un documento en la intranet corporativa. El enlace apunta a <strong>intranet.tuempresa.com/documentos</strong> (dominio interno verificado).</p>`,
+                correct: "seguro",
+                feedback: "El uso de canales internos corporativos con dominios verificados es una practica segura. No hay senales de phishing."
+            },
+            {
+                q: `<div class="email-simulation">
+                    <b>De: security@micros0ft-support.net</b><br>
+                    <b>Asunto: Alerta de seguridad - Inicio de sesion detectado</b><br><br>
+                    Se detecto un inicio de sesion desde un nuevo dispositivo.<br>
+                    Si no reconoces esta actividad, verifica tu cuenta:<br><br>
+                    <a>http://microsoft-security-check.net/verify</a>
+                </div>`,
+                correct: "phishing",
+                feedback: "El dominio 'micros0ft-support.net' no pertenece a Microsoft (usa cero y dominio .net falso). Microsoft usa @microsoft.com y dominios oficiales."
+            },
+            {
+                q: `<div class="whatsapp-simulation">
+                    <b>Jefe (WhatsApp):</b><br>
+                    Hola, estoy en una reunion importante y no puedo hablar.<br>
+                    Necesito que hagas una transferencia urgente de $5,000 a este proveedor.<br>
+                    Te paso los datos por aqui. Es urgente, hazlo ya.
+                </div>`,
+                correct: "phishing",
+                feedback: "Suplantacion de identidad + urgencia + solicitud de transferencia por canal no oficial = ataque de ingenieria social (CEO Fraud/Business Email Compromise)."
+            },
+            {
+                q: `<div class="login-simulation">
+                    <h4 style="color: var(--cyan);">Iniciar sesion</h4>
+                    <input type="text" placeholder="Correo electronico" disabled>
+                    <input type="password" placeholder="Contrasena" disabled>
+                    <p class="warning">Tu sesion expira en 2 minutos. Actua rapido.</p>
+                </div>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">Esta pagina aparecio despues de hacer clic en un enlace de correo.</p>`,
+                correct: "phishing",
+                feedback: "Pagina de login falsa con temporizador de presion. Las paginas legitimas no generan urgencia artificial para que ingreses credenciales."
+            },
+            {
+                q: `<p>Recibes una notificacion push dentro de la <strong>app oficial de tu banco</strong> (descargada de la App Store) indicando que hay un nuevo estado de cuenta disponible.</p>`,
+                correct: "seguro",
+                feedback: "Las notificaciones dentro de aplicaciones oficiales descargadas de tiendas verificadas son seguras. No hay redireccion externa."
+            },
+            {
+                q: `<div class="email-simulation">
+                    <b>De: soporte-ti@tuempresa.com</b><br>
+                    <b>Asunto: Actualizacion de seguridad requerida</b><br><br>
+                    Hola,<br>
+                    Detectamos un problema con tu cuenta corporativa. Para evitar suspension, descarga y ejecuta el archivo adjunto.<br><br>
+                    <b>Archivo:</b> verificacion_seguridad.exe
+                </div>`,
+                correct: "phishing",
+                feedback: "Un archivo ejecutable (.exe) es altamente sospechoso. Las empresas legitimas no validan cuentas mediante archivos ejecutables descargados."
+            },
+            {
+                q: `<div class="email-simulation">
+                    <b>De: noreply@google.com</b><br>
+                    <b>Asunto: Alerta de seguridad - Nuevo inicio de sesion</b><br><br>
+                    Se detecto un inicio de sesion desde un nuevo dispositivo.<br>
+                    Si no fuiste tu, revisa la actividad aqui:<br><br>
+                    <a>https://accounts.google.com/security-checkup</a>
+                </div>`,
+                correct: "seguro",
+                feedback: "El dominio es legitimo (google.com) y la URL apunta al dominio oficial de Google. No todos los mensajes de alerta son phishing."
+            },
+            {
+                q: `<p>Recibes un SMS: "Tu paquete no pudo ser entregado. Confirma tu direccion aqui: <strong>http://envios-mx.info/tracking</strong>"</p>`,
+                correct: "phishing",
+                feedback: "Smishing clasico. Las empresas de mensajeria usan dominios oficiales, no dominios genericos como 'envios-mx.info'. Nunca hagas clic en enlaces de SMS sospechosos."
+            },
+            {
+                q: `<div class="email-simulation">
+                    <b>De: rh@vuteq.com</b><br>
+                    <b>Asunto: Actualizacion de politica de vacaciones</b><br><br>
+                    Estimado colaborador,<br>
+                    Se ha actualizado la politica interna de vacaciones. Puedes revisarla en el siguiente enlace:<br><br>
+                    <a>https://vuteq.com.seguridad-empleados.info/vacaciones</a>
+                </div>`,
+                correct: "phishing",
+                feedback: "Aunque parece corporativo, el dominio real es 'seguridad-empleados.info', no 'vuteq.com'. Es un subdominio enganoso (vuteq.com.otrositio.info)."
             }
+        ];
 
-            // Show result
-            const resultDiv = document.getElementById('quizResult');
-            const resultText = document.getElementById('resultText');
-            resultDiv.classList.add('show');
+        let current = 0;
+        let score = 0;
+        let player = "";
+        let tiempos = [];
+        let inicioPregunta = 0;
+
+        function startQuiz() {
+            player = document.getElementById("alias").value.trim();
+            if (!player) {
+                alert("Por favor ingresa un alias");
+                return;
+            }
+            document.getElementById("start-screen").style.display = "none";
+            document.getElementById("quiz-screen").style.display = "block";
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            document.getElementById("question").innerHTML = quiz[current].q;
+            document.getElementById("progress").innerText = "Pregunta " + (current + 1) + " de " + quiz.length;
             
-            if (correct === 3) {
-                resultDiv.className = 'quiz-result show success';
-                resultText.textContent = `> Excelente! ${correct}/3 correctas. Estas bien preparado contra la ingenieria social!`;
+            let progress = ((current + 1) / quiz.length) * 100;
+            document.getElementById("bar").style.width = progress + "%";
+            
+            document.getElementById("feedback").innerHTML = "";
+            document.getElementById("feedback").className = "";
+            
+            inicioPregunta = Date.now();
+            document.querySelectorAll('.quiz-buttons button').forEach(btn => btn.disabled = false);
+        }
+
+        function answer(user) {
+            let correct = quiz[current].correct;
+            
+            let fin = Date.now();
+            let tiempo = (fin - inicioPregunta) / 1000;
+            tiempos.push(tiempo);
+            
+            document.querySelectorAll('.quiz-buttons button').forEach(btn => btn.disabled = true);
+            
+            const feedbackDiv = document.getElementById("feedback");
+            
+            if (user === correct) {
+                score += 10;
+                feedbackDiv.className = "correct";
+                feedbackDiv.innerHTML = "<strong>Correcto!</strong><br>" + quiz[current].feedback;
             } else {
-                resultDiv.className = 'quiz-result show partial';
-                resultText.textContent = `> ${correct}/3 correctas. Revisa las respuestas correctas marcadas en verde.`;
+                feedbackDiv.className = "incorrect";
+                feedbackDiv.innerHTML = "<strong>Incorrecto</strong><br>" + quiz[current].feedback;
             }
+            
+            setTimeout(() => {
+                current++;
+                if (current < quiz.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            }, 2500);
+        }
+
+        function showResult() {
+            let nivel = "";
+            let nivelColor = "";
+            
+            if (score >= 90) { nivel = "Excelente"; nivelColor = "var(--primary)"; }
+            else if (score >= 70) { nivel = "Bueno"; nivelColor = "var(--cyan)"; }
+            else if (score >= 50) { nivel = "Regular"; nivelColor = "#ffc800"; }
+            else { nivel = "Riesgo alto"; nivelColor = "#ff6464"; }
+            
+            // Ranking en localStorage
+            let ranking = JSON.parse(localStorage.getItem("phishing_ranking")) || [];
+            ranking.push({ name: player, score: score, date: new Date().toLocaleDateString() });
+            ranking.sort((a, b) => b.score - a.score);
+            ranking = ranking.slice(0, 10);
+            localStorage.setItem("phishing_ranking", JSON.stringify(ranking));
+            
+            // Analisis
+            let maxTiempo = Math.max(...tiempos);
+            let indexDificil = tiempos.indexOf(maxTiempo) + 1;
+            let promedio = tiempos.reduce((a, b) => a + b, 0) / tiempos.length;
+            
+            // Top 5 ranking
+            let topHTML = "";
+            ranking.slice(0, 5).forEach((r, i) => {
+                topHTML += `<li><span class="rank">#${i + 1}</span> <span>${r.name}</span> <span>${r.score}/100</span></li>`;
+            });
+            
+            document.getElementById("quiz-screen").style.display = "none";
+            const resultScreen = document.getElementById("result-screen");
+            resultScreen.style.display = "block";
+            
+            resultScreen.innerHTML = `
+                <h2 class="quiz-title">&gt;_ Resultados</h2>
+                <h3 style="color: var(--cyan); margin: 1rem 0;">${player}</h3>
+                <p style="font-size: 1.5rem; margin: 0.5rem 0;"><strong>Puntaje:</strong> ${score}/100</p>
+                <p style="font-size: 1.2rem; color: ${nivelColor};"><strong>Nivel:</strong> ${nivel}</p>
+                
+                <div class="result-card">
+                    <h4>Analisis de desempeno</h4>
+                    <p><strong>Precision</strong></p>
+                    <div class="progress-result">
+                        <div class="fill green" style="width: ${score}%;"></div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Velocidad de respuesta</strong></p>
+                    <div class="progress-result">
+                        <div class="fill blue" style="width: ${Math.min(100 - promedio * 5, 100)}%;"></div>
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">
+                        <strong>Tiempo promedio:</strong> ${promedio.toFixed(2)} segundos<br>
+                        <strong>Pregunta mas dificil:</strong> #${indexDificil} (${maxTiempo.toFixed(2)}s)
+                    </p>
+                </div>
+                
+                <div class="result-card">
+                    <h4>Ranking Global</h4>
+                    <ul class="ranking-list">
+                        ${topHTML}
+                    </ul>
+                </div>
+                
+                <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top: 1rem;">
+                    &gt; Reintentar Quiz
+                </button>
+            `;
+        }
+
+        function restartQuiz() {
+            current = 0;
+            score = 0;
+            tiempos = [];
+            document.getElementById("result-screen").style.display = "none";
+            document.getElementById("start-screen").style.display = "block";
+            document.getElementById("alias").value = player;
         }
     </script>
 </body>

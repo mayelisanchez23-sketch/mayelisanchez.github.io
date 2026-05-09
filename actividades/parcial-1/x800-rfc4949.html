@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estandares X.800 y RFC 4949 | Mayeli Sanchez</title>
+    <title>Actividad 02 | X.800 y RFC 4949</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,92 +48,142 @@
                 <header style="margin-bottom: 2rem;">
                     <span class="card-tag" style="margin-bottom: 1rem; display: inline-block;">ACT_02 - Parcial 1</span>
                     <h1 class="page-title" style="padding: 0;">
-                        Estandares <span class="highlight">X.800</span> y <span class="highlight">RFC 4949</span>
+                        Analisis de servicios de seguridad (<span class="highlight">X.800</span> y <span class="highlight">RFC 4949</span>)
                     </h1>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">
+                        Articulo tecnico digital basado en el analisis de escenarios de incidentes, identificando servicios comprometidos (X.800) y terminologia formal (RFC 4949).
+                    </p>
                 </header>
 
-                <!-- Meta -->
-                <div class="activity-meta">
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> ITU-T
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> IETF
-                    </span>
-                    <span class="meta-item">
-                        <span class="icon">&gt;</span> Estandares
-                    </span>
-                </div>
-
-                <!-- Content -->
+                <!-- 1) Introduccion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> X.800 - Arquitectura de Seguridad OSI</h2>
+                    <h2><span class="icon">#</span> 1) Introduccion</h2>
                     <p>
-                        El estandar X.800 de ITU-T define la arquitectura de seguridad para el modelo OSI. 
-                        Establece un marco de referencia para implementar servicios y mecanismos de seguridad 
-                        en sistemas de comunicacion.
+                        La seguridad en redes no depende unicamente de los datos, sino tambien de la infraestructura que los transporta:
+                        routers, servidores, enlaces y dispositivos de red. La recomendacion <strong>ITU-T X.800</strong> define servicios y mecanismos de
+                        seguridad para proteger sistemas (autenticacion, control de acceso, confidencialidad, integridad, no repudio y disponibilidad).
+                        Por su parte, el <strong>RFC 4949</strong> normaliza el vocabulario tecnico para describir amenazas, ataques, vulnerabilidades e impactos,
+                        permitiendo clasificar incidentes de forma consistente.
                     </p>
                 </section>
 
+                <!-- 2) Desarrollo -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Servicios de Seguridad (X.800)</h2>
+                    <h2><span class="icon">#</span> 2) Desarrollo</h2>
+                    
+                    <h3>Marco X.800</h3>
                     <ul>
-                        <li><strong>Autenticacion:</strong> Verificacion de identidad de entidades</li>
-                        <li><strong>Control de Acceso:</strong> Prevencion de uso no autorizado</li>
-                        <li><strong>Confidencialidad:</strong> Proteccion contra divulgacion no autorizada</li>
-                        <li><strong>Integridad:</strong> Deteccion de modificaciones no autorizadas</li>
-                        <li><strong>No Repudio:</strong> Proteccion contra negacion de acciones</li>
+                        <li>Autenticacion</li>
+                        <li>Control de acceso</li>
+                        <li>Confidencialidad</li>
+                        <li>Integridad</li>
+                        <li>No repudio</li>
+                        <li>Disponibilidad</li>
                     </ul>
-                </section>
 
-                <section class="content-section">
-                    <h2><span class="icon">#</span> Mecanismos de Seguridad</h2>
-                    <div class="code-block">
-                        <code>
-MECANISMOS_ESPECIFICOS = {<br>
-&nbsp;&nbsp;"cifrado": "Transformacion criptografica de datos",<br>
-&nbsp;&nbsp;"firma_digital": "Anexo criptografico para autenticidad",<br>
-&nbsp;&nbsp;"control_acceso": "Mecanismos para hacer cumplir derechos",<br>
-&nbsp;&nbsp;"integridad": "Checksum, hash, MAC",<br>
-&nbsp;&nbsp;"intercambio_autenticacion": "Challenge-response",<br>
-&nbsp;&nbsp;"padding": "Proteccion contra analisis de trafico"<br>
-}
-                        </code>
-                    </div>
-                </section>
-
-                <section class="content-section">
-                    <h2><span class="icon">#</span> RFC 4949 - Internet Security Glossary</h2>
+                    <h3 style="margin-top: 2rem;">Marco RFC 4949</h3>
                     <p>
-                        El RFC 4949 es un glosario que define terminologia de seguridad utilizada en 
-                        documentos de Internet. Proporciona definiciones precisas para conceptos clave 
-                        en ciberseguridad.
+                        El RFC 4949 funciona como glosario oficial: define terminos como phishing, masquerade, insider threat,
+                        data breach, supply chain attack, entre otros, para describir incidentes de forma precisa.
                     </p>
                 </section>
 
+                <!-- 3) Escenarios -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Terminos Clave (RFC 4949)</h2>
-                    <div class="code-block">
-                        <code>
-$ cat /etc/security/glossary.conf<br><br>
-
-THREAT="Potencial violacion de seguridad"<br>
-VULNERABILITY="Debilidad en un sistema"<br>
-ATTACK="Asalto a la seguridad del sistema"<br>
-RISK="Probabilidad de amenaza explotando vulnerabilidad"<br>
-COUNTERMEASURE="Accion para reducir amenaza/vulnerabilidad"<br>
-ASSET="Recurso del sistema con valor"
-                        </code>
+                    <h2><span class="icon">#</span> 3) Escenarios analizados (resumen)</h2>
+                    <div class="table-responsive">
+                        <table class="terminal-table">
+                            <thead>
+                                <tr>
+                                    <th>Escenario</th>
+                                    <th>Tipo</th>
+                                    <th>Servicios X.800 comprometidos</th>
+                                    <th>Conceptos RFC 4949</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1. Ransomware + exfiltracion</td>
+                                    <td>Externa</td>
+                                    <td>Confidencialidad, Integridad, Disponibilidad</td>
+                                    <td>Multi-stage attack, Data breach, Availability attack</td>
+                                </tr>
+                                <tr>
+                                    <td>2. Base de datos expuesta por error</td>
+                                    <td>Interna</td>
+                                    <td>Confidencialidad</td>
+                                    <td>Misconfiguration, Exposure</td>
+                                </tr>
+                                <tr>
+                                    <td>3. Ataque a la cadena de suministro</td>
+                                    <td>Externa</td>
+                                    <td>Integridad, Confidencialidad</td>
+                                    <td>Supply chain attack</td>
+                                </tr>
+                                <tr>
+                                    <td>4. Phishing y robo de credenciales</td>
+                                    <td>Externa</td>
+                                    <td>Autenticacion, Control de acceso</td>
+                                    <td>Credential compromise, Authentication failure</td>
+                                </tr>
+                                <tr>
+                                    <td>5. Ransomware destruye respaldos</td>
+                                    <td>Externa</td>
+                                    <td>Integridad, Disponibilidad</td>
+                                    <td>Data destruction, Availability attack</td>
+                                </tr>
+                                <tr>
+                                    <td>6. Empleado filtra informacion</td>
+                                    <td>Interna</td>
+                                    <td>Confidencialidad, Control de acceso</td>
+                                    <td>Insider threat</td>
+                                </tr>
+                                <tr>
+                                    <td>7. Logs alterados/cifrados</td>
+                                    <td>Interna</td>
+                                    <td>Integridad, No repudio</td>
+                                    <td>Evidentiary integrity, Audit trail</td>
+                                </tr>
+                                <tr>
+                                    <td>8. Caida por error operativo</td>
+                                    <td>Interna</td>
+                                    <td>Disponibilidad</td>
+                                    <td>Operational failure</td>
+                                </tr>
+                                <tr>
+                                    <td>9. Suplantacion (sitios/correos)</td>
+                                    <td>Externa</td>
+                                    <td>Autenticacion, Confidencialidad</td>
+                                    <td>Masquerade, Phishing</td>
+                                </tr>
+                                <tr>
+                                    <td>10. Exfiltracion + ataque destructivo</td>
+                                    <td>Externa</td>
+                                    <td>Confidencialidad, Integridad, Disponibilidad</td>
+                                    <td>Destructive attack</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
+                <!-- 4) Reflexion -->
                 <section class="content-section">
-                    <h2><span class="icon">#</span> Comparacion de Estandares</h2>
+                    <h2><span class="icon">#</span> 4) Reflexion</h2>
+                    <p>
+                        El analisis evidencia que los incidentes no son exclusivamente "ataques externos sofisticados"; tambien pueden
+                        originarse por configuraciones incorrectas, fallas operativas o abuso de privilegios. En el contexto latinoamericano,
+                        es clave priorizar controles viables: gestion de accesos, MFA, respaldos inmutables, monitoreo continuo y capacitacion.
+                    </p>
+                </section>
+
+                <!-- 5) Referencias -->
+                <section class="content-section">
+                    <h2><span class="icon">#</span> 5) Referencias</h2>
                     <ul>
-                        <li><strong>X.800:</strong> Enfoque en arquitectura y servicios de seguridad</li>
-                        <li><strong>RFC 4949:</strong> Enfoque en terminologia y definiciones</li>
-                        <li>Ambos son complementarios para entender seguridad de redes</li>
-                        <li>X.800 es mas tecnico/implementacion, RFC 4949 es mas conceptual</li>
+                        <li>Material de clase: "Tipos de pruebas de penetracion: Pruebas de infraestructura de red".</li>
+                        <li>IETF (2007). RFC 4949: Internet Security Glossary, Version 2.</li>
+                        <li>ITU-T X.800: Security architecture for OSI.</li>
                     </ul>
                 </section>
 
