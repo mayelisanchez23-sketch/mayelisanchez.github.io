@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificaciones | Mayeli Sanchez - Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tabs Navigation */
+        .tabs-container {
+            margin-top: 2rem;
+        }
+        
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        
+        .tab-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .tab-btn:hover {
+            border-color: var(--green-neon);
+            color: var(--green-neon);
+        }
+        
+        .tab-btn.active {
+            background: var(--green-neon);
+            color: var(--bg-primary);
+            border-color: var(--green-neon);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Certification Card */
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .cert-header {
+            background: var(--bg-secondary);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .cert-header-info h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-header-info .cert-issuer {
+            color: var(--cyan);
+            font-size: 0.95rem;
+        }
+        
+        .cert-badge {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            object-fit: contain;
+            background: #111;
+            padding: 0.5rem;
+        }
+        
+        .cert-badge-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        
+        .cert-body {
+            padding: 2rem;
+        }
+        
+        .cert-section {
+            margin-bottom: 2rem;
+        }
+        
+        .cert-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .cert-section h3 {
+            color: var(--green-neon);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cert-section h3::before {
+            content: ">";
+            color: var(--cyan);
+        }
+        
+        .cert-reflection {
+            color: #bbbbbb;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+        
+        .cert-reflection p {
+            margin-bottom: 1rem;
+        }
+        
+        .cert-reflection p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Actions */
+        .cert-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .cert-actions .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Meta info */
+        .cert-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .cert-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .cert-meta-item .label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .cert-meta-item .value {
+            color: var(--cyan);
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .cert-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cert-stat {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        
+        .cert-stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green-neon);
+            display: block;
+        }
+        
+        .cert-stat .label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tabs-nav {
+                justify-content: center;
+            }
+            
+            .tab-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.75rem;
+            }
+            
+            .cert-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .cert-body {
+                padding: 1.5rem;
+            }
+            
+            .cert-actions {
+                flex-direction: column;
+            }
+            
+            .cert-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">MayAth</span>
+                <span class="logo-bracket">]</span>
+                <span class="logo-cursor">_</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">./inicio</a></li>
+                <li><a href="actividades.html">./actividades</a></li>
+                <li><a href="proyectos.html">./proyectos</a></li>
+                <li><a href="certificaciones.html" class="active">./certificaciones</a></li>
+                <li><a href="hall-of-fame.html" class="hall-of-fame-link">./hall_of_fame</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <p class="hero-path">~/portafolio/certificaciones $</p>
+            <h1 class="hero-title glitch" data-text="Certificaciones">Certificaciones</h1>
+            <p class="hero-subtitle">
+                Reflexion profesional sobre el proceso de certificacion en ciberseguridad.
+                Documentacion de aprendizajes clave, retos y aplicacion practica.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section">
+        <div class="container">
+            <div class="cert-stats">
+                <div class="cert-stat">
+                    <span class="number">7</span>
+                    <span class="label">Certificaciones</span>
+                </div>
+                <div class="cert-stat">
+                    <span class="number">1</span>
+                    <span class="label">Plataforma</span>
+                </div>
+                <div class="cert-stat">
+                    <span class="number">7</span>
+                    <span class="label">Badges Obtenidos</span>
+                </div>
+                <div class="cert-stat">
+                    <span class="number">2025</span>
+                    <span class="label">Ano de Certificacion</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Tabs -->
+    <section class="section">
+        <div class="container">
+            <div class="tabs-container">
+                <!-- Tabs Navigation -->
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="cert-1">01. Intro Ciberseguridad</button>
+                    <button class="tab-btn" data-tab="cert-2">02. Redes Basico</button>
+                    <button class="tab-btn" data-tab="cert-3">03. Dispositivos Red</button>
+                    <button class="tab-btn" data-tab="cert-4">04. Seguridad Terminales</button>
+                    <button class="tab-btn" data-tab="cert-5">05. Amenazas Ciberneticas</button>
+                    <button class="tab-btn" data-tab="cert-6">06. Analista Jr.</button>
+                    <button class="tab-btn" data-tab="cert-7">07. Hacker Etico</button>
+                </div>
+
+                <!-- Tab 1: Introduccion a la Ciberseguridad -->
+                <div class="tab-content active" id="cert-1">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Introduccion a la Ciberseguridad</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Badge placeholder - reemplazar src con tu badge -->
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Escribe sobre: el impacto personal, academico y profesional de esta certificacion.
+                                        Menciona los aprendizajes clave, los retos que enfrentaste, y como aplicaras
+                                        estos conocimientos en tu carrera profesional.
+                                    </p>
+                                    <p>
+                                        Incluye tambien tus comentarios personales sobre el curso, que te parecio
+                                        mas interesante, que temas te gustaria profundizar, y como esta certificacion
+                                        complementa tu formacion en ciberseguridad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-01-intro-ciberseguridad.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Conceptos Basicos de Redes -->
+                <div class="tab-content" id="cert-2">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Conceptos Basicos de Redes</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Describe tu experiencia aprendiendo sobre conceptos de redes, protocolos,
+                                        modelos OSI y TCP/IP, direccionamiento IP, y como estos fundamentos son
+                                        esenciales para la ciberseguridad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-02-redes-basico.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Dispositivos de Red y Configuracion Inicial -->
+                <div class="tab-content" id="cert-3">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Dispositivos de Red y Configuracion Inicial</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Comparte tu experiencia configurando routers y switches, usando CLI de Cisco,
+                                        y como estas habilidades practicas te preparan para el trabajo en ciberseguridad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-03-dispositivos-red.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Seguridad en Terminales -->
+                <div class="tab-content" id="cert-4">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Seguridad en Terminales</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Reflexiona sobre la proteccion de endpoints, antivirus, EDR, hardening de sistemas,
+                                        y la importancia de asegurar los dispositivos finales en una red corporativa.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-04-seguridad-terminales.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Administracion de Amenazas Ciberneticas -->
+                <div class="tab-content" id="cert-5">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Administracion de Amenazas Ciberneticas</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Describe tu aprendizaje sobre gestion de amenazas, analisis de vulnerabilidades,
+                                        respuesta a incidentes, y como las organizaciones se defienden de ciberataques.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-05-amenazas-ciberneticas.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: Carrera Profesional de Analista Junior en Ciberseguridad -->
+                <div class="tab-content" id="cert-6">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Carrera Profesional de Analista Junior en Ciberseguridad</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Esta es una certificacion importante. Reflexiona sobre como te prepara para
+                                        el rol de analista SOC, las habilidades que adquiriste, y tu vision profesional
+                                        en el campo de la ciberseguridad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-06-analista-jr.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 7: Hacker Etico -->
+                <div class="tab-content" id="cert-7">
+                    <div class="cert-card">
+                        <div class="cert-header">
+                            <div class="cert-header-info">
+                                <h2>Hacker Etico</h2>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                                <div class="cert-meta">
+                                    <div class="cert-meta-item">
+                                        <span class="label">Fecha de emision</span>
+                                        <span class="value">[FECHA]</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">Duracion</span>
+                                        <span class="value">[HORAS] horas</span>
+                                    </div>
+                                    <div class="cert-meta-item">
+                                        <span class="label">ID Credencial</span>
+                                        <span class="value">[ID]</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cert-badge-placeholder">
+                                [Badge Image]<br>120x120px
+                            </div>
+                        </div>
+                        <div class="cert-body">
+                            <div class="cert-section">
+                                <h3>Resena y Reflexion</h3>
+                                <div class="cert-reflection">
+                                    <p>
+                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                    </p>
+                                    <p>
+                                        Comparte tu experiencia aprendiendo sobre pentesting, metodologias de hacking etico,
+                                        reconocimiento, escaneo, explotacion, y la importancia de la etica en la ciberseguridad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="certificaciones/pdf/cert-07-hacker-etico.pdf" target="_blank" class="btn btn-primary">
+                                [download] certificado.pdf
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-secondary">
+                                [verify] ver badge oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">[MayAth]_</span>
+                    <p>Portafolio de Seguridad Informatica</p>
+                    <p class="footer-copy">UPSLP &copy; 2025</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegacion</h4>
+                    <ul>
+                        <li><a href="index.html">./inicio</a></li>
+                        <li><a href="actividades.html">./actividades</a></li>
+                        <li><a href="proyectos.html">./proyectos</a></li>
+                        <li><a href="certificaciones.html">./certificaciones</a></li>
+                        <li><a href="hall-of-fame.html">./hall_of_fame</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>> echo "Hecho con &lt;3 y muchas lineas de codigo"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Tabs functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active from all
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
