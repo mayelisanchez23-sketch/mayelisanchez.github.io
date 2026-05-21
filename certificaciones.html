@@ -7,6 +7,206 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+         /* Hero Section Styles */
+        .cert-hero {
+            padding: 3rem 0 2rem;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0a0a 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .cert-hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .cert-hero-terminal {
+            background: #0d0d0d;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .cert-hero-terminal .terminal-header {
+            background: #1a1a1a;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .cert-hero-terminal .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .cert-hero-terminal .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .cert-hero-terminal .dot.red { background: #ff5f56; }
+        .cert-hero-terminal .dot.yellow { background: #ffbd2e; }
+        .cert-hero-terminal .dot.green { background: #27ca40; }
+        
+        .cert-hero-terminal .terminal-title {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .cert-hero-terminal .terminal-body {
+            padding: 1.5rem;
+        }
+        
+        .cert-hero-terminal .terminal-line {
+            color: #aaa;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+        
+        .cert-hero-terminal .prompt {
+            color: var(--green-neon);
+            margin-right: 0.5rem;
+        }
+        
+        .cert-hero-terminal .terminal-output {
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .cert-hero-terminal .terminal-success {
+            color: var(--green-neon);
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            background: rgba(0, 255, 65, 0.1);
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        
+        .cert-hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .cert-hero-stat {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .cert-hero-stat .stat-icon {
+            display: block;
+            color: var(--cyan);
+            font-size: 0.7rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .cert-hero-stat .stat-value {
+            display: block;
+            color: var(--green-neon);
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .cert-hero-stat .stat-label {
+            display: block;
+            color: #888;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        
+        .cert-hero-info {
+            padding-left: 1rem;
+        }
+        
+        .cert-badge-label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--green-neon), var(--cyan));
+            color: #000;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .cert-hero-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .cert-hero-title .highlight {
+            color: var(--green-neon);
+            text-shadow: 0 0 20px var(--border-glow);
+        }
+        
+        .cert-hero-desc {
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .cert-hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .mini-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 2px solid #222;
+            object-fit: contain;
+            background: #111;
+            padding: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .mini-badge:hover {
+            border-color: var(--green-neon);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--border-glow);
+        }
+        
+        @media (max-width: 900px) {
+            .cert-hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cert-hero-info {
+                padding-left: 0;
+                text-align: center;
+            }
+            
+            .cert-hero-title {
+                font-size: 2rem;
+            }
+            
+            .cert-hero-badges {
+                justify-content: center;
+            }
+        }
+
+        /* Tabs Navigation */
+        .tabs-container {
+            margin-top: 2rem;
+            
         /* Tabs Navigation */
         .tabs-container {
             margin-top: 2rem;
@@ -270,37 +470,66 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="page-hero">
+    <!-- Hero Section - Redesigned -->
+    <section class="cert-hero">
         <div class="container">
-            <p class="hero-path">~/portafolio/certificaciones $</p>
-            <h1 class="hero-title glitch" data-text="Certificaciones">Certificaciones</h1>
-            <p class="hero-subtitle">
-                Reflexion profesional sobre el proceso de certificacion en ciberseguridad.
-                Documentacion de aprendizajes clave, retos y aplicacion practica.
-            </p>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="section">
-        <div class="container">
-            <div class="cert-stats">
-                <div class="cert-stat">
-                    <span class="number">7</span>
-                    <span class="label">Certificaciones</span>
+            <div class="cert-hero-content">
+                <div class="cert-hero-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">cisco_certifications.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="terminal-line"><span class="prompt">$</span> cat /credentials/status</p>
+                        <p class="terminal-output">Loading professional certifications...</p>
+                        <p class="terminal-line"><span class="prompt">$</span> ./verify_badges --all</p>
+                        <div class="cert-hero-stats">
+                            <div class="cert-hero-stat">
+                                <span class="stat-icon">[CERT]</span>
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Certificaciones</span>
+                            </div>
+                            <div class="cert-hero-stat">
+                                <span class="stat-icon">[PLAT]</span>
+                                <span class="stat-value">Cisco</span>
+                                <span class="stat-label">Networking Academy</span>
+                            </div>
+                            <div class="cert-hero-stat">
+                                <span class="stat-icon">[BADGE]</span>
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Badges Verificados</span>
+                            </div>
+                            <div class="cert-hero-stat">
+                                <span class="stat-icon">[YEAR]</span>
+                                <span class="stat-value">2025</span>
+                                <span class="stat-label">Completadas</span>
+                            </div>
+                        </div>
+                        <p class="terminal-line"><span class="prompt">$</span> echo $STATUS</p>
+                        <p class="terminal-success">VERIFIED - All credentials validated successfully</p>
+                    </div>
                 </div>
-                <div class="cert-stat">
-                    <span class="number">1</span>
-                    <span class="label">Plataforma</span>
-                </div>
-                <div class="cert-stat">
-                    <span class="number">7</span>
-                    <span class="label">Badges Obtenidos</span>
-                </div>
-                <div class="cert-stat">
-                    <span class="number">2025</span>
-                    <span class="label">Ano de Certificacion</span>
+                <div class="cert-hero-info">
+                    <span class="cert-badge-label">PD05 - Reflexion Profesional</span>
+                    <h1 class="cert-hero-title">Certificaciones en <span class="highlight">Ciberseguridad</span></h1>
+                    <p class="cert-hero-desc">
+                        Documentacion del proceso de certificacion profesional, destacando aprendizajes clave, 
+                        retos superados y la aplicacion practica de cada competencia adquirida a traves de 
+                        Cisco Networking Academy.
+                    </p>
+                    <div class="cert-hero-badges">
+                        <img src="certificaciones/badges/cert-01-intro-ciberseguridad.png" alt="Badge 1" class="mini-badge">
+                        <img src="certificaciones/badges/cert-02-redes-basico.png" alt="Badge 2" class="mini-badge">
+                        <img src="certificaciones/badges/cert-03-dispositivos-red.png" alt="Badge 3" class="mini-badge">
+                        <img src="certificaciones/badges/cert-04-seguridad-terminales.png" alt="Badge 4" class="mini-badge">
+                        <img src="certificaciones/badges/cert-05-amenazas-ciberneticas.png" alt="Badge 5" class="mini-badge">
+                        <img src="certificaciones/badges/cert-06-analista-jr.png" alt="Badge 6" class="mini-badge">
+                        <img src="certificaciones/badges/cert-07-hacker-etico.png" alt="Badge 7" class="mini-badge">
+                    </div>
                 </div>
             </div>
         </div>
