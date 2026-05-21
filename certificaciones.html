@@ -62,14 +62,14 @@
         
         /* Certification Card */
         .cert-card {
-            background: var(--bg-card);
+            background: #0d0d0d;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
         }
         
         .cert-header {
-            background: var(--bg-secondary);
+            background: #111111;
             padding: 1.5rem 2rem;
             border-bottom: 1px solid var(--border-color);
             display: flex;
@@ -100,20 +100,6 @@
             padding: 0.5rem;
         }
         
-        .cert-badge-placeholder {
-            width: 120px;
-            height: 120px;
-            border-radius: 8px;
-            border: 2px dashed var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 0.5rem;
-        }
-        
         .cert-body {
             padding: 2rem;
         }
@@ -141,7 +127,7 @@
         }
         
         .cert-reflection {
-            color: #bbbbbb;
+            color: #cccccc;
             line-height: 1.8;
             font-size: 0.95rem;
             text-align: justify;
@@ -149,6 +135,7 @@
         
         .cert-reflection p {
             margin-bottom: 1rem;
+            color: #cccccc;
         }
         
         .cert-reflection p:last-child {
@@ -161,7 +148,7 @@
             flex-wrap: wrap;
             gap: 1rem;
             padding: 1.5rem 2rem;
-            background: var(--bg-secondary);
+            background: #111111;
             border-top: 1px solid var(--border-color);
         }
         
@@ -206,7 +193,7 @@
         }
         
         .cert-stat {
-            background: var(--bg-secondary);
+            background: #111111;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 1.25rem;
@@ -221,7 +208,7 @@
         }
         
         .cert-stat .label {
-            color: var(--text-muted);
+            color: #aaaaaa;
             font-size: 0.85rem;
             margin-top: 0.25rem;
         }
@@ -273,12 +260,12 @@
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-links">
-                <li><a href="index.html">./inicio</a></li>
-                <li><a href="actividades.html">./actividades</a></li>
-                <li><a href="proyectos.html">./proyectos</a></li>
-                <li><a href="certificaciones.html" class="active">./certificaciones</a></li>
-                <li><a href="hall-of-fame.html" class="hall-of-fame-link">./hall_of_fame</a></li>
+            <ul class="navbar-nav" id="navMenu">
+                <li><a href="index.html" class="nav-link">inicio</a></li>
+                <li><a href="actividades.html" class="nav-link">actividades</a></li>
+                <li><a href="proyectos.html" class="nav-link">proyectos</a></li>
+                <li><a href="certificaciones.html" class="nav-link active">certificaciones</a></li>
+                <li><a href="hall-of-fame.html" class="nav-link">hall_of_fame</a></li>
             </ul>
         </div>
     </nav>
@@ -339,44 +326,29 @@
                     <div class="cert-card">
                         <div class="cert-header">
                             <div class="cert-header-info">
-                                <h2>Introduccion a la Ciberseguridad</h2>
+                                <h2>Introduction to Cybersecurity</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <!-- Badge placeholder - reemplazar src con tu badge -->
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-01-intro-ciberseguridad.png" alt="Badge Introduction to Cybersecurity" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        El curso Introduction to Cybersecurity me permitio conocer los conceptos fundamentales de la ciberseguridad y entender la gran importancia que tiene actualmente en el mundo digital. A lo largo de esta experiencia aprendi que la tecnologia ofrece muchos beneficios, pero tambien representa riesgos que pueden afectar tanto a personas como a empresas si no se toman medidas adecuadas de proteccion.
                                     </p>
                                     <p>
-                                        Escribe sobre: el impacto personal, academico y profesional de esta certificacion.
-                                        Menciona los aprendizajes clave, los retos que enfrentaste, y como aplicaras
-                                        estos conocimientos en tu carrera profesional.
+                                        Uno de los temas que mas me llamo la atencion fue conocer las diferentes amenazas ciberneticas que existen, como malware, phishing, robo de informacion y ataques a redes. Antes de este curso no dimensionaba realmente el impacto que pueden tener estos ataques en la vida diaria y en las organizaciones. Ahora comprendo que la ciberseguridad no solamente trata de usar antivirus, sino de implementar estrategias completas de prevencion y proteccion.
                                     </p>
                                     <p>
-                                        Incluye tambien tus comentarios personales sobre el curso, que te parecio
-                                        mas interesante, que temas te gustaria profundizar, y como esta certificacion
-                                        complementa tu formacion en ciberseguridad.
+                                        Tambien aprendi sobre la importancia de mantener buenas practicas digitales, como utilizar contrasenas seguras, actualizar sistemas constantemente y proteger la informacion sensible. Considero que estas ensenanzas son muy valiosas porque pueden aplicarse tanto en el ambito profesional como en la vida personal.
+                                    </p>
+                                    <p>
+                                        Otro aspecto importante fue conocer las areas laborales relacionadas con la ciberseguridad y entender que es un campo con gran crecimiento y demanda actualmente. Esto aumento mi interes por seguir aprendiendo mas sobre analisis de amenazas, seguridad en redes y proteccion de sistemas.
+                                    </p>
+                                    <p>
+                                        En conclusion, este curso me dejo una vision mas amplia sobre los riesgos tecnologicos actuales y la necesidad de estar preparados para enfrentarlos. Ademas, fortalecio mi interes por seguir desarrollandome en el area de tecnologias de la informacion y ciberseguridad, ya que considero que es un campo muy importante para el presente y futuro digital.
                                     </p>
                                 </div>
                             </div>
@@ -399,36 +371,24 @@
                             <div class="cert-header-info">
                                 <h2>Conceptos Basicos de Redes</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-02-redes-basico.png" alt="Badge Conceptos Basicos de Redes" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        Durante el curso de Conceptos Basicos de Redes aprendi la importancia que tienen las redes de computadoras dentro de la comunicacion digital actual. Antes de tomar este curso conocia algunos conceptos de manera superficial, pero ahora entiendo mejor como interactuan los dispositivos para compartir informacion de manera eficiente y segura. Uno de los temas que mas llamo mi atencion fue el funcionamiento de las direcciones IP, los protocolos de comunicacion y la forma en que los datos viajan a traves de la red.
                                     </p>
                                     <p>
-                                        Describe tu experiencia aprendiendo sobre conceptos de redes, protocolos,
-                                        modelos OSI y TCP/IP, direccionamiento IP, y como estos fundamentos son
-                                        esenciales para la ciberseguridad.
+                                        Tambien comprendi la diferencia entre dispositivos como routers, switches y puntos de acceso, ademas de la funcion especifica que cumple cada uno dentro de una infraestructura de red. Este conocimiento me permitio visualizar mejor como se construyen las redes tanto en hogares como en empresas. Considero que esta seccion fue muy importante porque actualmente practicamente todas las areas tecnologicas dependen de una conexion estable y bien configurada.
+                                    </p>
+                                    <p>
+                                        Otra ensenanza importante fue entender que una red no solamente consiste en conectar equipos, sino en mantener una comunicacion organizada, rapida y segura. Ademas, el curso fortalecio mi interes por el area de ciberseguridad, ya que entendi que para proteger una red primero es necesario comprender como funciona.
+                                    </p>
+                                    <p>
+                                        Finalmente, este curso me dejo una vision mas amplia sobre las oportunidades laborales relacionadas con redes y telecomunicaciones. Considero que fue una experiencia muy util porque fortalecio mis bases tecnicas y me ayudo a desarrollar habilidades que seran importantes en mi formacion profesional y en futuros proyectos relacionados con tecnologias de la informacion.
                                     </p>
                                 </div>
                             </div>
@@ -451,35 +411,27 @@
                             <div class="cert-header-info">
                                 <h2>Dispositivos de Red y Configuracion Inicial</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-03-dispositivos-red.png" alt="Badge Dispositivos de Red" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        En el curso de Dispositivos de Red y Configuracion Inicial aprendi aspectos fundamentales relacionados con la configuracion y administracion basica de dispositivos de red. Esta experiencia fue muy enriquecedora porque me permitio conocer de manera mas practica como funcionan equipos como routers y switches dentro de una infraestructura tecnologica.
                                     </p>
                                     <p>
-                                        Comparte tu experiencia configurando routers y switches, usando CLI de Cisco,
-                                        y como estas habilidades practicas te preparan para el trabajo en ciberseguridad.
+                                        Uno de los aprendizajes mas importantes fue la configuracion inicial de dispositivos Cisco mediante comandos basicos. Aprendi como acceder a los equipos, asignar configuraciones esenciales, establecer contrasenas y realizar pruebas de conectividad. Estas actividades me ayudaron a comprender la importancia de una correcta configuracion desde el inicio para garantizar el buen funcionamiento de la red.
+                                    </p>
+                                    <p>
+                                        Ademas, entendi la relevancia de mantener buenas practicas de seguridad desde las primeras etapas de configuracion. El curso tambien me permitio desarrollar habilidades de analisis y solucion de problemas basicos relacionados con la conectividad. Considero que esto es muy importante, ya que en el area de tecnologias de la informacion es comun enfrentarse a fallas o errores de comunicacion entre dispositivos.
+                                    </p>
+                                    <p>
+                                        Otro aspecto que me gusto fue que el curso combino teoria y practica, permitiendome aplicar directamente los conocimientos aprendidos. Gracias a esto, pude sentirme mas familiarizada con entornos reales de redes y con herramientas utilizadas en el ambito profesional.
+                                    </p>
+                                    <p>
+                                        En conclusion, este curso fortalecio mis conocimientos tecnicos y aumento mi interes por el area de redes y ciberseguridad. Ademas, me dejo ensenanzas importantes sobre la responsabilidad y precision que se requieren al trabajar con infraestructuras tecnologicas, ya que una mala configuracion puede afectar la comunicacion y seguridad de toda una organizacion.
                                     </p>
                                 </div>
                             </div>
@@ -500,37 +452,29 @@
                     <div class="cert-card">
                         <div class="cert-header">
                             <div class="cert-header-info">
-                                <h2>Seguridad en Terminales</h2>
+                                <h2>Seguridad de Terminales</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-04-seguridad-terminales.png" alt="Badge Seguridad de Terminales" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        Durante el curso de Seguridad de Terminales aprendi la importancia de proteger los dispositivos finales que se utilizan diariamente dentro de una red, como computadoras, laptops y dispositivos moviles. Antes de tomar este curso pensaba que la seguridad dependia principalmente de servidores o firewalls, pero ahora entiendo que los equipos terminales tambien representan un punto critico dentro de la ciberseguridad.
                                     </p>
                                     <p>
-                                        Reflexiona sobre la proteccion de endpoints, antivirus, EDR, hardening de sistemas,
-                                        y la importancia de asegurar los dispositivos finales en una red corporativa.
+                                        Uno de los temas mas importantes fue conocer las amenazas que pueden afectar directamente a los dispositivos, como virus, ransomware, spyware y accesos no autorizados. Tambien aprendi diferentes metodos de proteccion, incluyendo el uso de antivirus, actualizaciones de seguridad, autenticacion y politicas de acceso.
+                                    </p>
+                                    <p>
+                                        Ademas, comprendi que muchas brechas de seguridad ocurren por descuidos de los usuarios o por malas configuraciones en los dispositivos. Esto me ayudo a reflexionar sobre la importancia de mantener buenas practicas de seguridad tanto en el ambito personal como profesional.
+                                    </p>
+                                    <p>
+                                        Otro aspecto que me gusto fue aprender sobre monitoreo y administracion de terminales para detectar comportamientos sospechosos y responder rapidamente ante posibles incidentes. Considero que este conocimiento es muy util porque actualmente la mayoria de las empresas dependen de multiples dispositivos conectados a la red.
+                                    </p>
+                                    <p>
+                                        En conclusion, este curso me permitio comprender mejor la importancia de la seguridad en los dispositivos finales y como una correcta proteccion puede evitar incidentes graves. Ademas, fortalecio mis conocimientos en ciberseguridad y aumento mi interes por seguir aprendiendo sobre proteccion de sistemas y administracion segura de equipos tecnologicos.
                                     </p>
                                 </div>
                             </div>
@@ -546,42 +490,34 @@
                     </div>
                 </div>
 
-                <!-- Tab 5: Administracion de Amenazas Ciberneticas -->
+                <!-- Tab 5: Gestion de Amenazas Ciberneticas -->
                 <div class="tab-content" id="cert-5">
                     <div class="cert-card">
                         <div class="cert-header">
                             <div class="cert-header-info">
-                                <h2>Administracion de Amenazas Ciberneticas</h2>
+                                <h2>Gestion de Amenazas Ciberneticas</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-05-amenazas-ciberneticas.png" alt="Badge Gestion de Amenazas" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        Durante el curso de Gestion de Amenazas Ciberneticas aprendi la importancia de identificar, analizar y prevenir amenazas que pueden poner en riesgo la informacion y los sistemas de una organizacion. Este curso me ayudo a comprender que actualmente los ataques ciberneticos son cada vez mas frecuentes y sofisticados, por lo que las empresas deben estar preparadas para responder de manera eficiente.
                                     </p>
                                     <p>
-                                        Describe tu aprendizaje sobre gestion de amenazas, analisis de vulnerabilidades,
-                                        respuesta a incidentes, y como las organizaciones se defienden de ciberataques.
+                                        Uno de los temas que mas llamo mi atencion fue el analisis de diferentes tipos de amenazas y vulnerabilidades. Aprendi como los atacantes aprovechan errores humanos o fallas de seguridad para obtener acceso no autorizado a sistemas y datos importantes. Tambien comprendi que la prevencion y el monitoreo constante son fundamentales para reducir riesgos.
+                                    </p>
+                                    <p>
+                                        Ademas, aprendi sobre herramientas y estrategias utilizadas para detectar actividades sospechosas dentro de una red. Esto me permitio entender mejor el trabajo que realizan los analistas de ciberseguridad para proteger la informacion y mantener la continuidad de las operaciones de una empresa.
+                                    </p>
+                                    <p>
+                                        Otra ensenanza importante fue la relevancia de crear politicas de seguridad y capacitar constantemente a los usuarios, ya que muchas amenazas se originan por descuidos o falta de conocimiento. Considero que este punto es muy importante porque la seguridad informatica no depende unicamente de la tecnologia, sino tambien de las personas.
+                                    </p>
+                                    <p>
+                                        En conclusion, este curso fortalecio mis conocimientos sobre la gestion de riesgos y amenazas ciberneticas. Ademas, me permitio desarrollar una mayor conciencia sobre la importancia de proteger la informacion en entornos digitales. Considero que las ensenanzas obtenidas seran muy utiles tanto en mi formacion academica como en mi futuro profesional dentro del area de tecnologias de la informacion y ciberseguridad.
                                     </p>
                                 </div>
                             </div>
@@ -597,43 +533,34 @@
                     </div>
                 </div>
 
-                <!-- Tab 6: Carrera Profesional de Analista Junior en Ciberseguridad -->
+                <!-- Tab 6: Carrera Profesional de Analista Junior -->
                 <div class="tab-content" id="cert-6">
                     <div class="cert-card">
                         <div class="cert-header">
                             <div class="cert-header-info">
                                 <h2>Carrera Profesional de Analista Junior en Ciberseguridad</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-06-analista-jr.png" alt="Badge Analista Junior" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        La Carrera Profesional de Analista Junior en Ciberseguridad fue una experiencia muy completa que me permitio integrar distintos conocimientos relacionados con redes, amenazas ciberneticas, seguridad informatica y analisis de riesgos. Considero que este programa me ayudo a desarrollar una vision mas amplia sobre el trabajo y las responsabilidades que tiene un analista de ciberseguridad dentro de una organizacion.
                                     </p>
                                     <p>
-                                        Esta es una certificacion importante. Reflexiona sobre como te prepara para
-                                        el rol de analista SOC, las habilidades que adquiriste, y tu vision profesional
-                                        en el campo de la ciberseguridad.
+                                        A lo largo del curso aprendi sobre identificacion de amenazas, proteccion de sistemas, monitoreo de redes y prevencion de incidentes de seguridad. Tambien comprendi la importancia de analizar constantemente posibles vulnerabilidades para evitar ataques que puedan comprometer la informacion y la operacion de las empresas.
+                                    </p>
+                                    <p>
+                                        Uno de los aprendizajes mas importantes fue entender que la ciberseguridad no depende unicamente de herramientas tecnologicas, sino tambien del analisis, la prevencion y la toma de decisiones correctas. Ademas, aprendi la relevancia del trabajo en equipo y de mantener una actualizacion constante debido a que las amenazas evolucionan continuamente.
+                                    </p>
+                                    <p>
+                                        Otro aspecto que me motivo fue conocer mas sobre las oportunidades profesionales dentro del area de ciberseguridad. Este curso fortalecio mi interes por seguir especializandome y adquirir mas experiencia en temas relacionados con proteccion de redes, analisis de amenazas y seguridad informatica.
+                                    </p>
+                                    <p>
+                                        En conclusion, esta carrera profesional me dejo conocimientos tecnicos importantes y tambien una mayor conciencia sobre la responsabilidad que implica proteger la informacion digital. Considero que esta experiencia sera de gran utilidad para mi desarrollo academico y profesional, ya que me permitio fortalecer habilidades necesarias para desempenarme en el area de tecnologias de la informacion y ciberseguridad.
                                     </p>
                                 </div>
                             </div>
@@ -656,35 +583,27 @@
                             <div class="cert-header-info">
                                 <h2>Hacker Etico</h2>
                                 <p class="cert-issuer">Cisco Networking Academy</p>
-                                <div class="cert-meta">
-                                    <div class="cert-meta-item">
-                                        <span class="label">Fecha de emision</span>
-                                        <span class="value">[FECHA]</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">Duracion</span>
-                                        <span class="value">[HORAS] horas</span>
-                                    </div>
-                                    <div class="cert-meta-item">
-                                        <span class="label">ID Credencial</span>
-                                        <span class="value">[ID]</span>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cert-badge-placeholder">
-                                [Badge Image]<br>120x120px
-                            </div>
+                            <img src="certificaciones/badges/cert-07-hacker-etico.png" alt="Badge Hacker Etico" class="cert-badge">
                         </div>
                         <div class="cert-body">
                             <div class="cert-section">
                                 <h3>Resena y Reflexion</h3>
                                 <div class="cert-reflection">
                                     <p>
-                                        [AQUI VA TU REFLEXION DE ~250 PALABRAS]
+                                        El curso de Hacker Etico fue una experiencia muy interesante porque me permitio comprender como trabajan los especialistas en seguridad para identificar vulnerabilidades y prevenir ataques informaticos. A lo largo del curso aprendi que el hacking etico tiene como objetivo mejorar la seguridad de los sistemas mediante pruebas controladas y autorizadas.
                                     </p>
                                     <p>
-                                        Comparte tu experiencia aprendiendo sobre pentesting, metodologias de hacking etico,
-                                        reconocimiento, escaneo, explotacion, y la importancia de la etica en la ciberseguridad.
+                                        Uno de los aspectos que mas me llamo la atencion fue conocer las diferentes tecnicas que pueden utilizarse para detectar fallas de seguridad en redes, aplicaciones y dispositivos. Esto me ayudo a entender la importancia de anticiparse a los ataques antes de que puedan causar danos reales. Tambien aprendi que un hacker etico debe actuar siempre con responsabilidad y etica profesional.
+                                    </p>
+                                    <p>
+                                        Ademas, el curso me permitio comprender mejor como piensan los atacantes y cuales son los metodos mas comunes utilizados para vulnerar sistemas. Considero que este conocimiento es muy valioso porque ayuda a implementar mejores medidas de proteccion y prevencion.
+                                    </p>
+                                    <p>
+                                        Otro aprendizaje importante fue la relevancia de realizar analisis constantes de seguridad y mantener actualizados los sistemas. Tambien entendi que la ciberseguridad es un proceso continuo que requiere monitoreo, capacitacion y mejora constante.
+                                    </p>
+                                    <p>
+                                        En conclusion, este curso fortalecio mi interes por el area de ciberseguridad ofensiva y me permitio desarrollar una vision mas critica sobre la proteccion de sistemas y redes. Ademas, me dejo ensenanzas importantes sobre la responsabilidad que implica trabajar con informacion y herramientas de seguridad informatica. Considero que los conocimientos adquiridos seran muy utiles en mi formacion profesional y en futuros proyectos relacionados con tecnologias de la informacion.
                                     </p>
                                 </div>
                             </div>
@@ -699,7 +618,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -709,33 +627,28 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="footer-logo">[MayAth]_</span>
-                    <p>Portafolio de Seguridad Informatica</p>
-                    <p class="footer-copy">UPSLP &copy; 2025</p>
+                    <span class="logo-bracket">[</span>
+                    <span class="logo-text">MayAth</span>
+                    <span class="logo-bracket">]</span>
+                    <span class="logo-cursor">_</span>
                 </div>
-                <div class="footer-links">
-                    <h4>Navegacion</h4>
-                    <ul>
-                        <li><a href="index.html">./inicio</a></li>
-                        <li><a href="actividades.html">./actividades</a></li>
-                        <li><a href="proyectos.html">./proyectos</a></li>
-                        <li><a href="certificaciones.html">./certificaciones</a></li>
-                        <li><a href="hall-of-fame.html">./hall_of_fame</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>> echo "Hecho con &lt;3 y muchas lineas de codigo"</p>
+                <p class="footer-text">Portafolio de Seguridad Informatica - UPSLP 2025</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         // Mobile menu
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileBtn.classList.toggle('active');
+            });
+        }
 
         // Tabs functionality
         const tabBtns = document.querySelectorAll('.tab-btn');
@@ -743,13 +656,14 @@
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active from all
+                const tabId = btn.getAttribute('data-tab');
+
+                // Remove active from all buttons and contents
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabContents.forEach(c => c.classList.remove('active'));
 
-                // Add active to clicked
+                // Add active to clicked button and corresponding content
                 btn.classList.add('active');
-                const tabId = btn.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
             });
         });
